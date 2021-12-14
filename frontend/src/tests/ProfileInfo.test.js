@@ -24,4 +24,8 @@ describe(`ProfileInfo component tests`, () => {
         const element = screen.getByText(/github/i);
         expect(element).toBeInTheDocument();
     })
+    test('it should render LinkedIn', () => {
+        const element = screen.getByText(/LinkedIn/i);
+        expect(element).toBeInTheDocument();
+    })
 })
