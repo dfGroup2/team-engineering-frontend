@@ -10,4 +10,9 @@ describe(`Tests for ProfileSection`, () => {
 		const element = screen.getByText(/your profile/i);
 		expect(element).toBeInTheDocument();
 	})
+
+	test(`it should render an edit link`, () => {
+		const element = screen.getByText(/edit/i);
+		expect(element).toBeInTheDocument();
+	})
 })
