@@ -2,11 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Components/Header';
+import ProfileSection from './Components/ProfileSection';
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <ProfileSection />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
