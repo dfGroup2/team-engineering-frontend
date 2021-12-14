@@ -9,6 +9,7 @@ const ProfileInfo = props => {
             <p>Digital Futures email:</p>
             <p>Github:</p>
             <p>LinkedIn:</p>
+            <p>Phone:</p>
 
         </div>
     )
