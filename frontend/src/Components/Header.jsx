@@ -1,11 +1,14 @@
-import React from 'react'
+import logo from '../images/digital_futures_logo.png';
 import PropTypes from 'prop-types'
 
 const Header = props => {
 	return (
 		<header>
-			<img src="../images/logo.svg" alt="df_logo" />
-			<span>DFXtra</span>
+			<nav className="navbar navbar-expand-sm">
+				<img src={logo} alt="df_logo" width="2.5%" height="2.5%" />
+				&nbsp;
+				<span>DFXtra</span>
+			</nav>
 		</header>
 	)
 }
