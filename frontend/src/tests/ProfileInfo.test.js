@@ -20,4 +20,8 @@ describe(`ProfileInfo component tests`, () => {
         const element = screen.getByText(/Digital Futures email/i);
         expect(element).toBeInTheDocument();
     })
+    test('it should render github', () => {
+        const element = screen.getByText(/github/i);
+        expect(element).toBeInTheDocument();
+    })
 })
