@@ -5,6 +5,7 @@ const Header = props => {
 	return (
 		<header>
 			<img src="../images/logo.svg" alt="df_logo" />
+			<span>DFXtra</span>
 		</header>
 	)
 }
