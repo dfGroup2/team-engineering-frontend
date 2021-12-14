@@ -13,6 +13,11 @@ describe(`Header component tests`, () => {
 		expect(element).toBeInTheDocument();
 	})
 
+	test(`it should render the DFX title`, () => {
+		const element = screen.getByText(/dfxtra/i);
+		expect(element).toBeInTheDocument();
+	})
+
 	xtest(`it should render a "need help?" button`, () => {
 		const element = screen.getByText(/need help?/i);
 
