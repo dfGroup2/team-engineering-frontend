@@ -12,4 +12,8 @@ describe(`ProfileInfo component tests`, () => {
         const element = screen.getByText(/Name/i);
         expect(element).toBeInTheDocument();
     })
+    test('it should render personal email', () => {
+        const element = screen.getByText(/Personal email/i);
+        expect(element).toBeInTheDocument();
+    })
 })
