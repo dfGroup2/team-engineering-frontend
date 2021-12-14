@@ -28,4 +28,8 @@ describe(`ProfileInfo component tests`, () => {
         const element = screen.getByText(/LinkedIn/i);
         expect(element).toBeInTheDocument();
     })
+    test('it should render Phone', () => {
+        const element = screen.getByText(/Phone/i);
+        expect(element).toBeInTheDocument();
+    })
 })
