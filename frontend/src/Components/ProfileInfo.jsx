@@ -8,6 +8,7 @@ const ProfileInfo = props => {
             <p>Personal email:</p>
             <p>Digital Futures email:</p>
             <p>Github:</p>
+            <p>LinkedIn:</p>
 
         </div>
     )
