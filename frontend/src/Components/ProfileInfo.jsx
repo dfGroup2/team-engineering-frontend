@@ -5,6 +5,7 @@ const ProfileInfo = props => {
     return (
         <div>
             <p>Name:</p>
+            <p>Personal email:</p>
 
         </div>
     )
