@@ -1,10 +1,14 @@
 import { render, screen } from '@testing-library/react';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import ProfileSection from '../Components/ProfileSection';
 
 describe(`Tests for ProfileSection`, () => {
 	beforeEach(() => {
-		render(<ProfileSection />);
+		render(
+			<Router>
+				<ProfileSection />
+			</Router>
+		);
 	})
 	test(`it should render a "your profile" heading`, () => {
 		const element = screen.getByText(/your profile/i);
