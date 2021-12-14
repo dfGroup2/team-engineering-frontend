@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const ProfileInfo = props => {
     return (
-        <div>
+        <div className="col-6">
             <p>Name:</p>
             <p>Personal email:</p>
             <p>Digital Futures email:</p>
