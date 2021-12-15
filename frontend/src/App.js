@@ -5,6 +5,7 @@ import Header from './Components/Header';
 import ProfileSection from './Components/ProfileSection';
 import { BrowserRouter as Router } from 'react-router-dom';
 import "./css/ProfileSection.css";
+import TrainingSection from './Components/TrainingSection';
 
 function App() {
   return (
@@ -12,7 +13,10 @@ function App() {
       <Router>
         <Header />
         <div className="parent-container">
-        <ProfileSection />
+          <ProfileSection />
+        </div>
+        <div className="parent-container">
+          <TrainingSection />
         </div>
       </Router>
     </div>
