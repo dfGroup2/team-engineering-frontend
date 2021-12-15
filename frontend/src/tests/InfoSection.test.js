@@ -21,8 +21,11 @@ describe(`InfoSection component tests`, () => {
             const element = screen.getByText(/badge A/i);
             expect(element).toBeInTheDocument();
         })
+        test(`it should render badge A four times`, () => {
+        const numberOfBadges = screen.getAllByText(/badge a/i).length;
+expect(numberOfBadges).toBe(4);
+        })
 
-        
         
     })
     });
