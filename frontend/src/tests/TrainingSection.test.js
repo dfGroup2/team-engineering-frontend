@@ -29,4 +29,9 @@ describe(`Test Suite for Training Section`, () => {
         expect(element).toBeInTheDocument();
     });
 
+    test(`it should render training finish date`, () => {
+        const element = screen.getByText(/training finish date/i);
+        expect(element).toBeInTheDocument();
+    });
+
 });
