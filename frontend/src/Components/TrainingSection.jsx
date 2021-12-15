@@ -9,6 +9,7 @@ const TrainingSection = props => {
                 <p>Cohort: xxxxxx</p>
                 <p>Learning Path: xxxxxx</p>
                 <p>Trainer: xxxxxx</p>
+                <p>Training finish date: xxxxxx</p>
             </div>
         </div>
     )
