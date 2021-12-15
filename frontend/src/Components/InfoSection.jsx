@@ -6,6 +6,8 @@ const InfoSection = props => {
         <div className="container card borderClass">
         <h3>Your information</h3>
         <p>Badges:</p>
+        <p>Badge A</p>
+
         </div>
     )
 }
