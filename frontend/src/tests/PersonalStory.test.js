@@ -20,6 +20,10 @@ describe(`PersonalStory component tests`, () => {
          test(`it should render school qualifications`, () => {
             const element = screen.getByText(/School qualifications/i);
             expect(element).toBeInTheDocument();
+         })
+         test(`it should render work experiences`, () => {
+            const element = screen.getByText(/Work experiences/i);
+            expect(element).toBeInTheDocument();
         })
         
     })
