@@ -18,4 +18,10 @@ describe(`Test Suite for Training Section`, () => {
         const element = screen.getByText(/cohort/i);
         expect(element).toBeInTheDocument();
     });
+
+    test(`it should render learning path`, () => {
+        const element = screen.getByText(/learning path/i);
+        expect(element).toBeInTheDocument();
+    });
+
 });
