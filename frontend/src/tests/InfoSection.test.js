@@ -25,6 +25,10 @@ describe(`InfoSection component tests`, () => {
         const numberOfBadges = screen.getAllByText(/badge a/i).length;
 expect(numberOfBadges).toBe(4);
         })
+        test(`it should render scores`, () => {
+            const element = screen.getByText(/scores/i);
+            expect(element).toBeInTheDocument();
+        })
 
         
     })

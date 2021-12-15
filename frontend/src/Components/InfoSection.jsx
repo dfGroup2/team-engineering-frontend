@@ -10,6 +10,7 @@ const InfoSection = props => {
         <p>Badge A</p>
         <p>Badge A</p>
         <p>Badge A</p>
+        <p>scores</p>
 
         </div>
     )
