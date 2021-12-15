@@ -8,6 +8,7 @@ const PersonalStory = props => {
             <p>Degree in XXX from YYY</p>
             <p>4 school qualifications</p>
             <p>5 work experiences</p>
+            <p>3 personal achievements</p>
         </div>
     )
 }
