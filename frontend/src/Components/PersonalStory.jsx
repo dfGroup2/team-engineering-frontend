@@ -6,7 +6,7 @@ const PersonalStory = props => {
     return (
         <div className="ps-section">
             <p>Personal story summary:</p>
-            <div className="card">
+            <div className="card borderClass">
             <p>Degree in XXX from YYY</p>
             <p>4 school qualifications</p>
             <p>5 work experiences</p>

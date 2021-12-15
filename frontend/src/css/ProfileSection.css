@@ -1,3 +1,6 @@
 .parent-container {
   padding-top: 5%;
 }
+.borderClass {
+  border: 3px solid black;
+}

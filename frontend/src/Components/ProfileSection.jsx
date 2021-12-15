@@ -6,7 +6,7 @@ import PersonalStory from './PersonalStory';
 import "../css/ProfileSection.css";
 const ProfileSection = props => {
 	return (
-		<div className="container border">
+		<div className="container borderClass">
 			<div className="row">
 				<h3 className="col-2">Your profile</h3>
 				<br />
