@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import ProfileInfo from './ProfileInfo'
 import { Link } from 'react-router-dom';
 import PersonalStory from './PersonalStory';
+import "../css/ProfileSection.css";
 const ProfileSection = props => {
 	return (
-		<div className="container">
+		<div className="container border">
 			<div className="row">
 				<h3 className="col-2">Your profile</h3>
 				<br />
@@ -13,11 +14,11 @@ const ProfileSection = props => {
 				<Link className="col-2" to="/">Edit</Link>
 			</div>
 			<div className="row">
-			<div className="col-2 card">
+			<div className="col-2">
 				<ProfileInfo />
 				</div>
 				<p className="col-2"></p>
-			<div className="col-3 col-8 card">
+			<div className="col-3 col-8">
 				<PersonalStory />
 				</div>
 			</div>
