@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ProfileInfo from './ProfileInfo'
 import { Link } from 'react-router-dom';
+import PersonalStory from './PersonalStory';
 const ProfileSection = props => {
 	return (
 		<div className="container">
@@ -11,8 +12,14 @@ const ProfileSection = props => {
 				<br />
 				<Link className="col-2" to="/">Edit</Link>
 			</div>
+			<div className="row">
 			<div className="col-2 card">
 				<ProfileInfo />
+				</div>
+				<p className="col-2"></p>
+			<div className="col-3 col-8 card">
+				<PersonalStory />
+				</div>
 			</div>
 		</div>
 	)
