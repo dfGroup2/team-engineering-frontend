@@ -33,6 +33,11 @@ expect(numberOfBadges).toBe(4);
             const element = screen.getByText(/aptitude/i);
             expect(element).toBeInTheDocument();
         })
+        test(`it should render java`, () => {
+            const element = screen.getByText(/java/i);
+            expect(element).toBeInTheDocument();
+        })
+
 
         
     })
