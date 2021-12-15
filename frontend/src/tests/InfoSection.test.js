@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import PersonalStory from '../Components/InfoSection';
+import InfoSection from '../Components/InfoSection';
 
 describe(`InfoSection component tests`, () => {
     beforeEach(() => {
@@ -9,7 +9,7 @@ describe(`InfoSection component tests`, () => {
 
     describe('Render Test', () => {
 
-        test(`it should render you information`, () => {
+        test(`it should render your information`, () => {
             const element = screen.getByText(/your information/i);
             expect(element).toBeInTheDocument();
         })
