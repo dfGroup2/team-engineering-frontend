@@ -37,6 +37,10 @@ expect(numberOfBadges).toBe(4);
             const element = screen.getByText(/java/i);
             expect(element).toBeInTheDocument();
         })
+        test(`it should render video link`, () => {
+            const element = screen.getByText(/video link/i);
+            expect(element).toBeInTheDocument();
+        })
 
 
         
