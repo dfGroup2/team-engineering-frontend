@@ -13,6 +13,7 @@ const InfoSection = props => {
         <p>Scores</p>
         <p>Aptitude</p>
         <p>Java</p>
+        <p>Video link</p>
 
         </div>
     )
