@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import TrainingModules from './TrainingModules'
 
 const TrainingSection = props => {
     return (
@@ -14,7 +15,7 @@ const TrainingSection = props => {
                 </div>
                 <p className="col-1"></p>
                 <div className="col-3 col-8 card borderClass">
-
+                    <TrainingModules />
                 </div>
             </div>
         </div>
