@@ -5,6 +5,7 @@ const TrainingModules = props => {
     return (
         <div>
             <p>Module 1, Challenge A: PASSED</p>
+            <p>Module 1, Challenge B: PASSED</p>
         </div>
     )
 }

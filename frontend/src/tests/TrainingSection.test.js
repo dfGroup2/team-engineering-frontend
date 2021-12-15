@@ -39,5 +39,9 @@ describe(`Test Suite for Training Section`, () => {
         expect(element).toBeInTheDocument();
     });
 
+    test(`it should render module 1, challenge B`, () => {
+        const element = screen.getByText(/module 1, challenge B/i);
+        expect(element).toBeInTheDocument();
+    });
 
 });
