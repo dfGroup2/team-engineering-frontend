@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Header = props => {
 	return (
-		<header>
+		<header className="header-margin">
 			<nav className="navbar navbar-expand-sm">
 				<img src={logo} alt="df_logo" width="2.5%" height="2.5%" />
 				&nbsp;
