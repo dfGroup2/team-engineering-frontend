@@ -6,6 +6,7 @@ import ProfileSection from './Components/ProfileSection';
 import { BrowserRouter as Router } from 'react-router-dom';
 import "./css/ProfileSection.css";
 import TrainingSection from './Components/TrainingSection';
+import Footer from './Components/Footer';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <div className="parent-container">
           <TrainingSection />
         </div>
+        <Footer />
       </Router>
     </div>
   );
