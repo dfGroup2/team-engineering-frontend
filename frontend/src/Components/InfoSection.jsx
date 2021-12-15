@@ -5,6 +5,7 @@ const InfoSection = props => {
     return (
         <div className="container card borderClass">
         <h3>Your information</h3>
+        <p>Badges:</p>
         </div>
     )
 }
