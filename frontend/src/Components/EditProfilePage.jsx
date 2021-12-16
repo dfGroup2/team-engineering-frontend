@@ -10,6 +10,7 @@ const EditProfilePage = props => {
 				<br />
 				<br />
                 <p className="col-4">profile completion</p>
+                <input type="submit" value="submit draft"></input>
 			</div>
 			</div>
 	)
