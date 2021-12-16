@@ -10,6 +10,7 @@ import ProfilePage from './Components/GradProfileComponents/ProfilePage';
 import EditProfilePage from './Components/EditProfileComponents/EditProfilePage';
 import EditPersonalInfoSection from './Components/EditProfileComponents/EditPersonalInfoSection';
 import EditPersonalStory from './Components/EditProfileComponents/EditPersonalStory';
+import LoginPage from './Components/LoginComponents/Login';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             </div>
             </div>
           }></Route>
+          <Route  path="/login" element={<LoginPage />}></Route>
         </Routes>
         <Footer />
       </Router>
