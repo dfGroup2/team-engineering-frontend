@@ -14,4 +14,8 @@ describe(`Tests for EditProfilePage`, () => {
 		const element = screen.getByText(/your profile/i);
 		expect(element).toBeInTheDocument();
 	})
+    test(`it should render profile completion`, () => {
+		const element = screen.getByText(/profile completion/i);
+		expect(element).toBeInTheDocument();
+	})
 });
