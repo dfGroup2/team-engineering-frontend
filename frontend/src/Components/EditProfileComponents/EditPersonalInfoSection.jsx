@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import '../../css/EditPersonalInfoSection.css'
 import Dropdown from 'react-bootstrap/Dropdown';
-import { Col, Row, Container } from 'react-bootstrap/';
-import Image from 'react-bootstrap/Image';
+
+
 
 
 const EditPersonalInfoSection = props => {
