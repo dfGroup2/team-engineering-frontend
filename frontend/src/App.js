@@ -5,7 +5,8 @@ import ProfileSection from './Components/ProfileSection';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./css/ProfileSection.css";
 import TrainingSection from './Components/TrainingSection';
-import Footer from './Components/Footer';
+import Footer from './Components/Footer'
+import InfoSection from './Components/InfoSection';
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
               <div className="parent-container">
                 <TrainingSection />
               </div>
+              <div className="parent-container">
+                <InfoSection /> <br/><br/>
+
+              </div > 
             </>
           }></Route>
           <Route path="/edit" element={<>Work In Progress</>}></Route>
