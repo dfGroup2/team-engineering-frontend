@@ -26,6 +26,10 @@ describe(`Tests for LoginPage`, () => {
      test(`it should render username`, () => {
 		const element = screen.getByText(/username/i);
 		expect(element).toBeInTheDocument();
+     });
+    test(`it should render password`, () => {
+		const element = screen.getByText(/password/i);
+		expect(element).toBeInTheDocument();
 	});
 
 
