@@ -16,6 +16,10 @@ const EditPersonalInfoSection = props => {
                             <label htmlFor="p-email">Personal Email</label>
                             <input type="email" name="p-email" />
                         </div>
+                        <div>
+                            <label htmlFor="df-email">Digital Futures Email</label>
+                            <input type="email" name="df-email" />
+                        </div>
                     </form>
                 </div>
             </div>
