@@ -42,6 +42,8 @@ describe(`EditPersonalInfoSection unit test`, () => {
         expect(element).toBeInTheDocument();
     });
 
-
-
+    test('it should render Phone', () => {
+        const element = screen.getByText(/Phone/i);
+        expect(element).toBeInTheDocument();
+    });
 });

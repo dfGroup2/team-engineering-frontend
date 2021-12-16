@@ -28,6 +28,10 @@ const EditPersonalInfoSection = props => {
                             <label htmlFor="linkedIn">LinkedIn</label>
                             <input type="text" name="linkedIn" />
                         </div>
+                        <div>
+                            <label htmlFor="phone">Phone</label>
+                            <input type="number" name="phone" />
+                        </div>
                     </form>
                 </div>
             </div>
