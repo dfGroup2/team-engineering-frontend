@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './Components/Header';
 import Footer from './Components/Footer'
-import ProfilePage from './Components/ProfilePage';
-import EditProfilePage from './Components/EditProfilePage';
+import ProfilePage from './Components/GradProfileComponents/ProfilePage';
+import EditProfilePage from './Components/EditProfileComponents/EditProfilePage';
 
 function App() {
   return (

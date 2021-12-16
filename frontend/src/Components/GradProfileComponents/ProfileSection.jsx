@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ProfileInfo from './ProfileInfo'
 import { Link } from 'react-router-dom';
 import PersonalStory from './PersonalStory';
-import "../css/ProfileSection.css";
+import "../../css/ProfileSection.css";
 const ProfileSection = props => {
 	return (
 		<div className="container borderClass">
@@ -14,12 +14,12 @@ const ProfileSection = props => {
 				<Link className="col-2" to="/edit" >Edit</Link>
 			</div>
 			<div className="row">
-			<div className="col-2">
-				<ProfileInfo />
+				<div className="col-2">
+					<ProfileInfo />
 				</div>
 				<p className="col-2"></p>
-			<div className="col-3 col-8">
-				<PersonalStory />
+				<div className="col-3 col-8">
+					<PersonalStory />
 				</div>
 			</div>
 		</div>
