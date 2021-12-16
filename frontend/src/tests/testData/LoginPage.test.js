@@ -22,6 +22,10 @@ describe(`Tests for LoginPage`, () => {
      test(`it should render Email`, () => {
 		const element = screen.getByText(/email/i);
 		expect(element).toBeInTheDocument();
+     });
+     test(`it should render username`, () => {
+		const element = screen.getByText(/username/i);
+		expect(element).toBeInTheDocument();
 	});
 
 
