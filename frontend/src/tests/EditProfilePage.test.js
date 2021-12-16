@@ -18,4 +18,9 @@ describe(`Tests for EditProfilePage`, () => {
 		const element = screen.getByText(/profile completion/i);
 		expect(element).toBeInTheDocument();
 	})
+    test(`it should render submit button`, () => {
+		const element = screen.getByDisplayValue(/submit draft/i);
+		expect(element).toBeInTheDocument();
+	})
+
 });
