@@ -8,6 +8,7 @@ const Login = props => {
             <p>Login in to your account</p>
             <p>Email</p>
             <p>Username</p>
+            <p>Password</p>
         </div>
     )
 }
