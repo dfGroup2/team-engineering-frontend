@@ -9,6 +9,7 @@ const EditProfilePage = props => {
 				<h3 className="col-2">Your profile</h3>
 				<br />
 				<br />
+                <p className="col-4">profile completion</p>
 			</div>
 			</div>
 	)

@@ -11,7 +11,7 @@ const ProfileSection = props => {
 				<h3 className="col-2">Your profile</h3>
 				<br />
 				<br />
-				<Link className="col-2" to="/">Edit</Link>
+				<Link className="col-2" to="/edit" >Edit</Link>
 			</div>
 			<div className="row">
 			<div className="col-2">
