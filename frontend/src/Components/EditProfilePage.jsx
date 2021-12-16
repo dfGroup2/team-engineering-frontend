@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 import '../css/EditProfilePage.css';
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 const EditProfilePage = props => {
 	return (
@@ -12,6 +13,7 @@ const EditProfilePage = props => {
 				<br />
 				<div className="col-3">
 					<p>Profile completion: </p>
+					<ProgressBar now={50} />
 				</div>
 				<p className="col-3"></p>
 				<div className="col-4 ">
