@@ -9,6 +9,7 @@ import Footer from './Components/Footer'
 import ProfilePage from './Components/GradProfileComponents/ProfilePage';
 import EditProfilePage from './Components/EditProfileComponents/EditProfilePage';
 import EditPersonalInfoSection from './Components/EditProfileComponents/EditPersonalInfoSection';
+import EditPersonalStory from './Components/EditProfileComponents/EditPersonalStory';
 
 function App() {
   return (
@@ -22,7 +23,11 @@ function App() {
             <div className="parent-container">
               <EditPersonalInfoSection />
             </div><br /><br />
-          </div>
+          
+            <div className="parent-container">
+              <EditPersonalStory />
+            </div>
+            </div>
           }></Route>
         </Routes>
         <Footer />
