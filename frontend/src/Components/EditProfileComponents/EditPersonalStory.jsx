@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import "../../css/EditPersonalStory.css"
 
 const EditPersonalStory = props => {
     return (
         <div className="container card borderClass">
-            <h3>Personal Story</h3>
-            <p>Degrees:</p>
+            <h3 className="col-2">Personal Story</h3>
+            <br/><br/>
+            <p className="col-2">Degrees:</p>
             
         <div>
             <table className="table table-striped">
@@ -36,7 +38,8 @@ const EditPersonalStory = props => {
 	</tr>
 </tbody>
                 </table>
-                <p>School Qualifications</p>
+                <br/><br/>
+                <p className="col-2">School Qualifications</p>
                 <table className="table table-striped">
 <thead>
 	<tr>
@@ -45,7 +48,6 @@ const EditPersonalStory = props => {
 		<th>Subject</th>
 		<th>Grade</th>
 		<th>Year</th>
-		<th>Weight</th>
 		<th>Weight</th>
 		<th>Priority</th>
 		<th>Description</th>
@@ -64,7 +66,8 @@ const EditPersonalStory = props => {
 	</tr>
 </tbody>
                 </table>
-                <p>Work Experience / positions held</p>
+                <br/><br/>
+                <p className="col-2">Work Experience / positions held</p>
                 <table className="table table-striped">
 <thead>
 	<tr>
@@ -102,7 +105,8 @@ const EditPersonalStory = props => {
                         
 </tbody>
                 </table>
-                <p>Certificates and awards</p>
+                <br/><br/>
+                <p className="col-2">Certificates and awards</p>
                 <table className="table table-striped">
 <thead>
 	<tr>
@@ -139,7 +143,8 @@ const EditPersonalStory = props => {
 	</tr>
 </tbody>
                 </table>
-                <p>Portfolio</p>
+                <br/><br/>
+                <p className="col-2">Portfolio</p>
                 <table className="table table-striped">
 <thead>
 	<tr>
@@ -161,7 +166,8 @@ const EditPersonalStory = props => {
 		<td>A motivational talk I delivered on how to identify opportunities</td>
 	</tr>
 </tbody>
-</table>
+ </table>
+<br/><br/>
 </div>
         </div>
     )
