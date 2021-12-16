@@ -24,6 +24,10 @@ const EditPersonalInfoSection = props => {
                             <label htmlFor="GitHub">GitHub</label>
                             <input type="text" name="GitHub" />
                         </div>
+                        <div>
+                            <label htmlFor="linkedIn">LinkedIn</label>
+                            <input type="text" name="linkedIn" />
+                        </div>
                     </form>
                 </div>
             </div>

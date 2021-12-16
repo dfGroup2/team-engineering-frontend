@@ -37,6 +37,11 @@ describe(`EditPersonalInfoSection unit test`, () => {
         expect(element).toBeInTheDocument();
     });
 
+    test('it should render LinkedIn', () => {
+        const element = screen.getByText(/LinkedIn/i);
+        expect(element).toBeInTheDocument();
+    });
+
 
 
 });
