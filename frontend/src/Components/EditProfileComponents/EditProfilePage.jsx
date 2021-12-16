@@ -14,6 +14,7 @@ const EditProfilePage = props => {
 				<div className="col-3">
 					<p>Profile completion: </p>
 					<ProgressBar now={50} />
+					<br />
 				</div>
 				<p className="col-3"></p>
 				<div className="col-4 ">

@@ -17,10 +17,12 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/" element={<ProfilePage />}></Route>
-          <Route path="/edit" element={<>
+          <Route path="/edit" element={<div className="parent-container">
             <EditProfilePage />
-            <EditPersonalInfoSection />
-          </>
+            <div className="parent-container">
+              <EditPersonalInfoSection />
+            </div><br /><br />
+          </div>
           }></Route>
         </Routes>
         <Footer />
