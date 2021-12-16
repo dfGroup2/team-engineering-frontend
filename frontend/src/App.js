@@ -1,12 +1,11 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './Components/Header';
-import ProfileSection from './Components/ProfileSection';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./css/ProfileSection.css";
-import TrainingSection from './Components/TrainingSection';
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Header from './Components/Header';
 import Footer from './Components/Footer'
-import InfoSection from './Components/InfoSection';
 import ProfilePage from './Components/ProfilePage';
 import EditProfilePage from './Components/EditProfilePage';
 
@@ -16,10 +15,8 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route exact path="/" element={
-           <ProfilePage></ProfilePage>
-          }></Route>
-          <Route path="/edit" element={<><EditProfilePage></EditProfilePage></>}></Route>
+          <Route exact path="/" element={<ProfilePage />}></Route>
+          <Route path="/edit" element={<EditProfilePage />}></Route>
         </Routes>
         <Footer />
       </Router>
