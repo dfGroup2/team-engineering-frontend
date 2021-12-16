@@ -7,6 +7,7 @@ import "./css/ProfileSection.css";
 import TrainingSection from './Components/TrainingSection';
 import Footer from './Components/Footer'
 import InfoSection from './Components/InfoSection';
+import ProfilePage from './Components/ProfilePage';
 
 function App() {
   return (
@@ -15,18 +16,7 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/" element={
-            <>
-              <div className="parent-container">
-                <ProfileSection />
-              </div>
-              <div className="parent-container">
-                <TrainingSection />
-              </div>
-              <div className="parent-container">
-                <InfoSection /> <br/><br/>
-
-              </div > 
-            </>
+           <ProfilePage></ProfilePage>
           }></Route>
           <Route path="/edit" element={<>Work In Progress</>}></Route>
         </Routes>
