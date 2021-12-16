@@ -14,6 +14,10 @@ describe(`Tests for LoginPage`, () => {
 	test(`it should render a "Digital Futures" heading`, () => {
 		const element = screen.getByText(/digital futures/i);
 		expect(element).toBeInTheDocument();
+    });
+    test(`it should render login in to your account`, () => {
+		const element = screen.getByText(/login/i);
+		expect(element).toBeInTheDocument();
 	});
 
 
