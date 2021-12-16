@@ -8,6 +8,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer'
 import ProfilePage from './Components/GradProfileComponents/ProfilePage';
 import EditProfilePage from './Components/EditProfileComponents/EditProfilePage';
+import EditPersonalInfoSection from './Components/EditProfileComponents/EditPersonalInfoSection';
 
 function App() {
   return (
@@ -16,7 +17,11 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/" element={<ProfilePage />}></Route>
-          <Route path="/edit" element={<EditProfilePage />}></Route>
+          <Route path="/edit" element={<>
+            <EditProfilePage />
+            <EditPersonalInfoSection />
+          </>
+          }></Route>
         </Routes>
         <Footer />
       </Router>

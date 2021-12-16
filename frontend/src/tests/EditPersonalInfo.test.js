@@ -17,4 +17,9 @@ describe(`EditPersonalInfoSection unit test`, () => {
         expect(element).toBeInTheDocument();
     });
 
+    test(`it should render users name`, () => {
+        const element = screen.getByText(/Name/i);
+        expect(element).toBeInTheDocument();
+    });
+
 });

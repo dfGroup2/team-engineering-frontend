@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ProfileInfo = props => {
+const ProfileInfo = edit => {
     return (
         <div className="col-6">
             <p>Name:</p>
