@@ -46,4 +46,8 @@ describe(`EditPersonalInfoSection unit test`, () => {
         const element = screen.getByText(/Phone/i);
         expect(element).toBeInTheDocument();
     });
+
+    test(`it should render an image`, () => {
+        expect(screen.getByRole(/img/)).toBeInTheDocument();
+    });
 });
