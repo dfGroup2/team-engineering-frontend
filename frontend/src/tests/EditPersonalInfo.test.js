@@ -32,5 +32,11 @@ describe(`EditPersonalInfoSection unit test`, () => {
         expect(element).toBeInTheDocument();
     });
 
+    test('it should render github', () => {
+        const element = screen.getByText(/github/i);
+        expect(element).toBeInTheDocument();
+    });
+
+
 
 });
