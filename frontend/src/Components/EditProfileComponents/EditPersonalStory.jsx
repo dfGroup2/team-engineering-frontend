@@ -36,7 +36,7 @@ const EditPersonalStory = props => {
 	</tr>
 </tbody>
                 </table>
-                
+                <p>School Qualifications</p>
                 <table className="table table-striped">
 <thead>
 	<tr>
