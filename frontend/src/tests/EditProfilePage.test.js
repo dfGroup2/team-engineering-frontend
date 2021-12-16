@@ -9,18 +9,25 @@ describe(`Tests for EditProfilePage`, () => {
 				<EditProfilePage />
 			</Router>
 		);
-	})
-    test(`it should render a "your profile" heading`, () => {
+	});
+
+	test(`it should render a "your profile" heading`, () => {
 		const element = screen.getByText(/your profile/i);
 		expect(element).toBeInTheDocument();
-	})
-    test(`it should render profile completion`, () => {
+	});
+
+	test(`it should render profile completion`, () => {
 		const element = screen.getByText(/profile completion/i);
 		expect(element).toBeInTheDocument();
-	})
-    test(`it should render submit button`, () => {
+	});
+
+	test(`it should render a submit button`, () => {
 		const element = screen.getByDisplayValue(/submit draft/i);
 		expect(element).toBeInTheDocument();
-	})
+	});
 
+	test(`it should render a reset button`, () => {
+		const element = screen.getByDisplayValue(/reset draft/i);
+		expect(element).toBeInTheDocument();
+	});
 });
