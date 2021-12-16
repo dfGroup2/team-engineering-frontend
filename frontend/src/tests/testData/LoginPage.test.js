@@ -18,6 +18,10 @@ describe(`Tests for LoginPage`, () => {
     test(`it should render login in to your account`, () => {
 		const element = screen.getByText(/login/i);
 		expect(element).toBeInTheDocument();
+    });
+     test(`it should render Email`, () => {
+		const element = screen.getByText(/email/i);
+		expect(element).toBeInTheDocument();
 	});
 
 
