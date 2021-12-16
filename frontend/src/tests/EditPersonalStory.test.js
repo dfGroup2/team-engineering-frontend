@@ -15,6 +15,10 @@ describe(`Tests for EditPersonalStory`, () => {
 		const element = screen.getByText(/personal story/i);
 		expect(element).toBeInTheDocument();
 	});
+	test(`it should render a Degrees heading`, () => {
+		const element = screen.getByText(/degrees/i);
+		expect(element).toBeInTheDocument();
+	});
 
 
 });
