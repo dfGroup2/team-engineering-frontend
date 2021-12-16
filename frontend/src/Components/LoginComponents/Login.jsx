@@ -6,6 +6,7 @@ const Login = props => {
         <div>
             <h3>Digital Futures</h3>
             <p>Login in to your account</p>
+            <p>Email</p>
         </div>
     )
 }
