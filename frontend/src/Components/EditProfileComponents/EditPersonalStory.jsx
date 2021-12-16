@@ -40,12 +40,12 @@ const EditPersonalStory = props => {
                 <table className="table table-striped">
 <thead>
 	<tr>
-		<th>University</th>
-		<th>Degree Subject</th>
-		<th>Degree Level</th>
+		<th>School</th>
+		<th>Exam Type</th>
+		<th>Subject</th>
 		<th>Grade</th>
-		<th>From</th>
-		<th>To</th>
+		<th>Year</th>
+		<th>Weight</th>
 		<th>Weight</th>
 		<th>Priority</th>
 		<th>Description</th>
@@ -53,25 +53,24 @@ const EditPersonalStory = props => {
 </thead>
 <tbody>
 	<tr>
-		<td>Southampton University</td>
-		<td>Chemistry</td>
-		<td>bachelors</td>
-		<td>2:1</td>
-		<td>2018-09-01</td>
-		<td>2021-07-01</td>
-		<td>L</td>
-		<td>10</td>
-		<td>majored in metallurgy</td>
+		<td>St Winifred's</td>
+		<td>a-level</td>
+		<td>Maths</td>
+		<td>A</td>
+		<td>2015</td>
+		<td>M</td>
+		<td>5</td>
+		<td></td>
 	</tr>
 </tbody>
                 </table>
+                <p>Work Experience / positions held</p>
                 <table className="table table-striped">
 <thead>
 	<tr>
-		<th>University</th>
-		<th>Degree Subject</th>
-		<th>Degree Level</th>
-		<th>Grade</th>
+		<th>Type</th>
+		<th>Employer or other organization</th>
+		<th>Position</th>
 		<th>From</th>
 		<th>To</th>
 		<th>Weight</th>
@@ -81,27 +80,72 @@ const EditPersonalStory = props => {
 </thead>
 <tbody>
 	<tr>
-		<td>Southampton University</td>
-		<td>Chemistry</td>
-		<td>bachelors</td>
-		<td>2:1</td>
-		<td>2018-09-01</td>
-		<td>2021-07-01</td>
-		<td>L</td>
-		<td>10</td>
-		<td>majored in metallurgy</td>
+		<td>Experience</td>
+		<td>Fred's Ice Cream</td>
+		<td>Ice cream maker</td>
+		<td>2021</td>
+		<td>2013</td>
+		<td>m</td>
+		<td>0</td>
+		<td></td>
+    </tr>
+        <tr>
+		<td>Position</td>
+		<td>Southampton Uni Debate Club</td>
+		<td>Secretary</td>
+		<td>2020</td>
+		<td>2021</td>
+		<td>l</td>
+		<td>6</td>
+		<td>public speaking is one of my skills</td>
+    </tr>
+                        
+</tbody>
+                </table>
+                <p>Certificates and awards</p>
+                <table className="table table-striped">
+<thead>
+	<tr>
+		<th>Type</th>
+		<th>Issuer</th>
+		<th>Award</th>
+		<th>Grade</th>
+		<th>Year</th>
+		<th>Weight</th>
+		<th>Priority</th>
+		<th>Description</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>Cert</td>
+		<td>Oracle</td>
+		<td>Oracle-Java SE</td>
+		<td>Distinction</td>
+		<td>2021</td>
+		<td>l</td>
+		<td>7</td>
+		<td></td>
+    </tr>
+    <tr>
+		<td>Award</td>
+		<td>Southampton Uni Debate Club</td>
+		<td>MVP</td>
+		<td></td>
+		<td>2021</td>
+		<td>M</td>
+		<td>4</td>
+		<td></td>
 	</tr>
 </tbody>
                 </table>
+                <p>Portfolio</p>
                 <table className="table table-striped">
 <thead>
 	<tr>
-		<th>University</th>
-		<th>Degree Subject</th>
-		<th>Degree Level</th>
-		<th>Grade</th>
-		<th>From</th>
-		<th>To</th>
+		<th>Title</th>
+		<th>URL</th>
+		<th>Year</th>
 		<th>Weight</th>
 		<th>Priority</th>
 		<th>Description</th>
@@ -109,43 +153,12 @@ const EditPersonalStory = props => {
 </thead>
 <tbody>
 	<tr>
-		<td>Southampton University</td>
-		<td>Chemistry</td>
-		<td>bachelors</td>
-		<td>2:1</td>
-		<td>2018-09-01</td>
-		<td>2021-07-01</td>
+		<td>How to Identify Opportunities</td>
+		<td>https://mysite/howt</td>
+		<td>2020</td>
 		<td>L</td>
-		<td>10</td>
-		<td>majored in metallurgy</td>
-	</tr>
-</tbody>
-                </table>
-                <table className="table table-striped">
-<thead>
-	<tr>
-		<th>University</th>
-		<th>Degree Subject</th>
-		<th>Degree Level</th>
-		<th>Grade</th>
-		<th>From</th>
-		<th>To</th>
-		<th>Weight</th>
-		<th>Priority</th>
-		<th>Description</th>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-		<td>Southampton University</td>
-		<td>Chemistry</td>
-		<td>bachelors</td>
-		<td>2:1</td>
-		<td>2018-09-01</td>
-		<td>2021-07-01</td>
-		<td>L</td>
-		<td>10</td>
-		<td>majored in metallurgy</td>
+		<td>9</td>
+		<td>A motivational talk I delivered on how to identify opportunities</td>
 	</tr>
 </tbody>
 </table>
