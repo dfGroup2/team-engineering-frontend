@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import ProfileInfo from '../Components/ProfileInfo';
+import ProfileInfo from '../Components/GradProfileComponents/ProfileInfo';
 
 
 describe(`ProfileInfo component tests`, () => {

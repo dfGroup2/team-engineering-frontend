@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import TrainingSection from '../Components/TrainingSection';
+import TrainingSection from '../Components/GradProfileComponents/TrainingSection';
 
 describe(`Test Suite for Training Section`, () => {
 

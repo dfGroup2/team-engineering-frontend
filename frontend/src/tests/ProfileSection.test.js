@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import ProfileSection from '../Components/ProfileSection';
+import ProfileSection from '../Components/GradProfileComponents/ProfileSection';
 
 describe(`Tests for ProfileSection`, () => {
 	beforeEach(() => {

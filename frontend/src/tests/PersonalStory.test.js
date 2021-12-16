@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import PersonalStory from '../Components/PersonalStory';
+import PersonalStory from '../Components/GradProfileComponents/PersonalStory';
 
 describe(`PersonalStory component tests`, () => {
     beforeEach(() => {
@@ -17,18 +17,18 @@ describe(`PersonalStory component tests`, () => {
             const element = screen.getByText(/Personal Story/i);
             expect(element).toBeInTheDocument();
         })
-         test(`it should render school qualifications`, () => {
+        test(`it should render school qualifications`, () => {
             const element = screen.getByText(/School qualifications/i);
             expect(element).toBeInTheDocument();
-         })
-         test(`it should render work experiences`, () => {
+        })
+        test(`it should render work experiences`, () => {
             const element = screen.getByText(/Work experiences/i);
             expect(element).toBeInTheDocument();
-         })
-         test(`it should render personal achievements`, () => {
+        })
+        test(`it should render personal achievements`, () => {
             const element = screen.getByText(/personal achievements/i);
             expect(element).toBeInTheDocument();
         })
-        
+
     })
-    });
+});

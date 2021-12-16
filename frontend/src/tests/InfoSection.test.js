@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import InfoSection from '../Components/InfoSection';
+import InfoSection from '../Components/GradProfileComponents/InfoSection';
 
 describe(`InfoSection component tests`, () => {
     beforeEach(() => {
