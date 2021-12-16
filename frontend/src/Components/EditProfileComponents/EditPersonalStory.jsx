@@ -5,6 +5,7 @@ const EditPersonalStory = props => {
     return (
         <div>
             <h3>Personal Story</h3>
+            <p>Degrees:</p>
         </div>
     )
 }
