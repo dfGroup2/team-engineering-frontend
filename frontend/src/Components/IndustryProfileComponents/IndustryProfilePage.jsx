@@ -9,6 +9,7 @@ const IndustryProfilePage = props => {
             <p>company name</p>
             <p>company email</p>
             <p>company phone number</p>
+            <p>company address</p>
 		</div>
 	)
 }
