@@ -7,12 +7,12 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 const EditProfilePage = props => {
 	return (
 		<div className="container card borderClass">
-			<div className="row">
+			<div className="row profile-padding">
 				<h3 className="col-2">Your profile</h3>
 				<br />
 				<br />
 				<div className="col-3">
-					<p>Profile completion: </p>
+					<p className="progressbar">Profile completion: </p>
 					<ProgressBar now={50} />
 					<br />
 				</div>

@@ -1,3 +1,16 @@
 p {
   font-weight: bold;
 }
+
+.profile-padding{
+  margin-top: 10px;
+}
+
+.table-heading{
+  background-color: rgb(202, 202, 202);
+}
+
+.table-title{
+  text-align: left;
+  font-size: 21px;
+}

@@ -8,3 +8,8 @@
     height: 50%;
     width: 50%;
 }
+
+.align-dropdowns{
+    text-align: left;
+    padding-left: 5%;
+}

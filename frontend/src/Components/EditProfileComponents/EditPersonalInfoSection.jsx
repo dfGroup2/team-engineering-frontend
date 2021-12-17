@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 import '../../css/EditPersonalInfoSection.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 
-
-
-
 const EditPersonalInfoSection = props => {
     return (
         <div className="container card borderClass">
@@ -41,7 +38,7 @@ const EditPersonalInfoSection = props => {
                         </div>
                     </form>
                 </div>
-                <div className="col-4">
+                <div className="col-4 align-dropdowns">
                     <div>
                         <Dropdown>
                             <Dropdown.Toggle variant="primary" id="dropdown-basic">
@@ -91,6 +88,8 @@ const EditPersonalInfoSection = props => {
                     <div>
                         <img src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg" alt="" className="thumbnail avatar-image" />
                     </div>
+                    <input type="file" name="uploadfile" id="img" hidden />
+                    <label for="img">Upload Image</label>
                 </div>
             </div>
         </div>

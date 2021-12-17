@@ -12,4 +12,14 @@
 
 .draft-btn {
   margin-top: 5%;
+  margin-bottom: 7%;
+}
+
+.profile-padding{
+  padding-top: 10px;
+}
+
+.progressbar {
+  margin-bottom: 0rem;
+  text-align: left;
 }
