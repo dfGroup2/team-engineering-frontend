@@ -3,14 +3,13 @@ import PropTypes from 'prop-types'
 
 const ProfileInfo = edit => {
     return (
-        <div className="col-6">
+        <div>
             <p>Name:</p>
             <p>Personal email:</p>
             <p>Digital Futures email:</p>
             <p>Github:</p>
             <p>LinkedIn:</p>
             <p>Phone:</p>
-
         </div>
     )
 }

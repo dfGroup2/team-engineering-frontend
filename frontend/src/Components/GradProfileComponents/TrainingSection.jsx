@@ -14,7 +14,7 @@ const TrainingSection = props => {
                     <p>Training finish date: xxxxxx</p>
                 </div>
                 <p className="col-1"></p>
-                <div className="col-3 col-8 card borderClass">
+                <div className="col-8">
                     <TrainingModules />
                 </div>
             </div>

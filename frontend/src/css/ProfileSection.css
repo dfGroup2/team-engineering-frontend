@@ -2,5 +2,9 @@
   padding-top: 5%;
 }
 .borderClass {
-  border: 3px solid black;
+  border: 2px solid black;
+}
+
+.edit-link{
+  margin-top: 1%;
 }

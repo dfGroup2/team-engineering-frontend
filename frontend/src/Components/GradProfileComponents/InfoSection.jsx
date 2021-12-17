@@ -8,14 +8,12 @@ const InfoSection = props => {
             <div className="row">
                 <div className="col-1">
                     <p>Badges:</p>
-
                 </div>
                 <div className="col-2">
                     <p className="borderClass">Badge A <br />
                         xxxxx xxx x</p>
                     <p className=" borderClass">Badge A <br />
                         xxxxx xxx x</p>
-
                 </div>
                 <div className="col-2">
                     <p className=" borderClass">Badge A <br />
