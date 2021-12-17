@@ -8,6 +8,7 @@ const ViewGraduates = props => {
             <img alt="graduate image"></img>
             <img alt="graduate image"></img>
             <img alt="graduate image"></img>
+            <input type="submit" value="view all"></input>
         
 		</div>
 	)

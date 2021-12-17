@@ -18,8 +18,8 @@ describe(`ViewGraduates component tests`, () => {
 
     })
         test(`it should render view all button`, () => {
-        const element = screen.getAllByDisplayValue(/view all/i);
-        expect(element).toBeInDocument();
+        const element = screen.getByDisplayValue(/view all/i);
+        expect(element).toBeInTheDocument();
 })
     })
 });
