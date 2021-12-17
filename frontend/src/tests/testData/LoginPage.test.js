@@ -16,7 +16,7 @@ describe(`Tests for LoginPage`, () => {
 		expect(element).toBeInTheDocument();
     });
     test(`it should render login in to your account`, () => {
-		const element = screen.getByText(/login/i);
+		const element = screen.getByDisplayValue(/login/i);
 		expect(element).toBeInTheDocument();
     });
      test(`it should render Email`, () => {
