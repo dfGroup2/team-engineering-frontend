@@ -43,6 +43,14 @@ footer {
   color: rgb(255, 255, 255);
 }
 
+footer {
+  height: 50px;
+}
+
+.footer-div{
+  padding-top: 15px;
+}
+
 /* Clear Sans /
 @font-face {
   font-family: "Clear Sans";

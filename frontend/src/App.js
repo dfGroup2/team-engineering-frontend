@@ -27,23 +27,24 @@ function App() {
             <div className="parent-container">
               <EditPersonalInfoSection />
             </div><br /><br />
-          
+
             <div className="parent-container">
               <EditPersonalStory />
             </div>
-            </div>
+            <br /><br />
+          </div>
           }></Route>
-          <Route  path="/login" element={<LoginPage />}></Route>
+          <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/IndustryProfile" element={<div className="parent-container">
             <IndustryProfilePage />
             <div className="parent-container">
               <ViewGraduates />
             </div><br /><br />
-          
+
             <div className="parent-container">
-              <CurrentVacancies/>
+              <CurrentVacancies />
             </div>
-            </div>
+          </div>
           }></Route>
         </Routes>
         <Footer />
