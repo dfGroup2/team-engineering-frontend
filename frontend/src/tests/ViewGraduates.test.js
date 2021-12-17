@@ -17,5 +17,9 @@ describe(`ViewGraduates component tests`, () => {
         expect(numberOfImages).toBe(3);
 
     })
+        test(`it should render view all button`, () => {
+        const element = screen.getAllByDisplayValue(/view all/i);
+        expect(element).toBeInDocument();
 })
+    })
 });
