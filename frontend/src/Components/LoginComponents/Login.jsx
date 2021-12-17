@@ -7,7 +7,10 @@ const Login = props => {
     return (
         <div className="container card">
             <div className="row">
-                <div className="col-4">
+                <div className="background-image" style={{ backgroundImage: `url(${dfxbackground})` }}
+                >
+                </div>
+                <div className="not-background-image col-4">
                     <h3>Digital Futures</h3>
                     <p>Login in to your account</p>
 
@@ -29,9 +32,9 @@ const Login = props => {
                         <input type="submit" value="Login" className="btn btn-primary col-5 draft-btn" />
                     </form>
                 </div>
-                <div className="col-4 login-div">
+                {/* <div className="col-4 login-div">
                     <img src={dfxbackground} alt="" className="background-image borderClass" />
-                </div>
+                </div> */}
             </div>
         </div >
     )

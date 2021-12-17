@@ -2,5 +2,19 @@
 .background-image{
     max-width: 220%;
     max-height: 100%;
-    background-size: contain;
+    background-size:cover;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0.93;
+    position:relative;
+    height: 100vh;
+    /* padding-bottom: 100px; */
+    background-repeat:round;
+}
+
+.not-background-image{
+    opacity: 1;
+    z-index: 0;
+    position: absolute;
+    color: white;
+    padding-top: 3%;
 }
