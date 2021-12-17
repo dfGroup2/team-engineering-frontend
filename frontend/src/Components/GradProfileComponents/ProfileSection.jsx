@@ -4,7 +4,45 @@ import ProfileInfo from './ProfileInfo'
 import { Link } from 'react-router-dom';
 import PersonalStory from './PersonalStory';
 import "../../css/ProfileSection.css";
+
 const ProfileSection = props => {
+
+	const testProfile2 = {
+		firstName: "Test",
+		lastName: "Name",
+		personalEmail: "test@email.com",
+		DFEmail: "test@digitalfutures.com",
+		github: "https://github.com/",
+		linkedIn: "https://www.linkedin.com/",
+		phoneNumber: "01234567",
+		profilePicture: "me.png",
+		personalStory: " ",
+		gender: "Male",
+		nationality: "British",
+		personality: "ESFJ - Consul"
+	};
+
+	// const [graduateProfileData, setGraduateProfileData] = useState([]);
+	// const [getError, setGetError] = useState({ message: ``, count: 0 });
+	// const { _id } = useParams(); //this will not work without data in the database
+	// const getGraduateProfileById = async () => {
+	// 	try {
+	// 		const res = await axios.get(`${process.env.REACT_APP_DFXTRAURL}/graduateProfiles/${_id}`);
+	// 		return res.data.length ? res.data : new Error(`There was an error retrieving graduate data`);
+	// 	}
+	// 	catch (e) {
+	// 		setGetError({ message: `Data not available from the server: ${e.message}`, count: 0 });
+	// 		return [];
+	// 	}
+	// }
+
+	// useEffect(() => {
+	// 	const getData = async () => {
+	// 		setGraduateProfileData(await getGraduateProfileById());
+	// 	}
+	// 	setTimeout(() => getData(), 3000);
+	// }, []);
+
 	return (
 		<div className="container borderClass">
 			<div className="row">
@@ -14,11 +52,11 @@ const ProfileSection = props => {
 				<Link className="col-2 edit-link" to="/edit" >Edit</Link>
 			</div>
 			<div className="row">
-				<div className="col-2">
-					<ProfileInfo />
+				<div className="col-4 profile-info-div">
+					<ProfileInfo profileInfo={testProfile2} />
 				</div>
-				<p className="col-2"></p>
-				<div className="col-8">
+				<p className="col-1"></p>
+				<div className="col-6">
 					<PersonalStory />
 				</div>
 			</div>

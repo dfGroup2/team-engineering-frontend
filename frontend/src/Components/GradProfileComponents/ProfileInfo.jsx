@@ -1,15 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ProfileInfo = edit => {
+const ProfileInfo = ({ profileInfo }) => {
+    const { firstName, lastName, personalEmail, DFEmail, github, linkedIn, phoneNumber } = profileInfo;
+
     return (
         <div>
-            <p>Name:</p>
-            <p>Personal email:</p>
-            <p>Digital Futures email:</p>
-            <p>Github:</p>
-            <p>LinkedIn:</p>
-            <p>Phone:</p>
+            <p>Name: {firstName} {lastName}</p>
+            <p>Personal email: {personalEmail}</p>
+            <p>Digital Futures email: {DFEmail}</p>
+            <p>Github: {github}</p>
+            <p>LinkedIn: {linkedIn}</p>
+            <p>Phone: {phoneNumber}</p>
         </div>
     )
 }
