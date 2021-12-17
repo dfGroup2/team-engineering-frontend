@@ -7,6 +7,7 @@ const IndustryProfilePage = props => {
 		<div className="container borderClass">
 			<h3>your industry profile</h3>
             <p>company name</p>
+            <p>company email</p>
 		</div>
 	)
 }
