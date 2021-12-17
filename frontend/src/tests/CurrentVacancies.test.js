@@ -17,6 +17,10 @@ describe(`CurrentVacancies component tests`, () => {
             const element = screen.getByText(/vacancy 1/i);
             expect(element).toBeInTheDocument();
         })
+        test(`it should render vacancy 2`, () => {
+            const element = screen.getByText(/vacancy 2/i);
+            expect(element).toBeInTheDocument();
+        })
         
 
 
