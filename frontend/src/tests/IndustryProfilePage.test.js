@@ -17,5 +17,9 @@ describe(`IndustryProfilePage component tests`, () => {
             const element = screen.getByText(/company name/i);
             expect(element).toBeInTheDocument();
         })
+        test(`it should render company email`, () => {
+            const element = screen.getByText(/company email/i);
+            expect(element).toBeInTheDocument();
+        })
     })
 });
