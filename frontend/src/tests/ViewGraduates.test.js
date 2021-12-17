@@ -12,5 +12,10 @@ describe(`ViewGraduates component tests`, () => {
             const element = screen.getByText(/graduates/i);
             expect(element).toBeInTheDocument();
         })
+        test(`it should render graduates images`, () => {
+        const numberOfImages = screen.getAllByAltText(/graduate image/i).length;
+        expect(numberOfImages).toBe(3);
+
     })
+})
 });
