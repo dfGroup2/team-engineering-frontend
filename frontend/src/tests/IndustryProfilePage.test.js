@@ -25,5 +25,6 @@ describe(`IndustryProfilePage component tests`, () => {
             const element = screen.getByText(/company phone number/i);
             expect(element).toBeInTheDocument();
         })
+        
     })
 });
