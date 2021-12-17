@@ -7,6 +7,7 @@ const CurrentVacancies = props => {
 		<div className="container borderClass">
             <h3>Current vacancies</h3>
             <p>vacancy 1</p>
+            <p>vacancy 2</p>
 			
 		</div>
 	)
