@@ -11,6 +11,9 @@ import EditProfilePage from './Components/EditProfileComponents/EditProfilePage'
 import EditPersonalInfoSection from './Components/EditProfileComponents/EditPersonalInfoSection';
 import EditPersonalStory from './Components/EditProfileComponents/EditPersonalStory';
 import LoginPage from './Components/LoginComponents/Login';
+import IndustryProfilePage from './Components/IndustryProfileComponents/IndustryProfilePage';
+import ViewGraduates from './Components/IndustryProfileComponents/ViewGraduates';
+import CurrentVacancies from './Components/IndustryProfileComponents/CurrentVacancies';
 
 function App() {
   return (
@@ -31,6 +34,17 @@ function App() {
             </div>
           }></Route>
           <Route  path="/login" element={<LoginPage />}></Route>
+          <Route path="/IndustryProfile" element={<div className="parent-container">
+            <IndustryProfilePage />
+            <div className="parent-container">
+              <ViewGraduates />
+            </div><br /><br />
+          
+            <div className="parent-container">
+              <CurrentVacancies/>
+            </div>
+            </div>
+          }></Route>
         </Routes>
         <Footer />
       </Router>
