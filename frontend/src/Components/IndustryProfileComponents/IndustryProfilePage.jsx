@@ -6,6 +6,7 @@ const IndustryProfilePage = props => {
 	return (
 		<div className="container borderClass">
 			<h3>your industry profile</h3>
+            <p>company name</p>
 		</div>
 	)
 }
