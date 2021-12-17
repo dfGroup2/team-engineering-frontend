@@ -29,6 +29,8 @@ describe(`IndustryProfilePage component tests`, () => {
             const element = screen.getByText(/company address/i);
             expect(element).toBeInTheDocument();
         })
+        
+
 
     })
 });
