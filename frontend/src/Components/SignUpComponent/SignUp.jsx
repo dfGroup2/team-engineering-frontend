@@ -1,9 +1,27 @@
-import React from 'react'
+import { useState } from 'react';
+
+import React, { useReducer } from 'react'
 import PropTypes from 'prop-types'
 import '../../css/Login.css';
 import dfxbackground from '../../images/dfx_background.png';
 
 const SignUp = props => {
+
+    const [user, setUser] = useState({Email:'', FirstName:'', LastName:'', Company:''});
+
+    const handleChange = event => {
+        const { name, value } = event.target;
+        setUser({ ...user, [name]:value})
+    }
+
+    const SignUp = async event => {
+        event.preventDefault();
+        const { Email, FirstName, LastName, Company } = user;
+        if (Email && FirstName && LastName && Company) {
+            const res = await axios.post(`${process.env.REACT_APP_DFXTRAURL}/register`,user)
+        }
+    }
+
     return (
         <div className="container card">
             <div className="row">
@@ -18,19 +36,19 @@ const SignUp = props => {
                         <div className="">
                             <div className="form-inputs">
                                 <label htmlFor="Email" className="col-4">Email</label>
-                                <input type="email" name="Email" className="col-6" />
+                                <input type="email" name="Email" className="col-6" onChange={handleChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="FirstName" className="col-4">First name</label>
-                                <input type="text" name="FirstName" className="col-6" />
+                                <input type="text" name="FirstName" className="col-6" onChange={handleChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="LastName" className="col-4">Last name</label>
-                                <input type="text" name="LastName" className="col-6" />
+                                <input type="text" name="LastName" className="col-6" onChange={handleChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="Company" className="col-4">Company</label>
-                                <input type="text" name="Company" className="col-6" />
+                                <input type="text" name="Company" className="col-6" onChange={handleChange}/>
                             </div>
                         </div>
                         <input type="submit" value="SignUp" className="btn btn-primary col-5 draft-btn" />
