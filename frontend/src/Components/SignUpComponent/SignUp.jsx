@@ -17,19 +17,19 @@ const SignUp = props => {
                     <form action="">
                         <div className="">
                             <div className="form-inputs">
-                                <label htmlFor="Email" className="col-4">Email</label>
+                                <label htmlFor="Email" className="col-4"></label>
                                 <input type="email" name="Email" className="col-6" />
                             </div>
                             <div className="form-inputs">
-                                <label htmlFor="FirstName" className="col-4">FirstName</label>
+                                <label htmlFor="FirstName" className="col-4"></label>
                                 <input type="text" name="FirstName" className="col-6" />
                             </div>
                             <div className="form-inputs">
-                                <label htmlFor="LastName" className="col-4">LastName</label>
+                                <label htmlFor="LastName" className="col-4"></label>
                                 <input type="text" name="LastName" className="col-6" />
                             </div>
                             <div className="form-inputs">
-                                <label htmlFor="Company" className="col-4">Company</label>
+                                <label htmlFor="Company" className="col-4"></label>
                                 <input type="text" name="Company" className="col-6" />
                             </div>
                         </div>

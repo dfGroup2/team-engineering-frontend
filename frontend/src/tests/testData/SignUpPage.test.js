@@ -19,6 +19,10 @@ describe(`Tests for SignUp Page`, () => {
 		const element = screen.getByText(/signup for an account/i);
 		expect(element).toBeInTheDocument();
     });
+    test(`it should render Email`, () => {
+		const element = screen.getByText(/Email/i);
+		expect(element).toBeInTheDocument();
+    });
 
     
 
