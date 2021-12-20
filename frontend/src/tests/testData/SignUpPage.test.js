@@ -34,6 +34,10 @@ describe(`Tests for SignUp Page`, () => {
      test(`it should render Company`, () => {
 		const element = screen.getByText(/Company/i);
 		expect(element).toBeInTheDocument();
+     });
+    test(`it should render SignUp button`, () => {
+		const element = screen.getByDisplayValue(/SignUp/i);
+		expect(element).toBeInTheDocument();
     });
 
     
