@@ -7,7 +7,7 @@ const SignUp = props => {
     return (
         <div className="container card">
             <div className="row">
-                <div className="" style={{ backgroundImage: `url(${dfxbackground})` }}
+                <div className="background-image" style={{ backgroundImage: `url(${dfxbackground})` }}
                 >
                 </div>
                 <div className="not-background-image col-4">
