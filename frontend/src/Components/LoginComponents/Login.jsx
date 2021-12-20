@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import '../../css/Login.css';
 import dfxbackground from '../../images/dfx_background.png';
 import { useState } from 'react';
-import useNavigate from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = ({ setLoginUser }) => {
 
@@ -26,7 +26,7 @@ const Login = ({ setLoginUser }) => {
             setUser({ email: '', username: '', password: '' });
             setLoginUser(res.data);
             if (loggedIn) {
-                useNavigate('/')
+                //useNavigate('/')
             }
         }
     }

@@ -22,7 +22,7 @@ const testGraduateUser = {
         finishedDate: `Jan 11, 2022`,
         courseModules:
         {
-            fundamentals = {
+            fundamentals: {
                 "javascript programming": `pending`
             },
             "software design": {
@@ -62,7 +62,7 @@ const testGraduateUser = {
             subject: `Comp Sci`,
             level: `BSc`,
             grade: `P`,
-            date: { from: ``, to: `` },
+            date: { from: `2018-09-01`, to: `2019-09-01` },
             weight: `L`,
             priority: 1,
             description: `university degree`

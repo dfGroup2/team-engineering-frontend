@@ -4,7 +4,8 @@ import React, { useReducer } from 'react'
 import PropTypes from 'prop-types'
 import '../../css/Login.css';
 import dfxbackground from '../../images/dfx_background.png';
-import useNavigate from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const SignUp = props => {
 
@@ -20,7 +21,7 @@ const SignUp = props => {
         const { Email, FirstName, LastName, Company } = user;
         if (Email && FirstName && LastName && Company) {
             const res = await axios.post(`${process.env.REACT_APP_DFXTRAURL}/api/auth/signup`, user)
-            navigate('/login');
+            //navigate('/login');
         }
     }
 

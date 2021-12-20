@@ -2,8 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ProfileInfo from './ProfileInfo'
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import PersonalStory from './PersonalStory';
 import "../../css/ProfileSection.css";
+import axios from 'axios';
+
+import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
+const { personalStory } = testGraduateUser;
+
+const token = ``;
 
 const ProfileSection = props => {
 
@@ -59,7 +67,7 @@ const ProfileSection = props => {
 				</div>
 				<p className="col-1"></p>
 				<div className="col-6">
-					<PersonalStory />
+					<PersonalStory personalStoryData={personalStory} />
 				</div>
 			</div>
 		</div>
