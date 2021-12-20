@@ -12,7 +12,7 @@ const SignUp = props => {
                 </div>
                 <div className="not-background-image col-4">
                     <h3>Digital Futures</h3>
-                    <p></p>
+                    <p>SignUp for an account</p>
 
                     <form action="">
                         <div className="">
