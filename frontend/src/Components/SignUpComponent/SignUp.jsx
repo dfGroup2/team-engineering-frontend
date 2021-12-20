@@ -29,7 +29,7 @@ const SignUp = props => {
                                 <input type="text" name="LastName" className="col-6" />
                             </div>
                             <div className="form-inputs">
-                                <label htmlFor="Company" className="col-4"></label>
+                                <label htmlFor="Company" className="col-4">Company</label>
                                 <input type="text" name="Company" className="col-6" />
                             </div>
                         </div>
