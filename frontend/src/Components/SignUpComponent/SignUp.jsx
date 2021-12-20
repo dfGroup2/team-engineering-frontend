@@ -33,7 +33,7 @@ const SignUp = props => {
                                 <input type="text" name="Company" className="col-6" />
                             </div>
                         </div>
-                        <input type="submit" value="" className="btn btn-primary col-5 draft-btn" />
+                        <input type="submit" value="SignUp" className="btn btn-primary col-5 draft-btn" />
                     </form>
                 </div>
                 {/* <div className="col-4 login-div">
