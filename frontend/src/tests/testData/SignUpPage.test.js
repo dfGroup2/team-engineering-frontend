@@ -15,6 +15,11 @@ describe(`Tests for SignUp Page`, () => {
 		const element = screen.getByText(/digital futures/i);
 		expect(element).toBeInTheDocument();
     });
+    test(`it should render create your account`, () => {
+		const element = screen.getByText(/create your account/i);
+		expect(element).toBeInTheDocument();
+    });
+
     
 
 
