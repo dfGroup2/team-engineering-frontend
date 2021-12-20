@@ -30,6 +30,10 @@ describe(`Tests for SignUp Page`, () => {
      test(`it should render Last name`, () => {
 		const element = screen.getByText(/Last name/i);
 		expect(element).toBeInTheDocument();
+     });
+     test(`it should render Company`, () => {
+		const element = screen.getByText(/Company/i);
+		expect(element).toBeInTheDocument();
     });
 
     
