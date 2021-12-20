@@ -22,26 +22,28 @@ const ProfileSection = props => {
 		personality: "ESFJ - Consul"
 	};
 
-	// const [graduateProfileData, setGraduateProfileData] = useState([]);
-	// const [getError, setGetError] = useState({ message: ``, count: 0 });
-	// const { _id } = useParams(); //this will not work without data in the database
-	// const getGraduateProfileById = async () => {
-	// 	try {
-	// 		const res = await axios.get(`${process.env.REACT_APP_DFXTRAURL}/graduateProfiles/${_id}`);
-	// 		return res.data.length ? res.data : new Error(`There was an error retrieving graduate data`);
-	// 	}
-	// 	catch (e) {
-	// 		setGetError({ message: `Data not available from the server: ${e.message}`, count: 0 });
-	// 		return [];
-	// 	}
-	// }
+	const [graduateProfileData, setGraduateProfileData] = useState([]);
+	const [getError, setGetError] = useState({ message: ``, count: 0 });
+	const { _id } = useParams(); //this will not work without data in the database
+	const getGraduateProfileById = async () => {
+		try {
+			const res = await axios
+				.get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateProfiles/${_id}`, { headers: { "x-access-token": token } })
+				.set('x-access-token', token)
+			return res.data.length ? res.data : new Error(`There was an error retrieving graduate data`);
+		}
+		catch (e) {
+			setGetError({ message: `Data not available from the server: ${e.message}`, count: 0 });
+			return [];
+		}
+	}
 
-	// useEffect(() => {
-	// 	const getData = async () => {
-	// 		setGraduateProfileData(await getGraduateProfileById());
-	// 	}
-	// 	setTimeout(() => getData(), 3000);
-	// }, []);
+	useEffect(() => {
+		const getData = async () => {
+			setGraduateProfileData(await getGraduateProfileById());
+		}
+		setTimeout(() => getData(), 3000);
+	}, []);
 
 	return (
 		<div className="container borderClass">
