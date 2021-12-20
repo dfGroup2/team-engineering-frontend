@@ -39,6 +39,15 @@ describe(`Tests for SignUp Page`, () => {
 		const element = screen.getByDisplayValue(/SignUp/i);
 		expect(element).toBeInTheDocument();
     });
+    test(`it should render a background image`, () => {
+		const {container} = render(
+			<Router>
+				<SignUp />
+			</Router>
+        )
+        const element = container.querySelector('.background-image')
+		expect(element).toBeTruthy();
+    });
 
     
 
