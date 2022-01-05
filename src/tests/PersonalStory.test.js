@@ -44,6 +44,7 @@ describe(`PersonalStory component tests`, () => {
             // expect(screen.getByText(/1 school qualification/i)).toBeInTheDocument();
             // expect(screen.getByText(/1 work experience/i)).toBeInTheDocument();
             // expect(screen.getByText(/1 personal achievement/i)).toBeInTheDocument();
+
         });
 
     });
