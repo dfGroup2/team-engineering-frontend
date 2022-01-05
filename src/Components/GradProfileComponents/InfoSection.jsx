@@ -24,12 +24,11 @@ const InfoSection = props => {
                 <div className="col-1">
                     <p>Scores:</p>
                 </div>
-                <div className="col-4 borderClass overflow-auto " style={{ height: "70px" }}
+                <div className="col-5 borderClass overflow-auto " style={{ height: "70px" }}
                 >
                     <p>Aptitude:93%</p>
                     <p>Java:87</p>
                 </div>
-                <p className="col-2">Video link</p>
             </div>
         </div>
     )
