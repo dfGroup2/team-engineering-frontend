@@ -4,13 +4,7 @@ import '../../css/TrainingSection.css';
 
 const TrainingModules = ({ trainingModules }) => {
 
-    const { fundamentals, softwareDesign } = trainingModules;
-
-    const displayModules = () => {
-
-
-        return (<></>);
-    }
+    const { fundamentals, softwareDesign, softwareDevelopment1, softwareDevelopment2, teamEngineering, professionalSkills } = trainingModules;
 
     return (
         <div className="row card borderClass">
@@ -20,6 +14,13 @@ const TrainingModules = ({ trainingModules }) => {
                 <p>Software Design, News Summary Challenge: {softwareDesign.newsSummaryChallenge}</p>
                 <p>Software Design, Rock Paper Scissors Challenge: {softwareDesign.rockPaperScissorsChallenge}</p>
                 <p>Software Design, Chitter Challenge: {softwareDesign.chitterChallenge}</p>
+                <p>Software Design, Test Driven Development: {softwareDesign.testDrivenDevelopment}</p>
+                <p>Software Development 1, Third Party Integration: {softwareDevelopment1.thirdPartyIntegration}</p>
+                <p>Software Development 2, Business Services: {softwareDevelopment2.businessServices}</p>
+                <p>Software Development 2, Full Stack Application: {softwareDevelopment2.fullStackApplication}</p>
+                <p>Team Engineering, Java Challenge: {teamEngineering.javaChallenge}</p>
+                <p>Team Engineering, Agile Team Collaboration: {teamEngineering.agileTeamCollaboration}</p>
+                <p>Professional Skills, Interview Challenges: {professionalSkills.interviewChallenges}</p>
             </div>
         </div>
     )

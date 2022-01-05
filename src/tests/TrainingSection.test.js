@@ -79,7 +79,7 @@ describe(`Test Suite for Training Section`, () => {
         });
 
         test(`it should render testDrivenDevelopment`, () => {
-            expect(screen.getByText(/test driven challenge/i)).toBeInTheDocument();
+            expect(screen.getByText(/test driven development/i)).toBeInTheDocument();
         });
 
         test(`it should render thirdPartyIntegration`, () => {
