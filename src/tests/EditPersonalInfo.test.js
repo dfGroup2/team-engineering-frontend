@@ -54,7 +54,6 @@ describe(`EditPersonalInfoSection unit test`, () => {
 
     describe(`form manipulation tests`, () => {
         test(`it should register changes to the name input field`, () => {
-            // const element = screen.getByRole('textbox', { name: "Name" });
             const element = screen.getByPlaceholderText(/name/i);
 
             const testName = "testName";
@@ -62,6 +61,15 @@ describe(`EditPersonalInfoSection unit test`, () => {
 
             expect(element).toHaveDisplayValue(testName);
 
+        })
+
+        test(`it should register changes to the personal email input field`, () => {
+            const element = screen.getByPlaceholderText(/personal email/i);
+
+            const testPersonalEmail = "testPersonalEmail";
+            userEvent.type(element, testPersonalEmail);
+
+            expect(element).toHaveDisplayValue(testPersonalEmail);
         })
     })
 });
