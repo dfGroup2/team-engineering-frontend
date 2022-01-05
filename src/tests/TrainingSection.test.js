@@ -54,10 +54,6 @@ describe(`Test Suite for Training Section`, () => {
 
     describe(`Data rendering tests for the your training section`, () => {
 
-        xtest(`it should render "Software Engineering" as the cohort`, () => {
-            expect(screen.findByText(graduateTraining.learningPath)).toBeTruthy();
-        });
-
         test(`it should render "javascript programming"`, () => {
             expect(screen.getByText(/javascript programming/i)).toBeInTheDocument();
         });
@@ -106,7 +102,7 @@ describe(`Test Suite for Training Section`, () => {
             expect(screen.getByText(/interview Challenges/i)).toBeInTheDocument();
         });
 
-        xtest(`it should render "pending" 9 times`, () => {
+        test(`it should render "pending" 9 times`, () => {
             const numberPending = screen.getAllByText(/pending/i).length;
             expect(numberPending).toBe(9);
         });
@@ -124,6 +120,22 @@ describe(`Test Suite for Training Section`, () => {
         test(`it should render todo 1 time`, () => {
             const numberTodo = screen.getAllByText(/todo/i).length;
             expect(numberTodo).toBe(1);
+        });
+
+        test(`it should render "Software Engineering 3" as the cohort`, () => {
+            expect(screen.findByText(graduateTraining.cohort)).toBeTruthy();
+        });
+
+        test(`it should render "Software Engineering" as the learning path`, () => {
+            expect(screen.findByText(graduateTraining.learningPath)).toBeTruthy();
+        });
+
+        test(`it should render "Ed Wright" as the trainer`, () => {
+            expect(screen.findByText(graduateTraining.learningPath)).toBeTruthy();
+        });
+
+        test(`it should render "Jan 11, 2022" as the finish date`, () => {
+            expect(screen.findByText(graduateTraining.finishedDate)).toBeTruthy();
         });
 
     });

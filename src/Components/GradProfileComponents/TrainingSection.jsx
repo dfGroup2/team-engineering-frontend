@@ -6,6 +6,7 @@ const { graduateTraining } = testGraduateUser;
 
 const TrainingSection = ({ graduateTrainingData }) => {
 
+    const { cohort, learningPath, trainer, finishedDate } = graduateTrainingData;
 
     return (
         <div className="container card borderClass">
