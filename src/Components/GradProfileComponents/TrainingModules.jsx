@@ -19,6 +19,7 @@ const TrainingModules = ({ trainingModules }) => {
                 <p>Software Design, Bank Challenge: {softwareDesign.bankChallenge}</p>
                 <p>Software Design, News Summary Challenge: {softwareDesign.newsSummaryChallenge}</p>
                 <p>Software Design, Rock Paper Scissors Challenge: {softwareDesign.rockPaperScissorsChallenge}</p>
+                <p>Software Design, Chitter Challenge: {softwareDesign.chitterChallenge}</p>
             </div>
         </div>
     )
