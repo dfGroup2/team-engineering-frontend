@@ -8,7 +8,7 @@ const TrainingModules = ({ trainingModules }) => {
 
     return (
         <div className="row card borderClass">
-            <div className="col-6 training-div">
+            <div className="col-8 training-div">
                 <p>Fundamentals, Javascript Programming: {fundamentals.javascriptProgramming}</p>
                 <p>Software Design, Bank Challenge: {softwareDesign.bankChallenge}</p>
                 <p>Software Design, News Summary Challenge: {softwareDesign.newsSummaryChallenge}</p>

@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import TrainingModules from './TrainingModules'
-import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
-const { graduateTraining } = testGraduateUser;
 
 const TrainingSection = ({ graduateTrainingData }) => {
 
-    const { cohort, learningPath, trainer, finishedDate } = graduateTrainingData;
+    const { cohort, learningPath, trainer, finishedDate, courseModules } = graduateTrainingData;
 
     return (
         <div className="container card borderClass">
@@ -20,7 +18,7 @@ const TrainingSection = ({ graduateTrainingData }) => {
                 </div>
                 <p className="col-1"></p>
                 <div className="col-8">
-                    <TrainingModules trainingModules={graduateTraining.courseModules} />
+                    <TrainingModules trainingModules={courseModules} />
                 </div>
             </div>
         </div>
