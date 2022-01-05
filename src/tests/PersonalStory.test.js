@@ -39,8 +39,8 @@ describe(`PersonalStory component tests`, () => {
 
         test(`it should render the data passed through the props`, () => {
 
-            expect(screen.getByText(personalStory.degree.subject)).toBeInTheDocument();
-            expect(screen.getByText(personalStory.degree.university)).toBeInTheDocument();
+            expect(screen.findByText(personalStory.degree.subject)).toBeTruthy();
+            expect(screen.findByText(personalStory.degree.university)).toBeTruthy();
             // expect(screen.getByText(/1 school qualification/i)).toBeInTheDocument();
             // expect(screen.getByText(/1 work experience/i)).toBeInTheDocument();
             // expect(screen.getByText(/1 personal achievement/i)).toBeInTheDocument();
