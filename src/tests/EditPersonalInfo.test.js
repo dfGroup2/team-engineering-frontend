@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import EditPersonalInfoSection from '../Components/EditProfileComponents/EditPersonalInfoSection';
+import userEvent from '@testing-library/user-event';
 
 describe(`EditPersonalInfoSection unit test`, () => {
 
@@ -50,4 +51,17 @@ describe(`EditPersonalInfoSection unit test`, () => {
     test(`it should render an image`, () => {
         expect(screen.getByRole(/img/)).toBeInTheDocument();
     });
+
+    describe(`form manipulation tests`, () => {
+        test(`it should register changes to the name input field`, () => {
+            // const element = screen.getByRole('textbox', { name: "Name" });
+            const element = screen.getByPlaceholderText(/name/i);
+
+            const testName = "testName";
+            userEvent.type(element, testName);
+
+            expect(element).toHaveDisplayValue(testName);
+
+        })
+    })
 });
