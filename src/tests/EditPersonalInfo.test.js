@@ -71,5 +71,14 @@ describe(`EditPersonalInfoSection unit test`, () => {
 
             expect(element).toHaveDisplayValue(testPersonalEmail);
         })
+
+        test(`it should register changes to the df email input field`, () => {
+            const element = screen.getByPlaceholderText(/df email/i);
+
+            const testDfEmail = "testDfEmail";
+            userEvent.type(element, testDfEmail);
+
+            expect(element).toHaveDisplayValue(testDfEmail);
+        })
     })
 });
