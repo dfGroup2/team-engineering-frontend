@@ -3,7 +3,7 @@ const Footer = () => {
     return (
         <footer>
             <div className="footer-div">
-                © DFXtra 2021-
+                © DFXtra 2022-
             </div>
         </footer>
     )
