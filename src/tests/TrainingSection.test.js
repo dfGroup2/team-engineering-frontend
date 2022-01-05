@@ -42,12 +42,12 @@ describe(`Test Suite for Training Section`, () => {
         expect(element).toBeInTheDocument();
     });
 
-    test(`it should render module 1, challenge B`, () => {
+    xtest(`it should render module 1, challenge B`, () => {
         const element = screen.getByText(/module 1, challenge B/i);
         expect(element).toBeInTheDocument();
     });
 
-    test(`it should render module 2, challenge C`, () => {
+    xtest(`it should render module 2, challenge C`, () => {
         const element = screen.getByText(/module 2, challenge C/i);
         expect(element).toBeInTheDocument();
     });
@@ -59,7 +59,20 @@ describe(`Test Suite for Training Section`, () => {
         });
 
         test(`it should render "javascript programming"`, () => {
-            expect(screen.findByText(Object.keys(courseModules.fundamentals)[0])).toBeTruthy();
+            expect(screen.getByText(/javascript programming/i)).toBeInTheDocument();
+        });
+
+        test(`it should render "bank challenge"`, () => {
+            expect(screen.getByText(/bank challenge/i)).toBeInTheDocument();
+        });
+
+        test(`it should render "news summary challenge"`, () => {
+            expect(screen.getByText(/news summary challenge/i)).toBeInTheDocument();
+        });
+
+        xtest(`it should render "pending" 9 times`, () => {
+            const numberPending = screen.getAllByText(/pending/i).length;
+            expect(numberPending).toBe(9);
         });
 
     });

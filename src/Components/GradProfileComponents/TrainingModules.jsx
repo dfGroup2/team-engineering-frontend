@@ -4,14 +4,20 @@ import '../../css/TrainingSection.css';
 
 const TrainingModules = ({ trainingModules }) => {
 
-    const { fundamentals } = trainingModules;
+    const { fundamentals, software_design } = trainingModules;
+
+    const displayModules = () => {
+
+
+        return (<></>);
+    }
 
     return (
         <div className="row card borderClass">
-            <div className="col-4 training-div">
-                <p>{Object.keys(fundamentals)[0]}: {Object.values(fundamentals)[0]}</p>
-                <p>Module 1, Challenge B: PASSED</p>
-                <p>Module 2, Challenge C: TODO</p>
+            <div className="col-6 training-div">
+                <p>Fundamentals, Javascript Programming: {fundamentals.javascript_programming}</p>
+                <p>Software Design, Bank Challenge: {software_design.bank_challenge}</p>
+                <p>Software Design, News Summary Challenge: {software_design.news_summary_challenge}</p>
             </div>
         </div>
     )

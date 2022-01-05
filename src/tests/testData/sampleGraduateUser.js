@@ -23,11 +23,11 @@ const testGraduateUser = {
         courseModules:
         {
             fundamentals: {
-                "javascript programming": `pending`
+                javascript_programming: `pending`
             },
-            "software design": {
-                "bank challenge": `pass`,
-                "news summary challenge": `pending`,
+            software_design: {
+                bank_challenge: `pass`,
+                news_summary_challenge: `pending`,
                 "rock paper scissors challenge": `pending`,
                 "chitter challenge": `todo`,
                 "test-driven development": `failed`,
