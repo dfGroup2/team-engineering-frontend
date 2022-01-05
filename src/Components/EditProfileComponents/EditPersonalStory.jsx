@@ -12,6 +12,7 @@ const EditPersonalStory = props => {
 			<div>
 				<table className="table table-striped">
 					<thead className="table-heading">
+
 						<tr>
 							<th>University</th>
 							<th>Degree Subject</th>
@@ -22,6 +23,7 @@ const EditPersonalStory = props => {
 							<th>Weight</th>
 							<th>Priority</th>
 							<th>Description</th>
+							<button onClick={addDegree} >Add</button>
 						</tr>
 					</thead>
 					<tbody>
@@ -35,6 +37,8 @@ const EditPersonalStory = props => {
 							<td>L</td>
 							<td>10</td>
 							<td>majored in metallurgy</td>
+							<button>Edit</button>
+							<button>Delete</button>
 						</tr>
 					</tbody>
 				</table>
@@ -51,6 +55,7 @@ const EditPersonalStory = props => {
 							<th>Weight</th>
 							<th>Priority</th>
 							<th>Description</th>
+							<button onClick={addSchoolQualification} >Add</button>
 						</tr>
 					</thead>
 					<tbody>
@@ -63,6 +68,8 @@ const EditPersonalStory = props => {
 							<td>M</td>
 							<td>5</td>
 							<td></td>
+							<button>Edit</button>
+							<button>Delete</button>
 						</tr>
 					</tbody>
 				</table>
@@ -79,6 +86,7 @@ const EditPersonalStory = props => {
 							<th>Weight</th>
 							<th>Priority</th>
 							<th>Description</th>
+							<button onClick={addWorkExperience} >Add</button>
 						</tr>
 					</thead>
 					<tbody>
@@ -91,6 +99,8 @@ const EditPersonalStory = props => {
 							<td>m</td>
 							<td>0</td>
 							<td></td>
+							<button>Edit</button>
+							<button>Delete</button>
 						</tr>
 						<tr>
 							<td>Position</td>
@@ -101,6 +111,8 @@ const EditPersonalStory = props => {
 							<td>l</td>
 							<td>6</td>
 							<td>public speaking is one of my skills</td>
+							<button>Edit</button>
+							<button>Delete</button>
 						</tr>
 
 					</tbody>
@@ -118,6 +130,7 @@ const EditPersonalStory = props => {
 							<th>Weight</th>
 							<th>Priority</th>
 							<th>Description</th>
+							<button onClick={addCertificatesAndAwards} >Add</button>
 						</tr>
 					</thead>
 					<tbody>
@@ -130,6 +143,8 @@ const EditPersonalStory = props => {
 							<td>l</td>
 							<td>7</td>
 							<td></td>
+							<button>Edit</button>
+							<button>Delete</button>
 						</tr>
 						<tr>
 							<td>Award</td>
@@ -140,6 +155,8 @@ const EditPersonalStory = props => {
 							<td>M</td>
 							<td>4</td>
 							<td></td>
+							<button>Edit</button>
+							<button>Delete</button>
 						</tr>
 					</tbody>
 				</table>
@@ -154,6 +171,7 @@ const EditPersonalStory = props => {
 							<th>Weight</th>
 							<th>Priority</th>
 							<th>Description</th>
+							<button onClick={addPortfolio} >Add</button>
 						</tr>
 					</thead>
 					<tbody>
@@ -164,6 +182,8 @@ const EditPersonalStory = props => {
 							<td>L</td>
 							<td>9</td>
 							<td>A motivational talk I delivered on how to identify opportunities</td>
+							<button>Edit</button>
+							<button>Delete</button>
 						</tr>
 					</tbody>
 				</table>
