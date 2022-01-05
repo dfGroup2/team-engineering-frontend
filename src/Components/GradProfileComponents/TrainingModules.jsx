@@ -18,6 +18,7 @@ const TrainingModules = ({ trainingModules }) => {
                 <p>Fundamentals, Javascript Programming: {fundamentals.javascriptProgramming}</p>
                 <p>Software Design, Bank Challenge: {softwareDesign.bankChallenge}</p>
                 <p>Software Design, News Summary Challenge: {softwareDesign.newsSummaryChallenge}</p>
+                <p>Software Design, Rock Paper Scissors Challenge: {softwareDesign.rockPaperScissorsChallenge}</p>
             </div>
         </div>
     )
