@@ -1,11 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import TrainingSection from '../Components/GradProfileComponents/TrainingSection';
+import { testGraduateUser } from './testData/sampleGraduateUser';
+const { graduateTraining } = testGraduateUser;
+const { courseModules } = graduateTraining;
 
 describe(`Test Suite for Training Section`, () => {
 
     beforeEach(() => {
         render(
-            <TrainingSection />
+            <TrainingSection trainingInfo={graduateTraining} />
         );
     });
 
@@ -47,6 +50,18 @@ describe(`Test Suite for Training Section`, () => {
     test(`it should render module 2, challenge C`, () => {
         const element = screen.getByText(/module 2, challenge C/i);
         expect(element).toBeInTheDocument();
+    });
+
+    describe(`Data rendering tests for the your training section`, () => {
+
+        xtest(`it should render "Software Engineering" as the cohort`, () => {
+            expect(screen.findByText(graduateTraining.learningPath)).toBeTruthy();
+        });
+
+        test(`it should render "javascript programming"`, () => {
+            expect(screen.getByText(Object.keys(courseModules.fundamentals)[0])).toBeInTheDocument();
+        });
+
     });
 
 });

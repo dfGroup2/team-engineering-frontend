@@ -26,11 +26,11 @@ const testGraduateUser = {
                 "javascript programming": `pending`
             },
             "software design": {
-                "bank challenge": `pending`,
+                "bank challenge": `pass`,
                 "news summary challenge": `pending`,
                 "rock paper scissors challenge": `pending`,
-                "chitter challenge": `pending`,
-                "test-driven development": `pending`,
+                "chitter challenge": `todo`,
+                "test-driven development": `failed`,
             },
             "software development 1": {
                 "3rd party integration": `pending`,
