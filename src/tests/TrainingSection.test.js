@@ -70,6 +70,11 @@ describe(`Test Suite for Training Section`, () => {
             expect(screen.getByText(/news summary challenge/i)).toBeInTheDocument();
         });
 
+        test(`it should render "rock Paper Scissors Challenge"`, () => {
+            expect(screen.getByText(/rock paper scissors challenge/i)).toBeInTheDocument();
+        });
+
+
         xtest(`it should render "pending" 9 times`, () => {
             const numberPending = screen.getAllByText(/pending/i).length;
             expect(numberPending).toBe(9);

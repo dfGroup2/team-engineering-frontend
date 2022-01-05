@@ -23,28 +23,28 @@ const testGraduateUser = {
         courseModules:
         {
             fundamentals: {
-                javascript_programming: `pending`
+                javascriptProgramming: `pending`
             },
-            software_design: {
-                bank_challenge: `pass`,
-                news_summary_challenge: `pending`,
-                "rock paper scissors challenge": `pending`,
-                "chitter challenge": `todo`,
-                "test-driven development": `failed`,
+            softwareDesign: {
+                bankChallenge: `pass`,
+                newsSummaryChallenge: `pending`,
+                rockPaperScissorsChallenge: `pending`,
+                chitterChallenge: `todo`,
+                testDrivenDevelopment: `failed`,
             },
-            "software development 1": {
-                "3rd party integration": `pending`,
+            softwareDevelopment1: {
+                thirdPartyIntegration: `pending`,
             },
-            "software development 2": {
-                "business services": `pending`,
-                "full-stack application": `pending`,
+            softwareDevelopment2: {
+                businessServices: `pending`,
+                fullStackApplication: `pending`,
             },
-            "team engineering": {
-                "java challenge": `pending`,
-                "agile team collaboration": `pending`
+            teamEngineering: {
+                javaChallenge: `pending`,
+                agileTeamCollaboration: `pending`
             },
-            "professional skills": {
-                "interview challenges": `pending`
+            professionalSkills: {
+                interviewChallenges: `pending`
             }
         }
     },

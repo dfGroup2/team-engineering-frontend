@@ -4,7 +4,7 @@ import '../../css/TrainingSection.css';
 
 const TrainingModules = ({ trainingModules }) => {
 
-    const { fundamentals, software_design } = trainingModules;
+    const { fundamentals, softwareDesign } = trainingModules;
 
     const displayModules = () => {
 
@@ -15,9 +15,9 @@ const TrainingModules = ({ trainingModules }) => {
     return (
         <div className="row card borderClass">
             <div className="col-6 training-div">
-                <p>Fundamentals, Javascript Programming: {fundamentals.javascript_programming}</p>
-                <p>Software Design, Bank Challenge: {software_design.bank_challenge}</p>
-                <p>Software Design, News Summary Challenge: {software_design.news_summary_challenge}</p>
+                <p>Fundamentals, Javascript Programming: {fundamentals.javascriptProgramming}</p>
+                <p>Software Design, Bank Challenge: {softwareDesign.bankChallenge}</p>
+                <p>Software Design, News Summary Challenge: {softwareDesign.newsSummaryChallenge}</p>
             </div>
         </div>
     )
