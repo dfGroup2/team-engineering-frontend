@@ -99,6 +99,15 @@ describe(`EditPersonalInfoSection unit test`, () => {
             expect(element).toHaveDisplayValue(testLinkedin);
         })
 
+        test(`it should register changes to the phone number input field`, () => {
+            const element = screen.getByPlaceholderText(/Phone number/i);
+
+            const testPhoneNumber = "testPhoneNumber";
+            userEvent.type(element, testPhoneNumber);
+
+            expect(element).toHaveDisplayValue(testPhoneNumber);
+        })
+
 
     })
 });
