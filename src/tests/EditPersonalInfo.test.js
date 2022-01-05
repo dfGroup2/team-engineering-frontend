@@ -102,10 +102,11 @@ describe(`EditPersonalInfoSection unit test`, () => {
         test(`it should register changes to the phone number input field`, () => {
             const element = screen.getByPlaceholderText(/Phone number/i);
 
-            const testPhoneNumber = "testPhoneNumber";
+            const testPhoneNumber = "123456789";
             userEvent.type(element, testPhoneNumber);
 
             expect(element).toHaveDisplayValue(testPhoneNumber);
+
         })
 
 
