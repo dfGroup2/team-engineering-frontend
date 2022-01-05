@@ -22,8 +22,8 @@ describe(`InfoSection component tests`, () => {
             expect(element).toBeInTheDocument();
         })
         test(`it should render badge A four times`, () => {
-        const numberOfBadges = screen.getAllByText(/badge a/i).length;
-expect(numberOfBadges).toBe(4);
+            const numberOfBadges = screen.getAllByText(/badge a/i).length;
+            expect(numberOfBadges).toBe(4);
         })
         test(`it should render scores`, () => {
             const element = screen.getByText(/scores/i);
@@ -37,12 +37,6 @@ expect(numberOfBadges).toBe(4);
             const element = screen.getByText(/java/i);
             expect(element).toBeInTheDocument();
         })
-        test(`it should render video link`, () => {
-            const element = screen.getByText(/video link/i);
-            expect(element).toBeInTheDocument();
-        })
 
-
-        
     })
-    });
+});
