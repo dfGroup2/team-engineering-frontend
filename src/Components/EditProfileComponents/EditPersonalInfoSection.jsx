@@ -1,9 +1,20 @@
 import React from 'react'
+import { useState } from 'react';
 import PropTypes from 'prop-types'
 import '../../css/EditPersonalInfoSection.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 
 const EditPersonalInfoSection = props => {
+    const [name, setName] = useState(``);
+    const [email, setEmail] = useState(``);
+    const handleNameChange = event => {
+        setName(event.target.value);
+    }
+
+    const handlePersonalEmailchange = event => {
+        setEmail(event.target.value);
+    }
+
     return (
         <div className="container card borderClass">
             <h3 className="col-3">Personal Information</h3>
@@ -13,11 +24,11 @@ const EditPersonalInfoSection = props => {
                         <div className="">
                             <div className="form-inputs">
                                 <label htmlFor="Name" className="col-6">Name</label>
-                                <input type="text" name="Name" className="col-6" />
+                                <input type="text" value={name} name="Name" className="col-6" placeholder="Name" onChange={handleNameChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="p-email" className="col-6">Personal Email</label>
-                                <input type="email" name="p-email" className="col-6" />
+                                <input type="email" value={email} name="p-email" className="col-6" placeholder="Personal Email" onChange={handlePersonalEmailchange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="df-email" className="col-6">Digital Futures Email</label>
@@ -89,7 +100,7 @@ const EditPersonalInfoSection = props => {
                         <img src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg" alt="" className="thumbnail avatar-image" />
                     </div>
                     <input type="file" name="uploadfile" id="img" hidden />
-                    <label for="img">Upload Image</label>
+                    <label htmlFor="img">Upload Image</label>
                 </div>
             </div>
         </div>
