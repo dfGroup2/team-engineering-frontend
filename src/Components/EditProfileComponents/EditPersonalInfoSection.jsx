@@ -9,6 +9,7 @@ const EditPersonalInfoSection = props => {
     const [email, setEmail] = useState(``);
     const [dfEmail, setDfEmail] = useState(``);
     const [github, setGithub] = useState(``);
+    const [linkedin, setLinkedin] = useState(``);
 
     const handleNameChange = event => {
         setName(event.target.value);
@@ -24,6 +25,10 @@ const EditPersonalInfoSection = props => {
 
     const handleGithubChange = event => {
         setGithub(event.target.value);
+    }
+
+    const handleLinkedinChange = event => {
+        setLinkedin(event.target.value);
     }
 
     return (
@@ -51,7 +56,7 @@ const EditPersonalInfoSection = props => {
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="linkedIn" className="col-6">LinkedIn</label>
-                                <input type="text" name="linkedIn" className="col-6" />
+                                <input type="text" value={linkedin} name="linkedIn" className="col-6" placeholder="Linkedin account" onChange={handleLinkedinChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="phone" className="col-6">Phone</label>
