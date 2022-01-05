@@ -80,5 +80,16 @@ describe(`EditPersonalInfoSection unit test`, () => {
 
             expect(element).toHaveDisplayValue(testDfEmail);
         })
+
+        test(`it should register changes to the github input field`, () => {
+            const element = screen.getByPlaceholderText(/github/i);
+
+            const testGithub = "testGithub";
+            userEvent.type(element, testGithub);
+
+            expect(element).toHaveDisplayValue(testGithub);
+        })
+
+
     })
 });

@@ -7,12 +7,17 @@ import Dropdown from 'react-bootstrap/Dropdown';
 const EditPersonalInfoSection = props => {
     const [name, setName] = useState(``);
     const [email, setEmail] = useState(``);
+    const [dfEmail, setDfEmail] = useState(``);
     const handleNameChange = event => {
         setName(event.target.value);
     }
 
-    const handlePersonalEmailchange = event => {
+    const handlePersonalEmailChange = event => {
         setEmail(event.target.value);
+    }
+
+    const handleDfEmailChange = event => {
+        setDfEmail(event.target.value);
     }
 
     return (
@@ -28,11 +33,11 @@ const EditPersonalInfoSection = props => {
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="p-email" className="col-6">Personal Email</label>
-                                <input type="email" value={email} name="p-email" className="col-6" placeholder="Personal Email" onChange={handlePersonalEmailchange} />
+                                <input type="email" value={email} name="p-email" className="col-6" placeholder="Personal Email" onChange={handlePersonalEmailChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="df-email" className="col-6">Digital Futures Email</label>
-                                <input type="email" name="df-email" className="col-6" />
+                                <input type="email" value={dfEmail} name="df-email" className="col-6" placeholder="DF Email" onChange={handleDfEmailChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="GitHub" className="col-6">GitHub</label>
