@@ -74,6 +74,10 @@ describe(`Test Suite for Training Section`, () => {
             expect(screen.getByText(/rock paper scissors challenge/i)).toBeInTheDocument();
         });
 
+        test(`it should render "chitter Challenge"`, () => {
+            expect(screen.getByText(/chitter challenge/i)).toBeInTheDocument();
+        });
+
 
         xtest(`it should render "pending" 9 times`, () => {
             const numberPending = screen.getAllByText(/pending/i).length;
