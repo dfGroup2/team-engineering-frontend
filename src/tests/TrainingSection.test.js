@@ -2,13 +2,13 @@ import { render, screen } from '@testing-library/react';
 import TrainingSection from '../Components/GradProfileComponents/TrainingSection';
 import { testGraduateUser } from './testData/sampleGraduateUser';
 const { graduateTraining } = testGraduateUser;
-const { courseModules } = graduateTraining;
+const { cohort, learningPath, trainer, finishedDate } = graduateTraining;
 
 describe(`Test Suite for Training Section`, () => {
 
     beforeEach(() => {
         render(
-            <TrainingSection trainingInfo={graduateTraining} />
+            <TrainingSection graduateTrainingData={graduateTraining} />
         );
     });
 
@@ -123,19 +123,19 @@ describe(`Test Suite for Training Section`, () => {
         });
 
         test(`it should render "Software Engineering 3" as the cohort`, () => {
-            expect(screen.findByText(graduateTraining.cohort)).toBeTruthy();
+            expect(screen.findByText(cohort)).toBeTruthy();
         });
 
         test(`it should render "Software Engineering" as the learning path`, () => {
-            expect(screen.findByText(graduateTraining.learningPath)).toBeTruthy();
+            expect(screen.findByText(learningPath)).toBeTruthy();
         });
 
         test(`it should render "Ed Wright" as the trainer`, () => {
-            expect(screen.findByText(graduateTraining.learningPath)).toBeTruthy();
+            expect(screen.findByText(trainer)).toBeTruthy();
         });
 
         test(`it should render "Jan 11, 2022" as the finish date`, () => {
-            expect(screen.findByText(graduateTraining.finishedDate)).toBeTruthy();
+            expect(screen.findByText(finishedDate)).toBeTruthy();
         });
 
     });

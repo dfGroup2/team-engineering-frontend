@@ -13,10 +13,10 @@ const TrainingSection = ({ graduateTrainingData }) => {
             <h3 className="col-2">Your training</h3>
             <div className="row">
                 <div className="col-2">
-                    <p>Cohort: {graduateTraining.cohort}</p>
-                    <p>Learning Path: xxxxxx</p>
-                    <p>Trainer: xxxxxx</p>
-                    <p>Training finish date: xxxxxx</p>
+                    <p>Cohort: {cohort}</p>
+                    <p>Learning Path: {learningPath}</p>
+                    <p>Trainer: {trainer}</p>
+                    <p>Training finish date: {finishedDate}</p>
                 </div>
                 <p className="col-1"></p>
                 <div className="col-8">
