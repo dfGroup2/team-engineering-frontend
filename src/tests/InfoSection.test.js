@@ -1,10 +1,12 @@
 import { render, screen } from '@testing-library/react';
 
 import InfoSection from '../Components/GradProfileComponents/InfoSection';
+import { testGraduateUser } from './testData/sampleGraduateUser';
+const {personalInfo} = testGraduateUser
 
 describe(`InfoSection component tests`, () => {
     beforeEach(() => {
-        render(<InfoSection />);
+        render(<InfoSection infoData={personalInfo}/>);
     });
 
     describe('Render Test', () => {
@@ -39,4 +41,12 @@ describe(`InfoSection component tests`, () => {
         })
 
     })
-});
+    describe('Data tests', () => {
+
+        test(`it should render badge data`, () => {
+            const element = screen.getByText(personalInfo.badges[0]);
+            expect(element).toBeInTheDocument();
+        })
+})
+})
+;
