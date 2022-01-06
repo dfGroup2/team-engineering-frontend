@@ -29,7 +29,7 @@ const InfoSection = props => {
                 <div className="col-5 borderClass overflow-auto " style={{ height: "70px" }}
                 >
                     <p>Aptitude:<span>{personalInfo.scores[0]}</span>%</p>
-                    <p>Java:87</p>
+                    <p>Java:<span>{personalInfo.scores[1]}</span>%</p>
                 </div>
             </div>
         </div>
