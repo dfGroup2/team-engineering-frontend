@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ProfileSection from '../Components/GradProfileComponents/ProfileSection';
+import { testGraduateUser } from './testData/sampleGraduateUser';
 
 describe(`Tests for ProfileSection`, () => {
 	beforeEach(() => {
 		render(
 			<Router>
-				<ProfileSection />
+				<ProfileSection graduateUserData={testGraduateUser}/>
 			</Router>
 		);
 	})
