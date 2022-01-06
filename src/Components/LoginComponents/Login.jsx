@@ -5,11 +5,11 @@ import dfxbackground from '../../images/dfx_background.png';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import ValidationServiceHelpers from '../../services/validation.serviceHelpers';
 
 const Login = () => {
 
     const [user, setUser] = useState({ email: '', username: '', password: '' });
-    const [loggedIn, setLoggedIn] = useState(false);
     const [message, setMessage] = useState(``);
 
     let navigate = useNavigate();
@@ -27,7 +27,6 @@ const Login = () => {
         const { username, password } = user;
         if (username && password) {
             const res = await axios.post(`${process.env.REACT_APP_DFXTRAURL}/api/auth/signin`, { username, password })
-            setLoggedIn(res.data ? true : false);
             localStorage.setItem('user', JSON.stringify(res.data));
             setUser({ email: '', username: '', password: '' });
             if (localStorage.getItem("user")) {
@@ -54,21 +53,21 @@ const Login = () => {
                         <div className="">
                             <div className="form-inputs">
                                 <label htmlFor="Email" className="col-4">Email</label>
-                                <input type="email" name="email" className="col-6" onChange={handleChange} />
+                                <input type="email" name="email" className="col-6" onChange={handleChange} validations={[ValidationServiceHelpers.required, ValidationServiceHelpers.validEmail]} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="Username" className="col-4">Username</label>
-                                <input type="text" name="username" className="col-6" onChange={handleChange} />
+                                <input type="text" name="username" className="col-6" onChange={handleChange} validations={[ValidationServiceHelpers.required]} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="Password" className="col-4">Password</label>
-                                <input type="password" name="password" className="col-6" onChange={handleChange} />
+                                <input type="password" name="password" className="col-6" onChange={handleChange} validations={[ValidationServiceHelpers.required]} />
                             </div>
                         </div>
                         <input type="submit" value="Login" className="btn btn-primary col-5 draft-btn" />
                         {message && (
-                            <div>
-                                <p>{message}</p>
+                            <div className="form-group">
+                                <div className="alert alert-danger" role="alert">{message}</div>
                             </div>
                         )}
                     </form>
