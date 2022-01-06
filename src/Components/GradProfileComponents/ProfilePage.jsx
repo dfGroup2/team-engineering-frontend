@@ -4,7 +4,7 @@ import InfoSection from './InfoSection'
 import TrainingSection from './TrainingSection'
 
 import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
-const { graduateTraining } = testGraduateUser;
+const { graduateTraining, personalInfo } = testGraduateUser;
 
 const ProfilePage = props => {
 
@@ -18,7 +18,7 @@ const ProfilePage = props => {
         <TrainingSection graduateTrainingData={graduateTraining} />
       </div>
       <div className="parent-container">
-        <InfoSection />
+        <InfoSection infoData={personalInfo}/>
       </div >
       <br /><br />
     </div>
