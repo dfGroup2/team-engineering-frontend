@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
-const {personalInfo} = testGraduateUser
 
 const InfoSection = ({ infoData }) => {
-    const {badges,scores} = infoData
+    const { badges, scores } = infoData
     return (
         <div className="container card borderClass">
             <h3 className="col-3">Your information </h3>
@@ -14,15 +13,15 @@ const InfoSection = ({ infoData }) => {
                 </div>
                 <div className="col-2">
                     <p className="borderClass">{badges[0]}
-                        </p>
+                    </p>
                     <p className=" borderClass">{badges[1]}
-                        </p>
+                    </p>
                 </div>
                 <div className="col-2">
                     <p className=" borderClass">{badges[2]}
-                        </p>
+                    </p>
                     <p className="borderClass">{badges[3]}
-                        </p>
+                    </p>
                 </div>
                 <div className="col-1">
                     <p>Scores:</p>
