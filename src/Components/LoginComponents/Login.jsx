@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = ({ setLoginUser }) => {
+const Login = () => {
 
     const [user, setUser] = useState({ email: '', username: '', password: '' });
     const [loggedIn, setLoggedIn] = useState(false);
@@ -30,7 +30,6 @@ const Login = ({ setLoginUser }) => {
             setLoggedIn(res.data ? true : false);
             localStorage.setItem('user', JSON.stringify(res.data));
             setUser({ email: '', username: '', password: '' });
-            //setLoginUser(res.data);
             if (localStorage.getItem("user")) {
                 navigate(`/graduatePage`);
             }
