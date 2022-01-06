@@ -6,7 +6,7 @@ import EditPersonalStory from '../Components/EditProfileComponents/EditPersonalS
 import PersonalStoryModal from '../Components/EditProfileComponents/PersonalStoryModal';
 jest.mock('../Components/EditProfileComponents/PersonalStoryModal', () => {
 	return function mockPersonalStoryModal() {
-		return <span>mockPersonalStoryModal</span>
+		return <h1>mockPersonalStoryModal</h1>
 	}
 });
 
@@ -41,7 +41,7 @@ describe(`Tests for EditPersonalStory`, () => {
 			);
 			const element = container.querySelector("button[name='addDegree']");
 			userEvent.click(element);
-			const modal = screen.getByText('mockPersonalStoryModal');
+			const modal = screen.getByRole('header', { name: 'mockPersonalStoryModal' });
 			expect(modal).toBeInTheDocument();
 
 
