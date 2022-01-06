@@ -10,6 +10,7 @@ const Login = ({ setLoginUser }) => {
 
     const [user, setUser] = useState({ email: '', username: '', password: '' });
     const [loggedIn, setLoggedIn] = useState(false);
+    const [message, setMessage] = useState(``);
 
     let navigate = useNavigate();
 
@@ -20,18 +21,22 @@ const Login = ({ setLoginUser }) => {
 
     const login = async event => {
         event.preventDefault();
+
+        setMessage(``);
+
         const { username, password } = user;
         if (username && password) {
             const res = await axios.post(`${process.env.REACT_APP_DFXTRAURL}/api/auth/signin`, { username, password })
             setLoggedIn(res.data ? true : false);
             localStorage.setItem('user', JSON.stringify(res.data));
             setUser({ email: '', username: '', password: '' });
-            setLoginUser(res.data);
+            //setLoginUser(res.data);
             if (localStorage.getItem("user")) {
                 navigate(`/graduatePage`);
             }
             else {
-                //console.dir(res);
+                console.log(res);
+                setMessage(res.message);
             }
         }
     }
@@ -62,11 +67,13 @@ const Login = ({ setLoginUser }) => {
                             </div>
                         </div>
                         <input type="submit" value="Login" className="btn btn-primary col-5 draft-btn" />
+                        {message && (
+                            <div>
+                                <p>{message}</p>
+                            </div>
+                        )}
                     </form>
                 </div>
-                {/* <div className="col-4 login-div">
-                    <img src={dfxbackground} alt="" className="background-image borderClass" />
-                </div> */}
             </div>
         </div >
     )
