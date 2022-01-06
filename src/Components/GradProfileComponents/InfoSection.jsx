@@ -12,23 +12,23 @@ const InfoSection = props => {
                     <p>Badges:</p>
                 </div>
                 <div className="col-2">
-                    <p className="borderClass">{personalInfo.badges[0]}<br />
-                        xxxxx xxx x</p>
-                    <p className=" borderClass">Badge A <br />
-                        xxxxx xxx x</p>
+                    <p className="borderClass">{personalInfo.badges[0]}
+                        </p>
+                    <p className=" borderClass">{personalInfo.badges[1]}
+                        </p>
                 </div>
                 <div className="col-2">
-                    <p className=" borderClass">Badge A <br />
-                        xxxxx xxx x</p>
-                    <p className="borderClass">Badge A <br />
-                        xxxxx xxx x</p>
+                    <p className=" borderClass">{personalInfo.badges[2]}
+                        </p>
+                    <p className="borderClass">{personalInfo.badges[3]}
+                        </p>
                 </div>
                 <div className="col-1">
                     <p>Scores:</p>
                 </div>
                 <div className="col-5 borderClass overflow-auto " style={{ height: "70px" }}
                 >
-                    <p>Aptitude:93%</p>
+                    <p>Aptitude:<span>{personalInfo.scores[0]}</span>%</p>
                     <p>Java:87</p>
                 </div>
             </div>
