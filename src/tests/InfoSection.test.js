@@ -70,6 +70,10 @@ describe(`InfoSection component tests`, () => {
          test(`it should render 97%`, () => {
             const element = screen.getByText(personalInfo.scores[2]);
             expect(element).toBeInTheDocument();
+         })
+         test(`it should render 70%`, () => {
+            const element = screen.getByText(personalInfo.scores[3]);
+            expect(element).toBeInTheDocument();
         })
 })
 
