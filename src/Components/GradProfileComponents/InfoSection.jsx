@@ -31,6 +31,7 @@ const InfoSection = props => {
                     <p>Aptitude:<span>{personalInfo.scores[0]}</span>%</p>
                     <p>Java:<span>{personalInfo.scores[1]}</span>%</p>
                     <p>JavaScript:<span>{personalInfo.scores[2]}</span>%</p>
+                    <p>CSS:<span>{personalInfo.scores[3]}</span>%</p>
                 </div>
             </div>
         </div>
