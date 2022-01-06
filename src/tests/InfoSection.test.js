@@ -47,6 +47,15 @@ describe(`InfoSection component tests`, () => {
             const element = screen.findByText(personalInfo.badges[0]);
             expect(element).toBeTruthy();
         })
+        test(`it should render badge data`, () => {
+            const element = screen.findByText(personalInfo.badges[1]);
+            expect(element).toBeTruthy();
+        })
+        test(`it should render badge data`, () => {
+            const element = screen.findByText(personalInfo.badges[2]);
+            expect(element).toBeTruthy();
+        })
 })
+
 })
 ;
