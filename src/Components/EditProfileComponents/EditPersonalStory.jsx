@@ -1,8 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import "../../css/EditPersonalStory.css"
+import PersonalStoryModal from './PersonalStoryModal'
+
 
 const EditPersonalStory = props => {
+	const addDegree = clickEvent => {
+		clickEvent.preventDefault()
+		console.log(clickEvent.target);
+		return < PersonalStoryModal inputFieldHeaders={degrees} />
+
+	}
+	const degrees = ['university', 'degree subject', 'degree level', 'grade', 'from', 'to', 'weight', 'priority', 'description'];
+	const createTableHeaders = arr => {
+		return arr.map(header => {
+			return <th>{header}</th>
+		})
+	}
 	return (
 		<div className="container card borderClass">
 			<h3 className="col-2 profile-padding">Personal Story</h3>
@@ -14,16 +28,8 @@ const EditPersonalStory = props => {
 					<thead className="table-heading">
 
 						<tr>
-							<th>University</th>
-							<th>Degree Subject</th>
-							<th>Degree Level</th>
-							<th>Grade</th>
-							<th>From</th>
-							<th>To</th>
-							<th>Weight</th>
-							<th>Priority</th>
-							<th>Description</th>
-							<button onClick={addDegree} >Add</button>
+							{createTableHeaders(degrees)}
+							<button name="addDegree" onClick={addDegree} >Add</button>
 						</tr>
 					</thead>
 					<tbody>
@@ -55,7 +61,7 @@ const EditPersonalStory = props => {
 							<th>Weight</th>
 							<th>Priority</th>
 							<th>Description</th>
-							<button onClick={addSchoolQualification} >Add</button>
+							{/* <button onClick={addSchoolQualification} >Add</button> */}
 						</tr>
 					</thead>
 					<tbody>
@@ -86,7 +92,7 @@ const EditPersonalStory = props => {
 							<th>Weight</th>
 							<th>Priority</th>
 							<th>Description</th>
-							<button onClick={addWorkExperience} >Add</button>
+							{/* <button onClick={addWorkExperience} >Add</button> */}
 						</tr>
 					</thead>
 					<tbody>
@@ -130,7 +136,7 @@ const EditPersonalStory = props => {
 							<th>Weight</th>
 							<th>Priority</th>
 							<th>Description</th>
-							<button onClick={addCertificatesAndAwards} >Add</button>
+							{/* <button onClick={addCertificatesAndAwards} >Add</button> */}
 						</tr>
 					</thead>
 					<tbody>
@@ -171,7 +177,7 @@ const EditPersonalStory = props => {
 							<th>Weight</th>
 							<th>Priority</th>
 							<th>Description</th>
-							<button onClick={addPortfolio} >Add</button>
+							{/* <button onClick={addPortfolio} >Add</button> */}
 						</tr>
 					</thead>
 					<tbody>
