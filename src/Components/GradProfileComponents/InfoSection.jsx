@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-//import { testGraduateUser } from './testData/sampleGraduateUser';
-//const {personalInfo} = testGraduateUser
+import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
+const {personalInfo} = testGraduateUser
 
 const InfoSection = props => {
     return (
@@ -12,7 +12,7 @@ const InfoSection = props => {
                     <p>Badges:</p>
                 </div>
                 <div className="col-2">
-                    <p className="borderClass">Badge A <br />
+                    <p className="borderClass">{personalInfo.badges[0]}<br />
                         xxxxx xxx x</p>
                     <p className=" borderClass">Badge A <br />
                         xxxxx xxx x</p>
