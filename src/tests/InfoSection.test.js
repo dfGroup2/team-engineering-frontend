@@ -59,6 +59,10 @@ describe(`InfoSection component tests`, () => {
             const element = screen.getByText(personalInfo.badges[3]);
             expect(element).toBeInTheDocument();
         })
+         test(`it should render 65%`, () => {
+            const element = screen.getByText(personalInfo.scores[0]);
+            expect(element).toBeInTheDocument();
+        })
 })
 
 })
