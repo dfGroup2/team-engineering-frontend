@@ -11,6 +11,7 @@ const Login = ({ setLoginUser }) => {
     const [user, setUser] = useState({ email: '', username: '', password: '' });
     const [loggedIn, setLoggedIn] = useState(false);
 
+
     const handleChange = event => {
         const { name, value } = event.target;
         setUser({ ...user, [name]: value })
