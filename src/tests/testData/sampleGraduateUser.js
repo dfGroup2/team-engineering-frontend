@@ -50,8 +50,8 @@ const testGraduateUser = {
     },
     personalInfo:
     {
-        badges: [`Java`, `Javascript`, `React`],
-        scores: [`65`, `80`, `97`],
+        badges: [`Java`, `Javascript`, `React`,`CSS`],
+        scores: [`65`, `80`, `97`, `70`],
     
     },
     personalStory:
