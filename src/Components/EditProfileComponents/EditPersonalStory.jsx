@@ -1,16 +1,17 @@
-import React from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import "../../css/EditPersonalStory.css"
 import PersonalStoryModal from './PersonalStoryModal'
 
 
+
 const EditPersonalStory = props => {
+	const [showModal, setShowModal] = useState(false);
 	const addDegree = clickEvent => {
 		clickEvent.preventDefault()
-		console.log(clickEvent.target);
-		return < PersonalStoryModal inputFieldHeaders={degrees} />
-
+		setShowModal(true);
 	}
+
 	const degrees = ['university', 'degree subject', 'degree level', 'grade', 'from', 'to', 'weight', 'priority', 'description'];
 	const createTableHeaders = arr => {
 		return arr.map(header => {
@@ -25,11 +26,13 @@ const EditPersonalStory = props => {
 
 			<div>
 				<table className="table table-striped">
+					<button name="addDegree" onClick={addDegree} >Add</button>
+					< PersonalStoryModal show={showModal} setShowModal={setShowModal} inputFieldHeaders={degrees} />
 					<thead className="table-heading">
 
 						<tr>
 							{createTableHeaders(degrees)}
-							<button name="addDegree" onClick={addDegree} >Add</button>
+
 						</tr>
 					</thead>
 					<tbody>
