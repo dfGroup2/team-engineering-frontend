@@ -11,6 +11,7 @@ const Login = ({ setLoginUser }) => {
     const [user, setUser] = useState({ email: '', username: '', password: '' });
     const [loggedIn, setLoggedIn] = useState(false);
 
+    let navigate = useNavigate();
 
     const handleChange = event => {
         const { name, value } = event.target;
@@ -26,8 +27,11 @@ const Login = ({ setLoginUser }) => {
             localStorage.setItem('user', JSON.stringify(res.data));
             setUser({ email: '', username: '', password: '' });
             setLoginUser(res.data);
-            if (loggedIn) {
-                //useNavigate('/')
+            if (localStorage.getItem("user")) {
+                navigate(`/graduatePage`);
+            }
+            else {
+                //console.dir(res);
             }
         }
     }
