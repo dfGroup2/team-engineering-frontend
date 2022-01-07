@@ -4,7 +4,7 @@ import React, { useReducer } from 'react'
 import PropTypes from 'prop-types'
 import '../../css/Login.css';
 import dfxbackground from '../../images/dfx_background.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 const SignUp = props => {
@@ -26,14 +26,11 @@ const SignUp = props => {
     }
 
     return (
-        <div className="container card">
+        <div className="container card outer-div">
             <div className="row">
-                <div className="background-image" style={{ backgroundImage: `url(${dfxbackground})` }}
-                >
-                </div>
                 <div className="not-background-image col-4">
                     <h3>Digital Futures</h3>
-                    <p>SignUp for an account</p>
+                    <p>Sign up for an account</p>
 
                     <form onSubmit={SignUp}>
                         <div className="">
@@ -54,12 +51,11 @@ const SignUp = props => {
                                 <input type="text" name="Company" className="col-6" onChange={handleChange} />
                             </div>
                         </div>
-                        <input type="submit" value="SignUp" className="btn btn-primary col-5 draft-btn" />
+                        <input type="submit" value="Sign Up" className="btn btn-primary col-5 draft-btn" />
                     </form>
+                    <p>Already have an account? <Link to="/">Login</Link></p>
                 </div>
-                {/* <div className="col-4 login-div">
-                    <img src={dfxbackground} alt="" className="background-image borderClass" />
-                </div> */}
+                <div className="col-8"><img src={dfxbackground} className="dfximage"></img></div>
             </div>
         </div >
     )

@@ -22,7 +22,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route exact path="/" element={<ProfilePage />}></Route>
+          <Route path="/graduatePage" element={<ProfilePage />}></Route>
           <Route path="/edit" element={<div className="parent-container">
             <EditProfilePage />
             <div className="parent-container">
@@ -35,7 +35,11 @@ function App() {
             <br /><br />
           </div>
           }></Route>
+<<<<<<< HEAD
           <Route path="/login" element={<Login />}></Route>
+=======
+          <Route exact path="/" element={<LoginPage />}></Route>
+>>>>>>> loginPage
           <Route path="/SignUp" element={<SignUp />}></Route>
           <Route path="/IndustryProfile" element={<div className="parent-container">
             <IndustryProfilePage />
