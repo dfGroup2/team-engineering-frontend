@@ -4,6 +4,7 @@ import '../../css/Login.css';
 import dfxbackground from '../../images/dfx_background.png';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import ValidationServiceHelpers from '../../services/validation.serviceHelpers';
 
@@ -71,6 +72,8 @@ const Login = () => {
                             </div>
                         )}
                     </form>
+                    <p>Don't have an account ?<Link to="/SignUp">Sign Up </Link></p>
+                    
                 </div>
             </div>
         </div >
