@@ -43,9 +43,7 @@ const Login = () => {
     return (
         <div className="container card">
             <div className="row">
-                <div className="background-image" style={{ backgroundImage: `url(${dfxbackground})` }}
-                >
-                </div>
+                
                 <div className="not-background-image col-4">
                     <h3>Digital Futures</h3>
                     <p>Login in to your account</p>
@@ -72,9 +70,10 @@ const Login = () => {
                             </div>
                         )}
                     </form>
-                    <p>Don't have an account ?<Link to="/SignUp">Sign Up </Link></p>
+                    <p>Don't have an account ?<Link to="/SignUp"> Sign Up </Link></p>
                     
                 </div>
+                <div className="col-8"><img src={dfxbackground}></img></div>
             </div>
         </div >
     )
