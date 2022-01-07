@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const SignUp = props => {
 
-    const [user, setUser] = useState({ Email: '', FirstName: '', LastName: '', Company: '' });
+    const [user, setUser] = useState({ Email: '', FirstName: '', LastName: '', Company: '', Username: '', Password: '' });
     const navigate = useNavigate()
     const handleChange = event => {
         const { name, value } = event.target;
@@ -18,8 +18,8 @@ const SignUp = props => {
 
     const SignUp = async event => {
         event.preventDefault();
-        const { Email, FirstName, LastName, Company } = user;
-        if (Email && FirstName && LastName && Company) {
+        const { Email, FirstName, LastName, Company, Username, Password } = user;
+        if (Email && FirstName && LastName && Company && Username && Password) {
             const res = await axios.post(`${process.env.REACT_APP_DFXTRAURL}/api/auth/signup`, user)
             //navigate('/login');
         }
@@ -49,6 +49,14 @@ const SignUp = props => {
                             <div className="form-inputs">
                                 <label htmlFor="Company" className="col-4">Company</label>
                                 <input type="text" name="Company" className="col-6" onChange={handleChange} />
+                            </div>
+                             <div className="form-inputs">
+                                <label htmlFor="Company" className="col-4">Username</label>
+                                <input type="text" name="Username" className="col-6" onChange={handleChange} />
+                            </div>
+                             <div className="form-inputs">
+                                <label htmlFor="Company" className="col-4">Password</label>
+                                <input type="text" name="Password" className="col-6" onChange={handleChange} />
                             </div>
                         </div>
                         <input type="submit" value="Sign Up" className="btn btn-primary col-5 draft-btn" />

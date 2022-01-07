@@ -1,12 +1,16 @@
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Header from '../Components/Header';
 
 describe(`Header component tests`, () => {
 	beforeEach(() => {
-		render(<Header />);
-
-	})
+	render(
+			<Router>
+				<Header />
+			</Router>
+		);
+	});
 
 	test(`it should render the df logo`, () => {
 		const element = screen.getByRole("img");

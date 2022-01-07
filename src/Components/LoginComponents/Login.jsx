@@ -10,7 +10,7 @@ import ValidationServiceHelpers from '../../services/validation.serviceHelpers';
 
 const Login = () => {
 
-    const [user, setUser] = useState({ email: '', username: '', password: '' });
+    const [user, setUser] = useState({ username: '', password: '' });
     const [message, setMessage] = useState(``);
 
     let navigate = useNavigate();
@@ -29,7 +29,7 @@ const Login = () => {
         if (username && password) {
             const res = await axios.post(`${process.env.REACT_APP_DFXTRAURL}/api/auth/signin`, { username, password })
             localStorage.setItem('user', JSON.stringify(res.data));
-            setUser({ email: '', username: '', password: '' });
+            setUser({ username: '', password: '' });
             if (localStorage.getItem("user")) {
                 navigate(`/graduatePage`);
             }
@@ -50,10 +50,6 @@ const Login = () => {
 
                     <form onSubmit={login} >
                         <div className="">
-                            <div className="form-inputs">
-                                <label htmlFor="Email" className="col-4">Email</label>
-                                <input type="email" name="email" className="col-6" onChange={handleChange} validations={[ValidationServiceHelpers.required, ValidationServiceHelpers.validEmail]} />
-                            </div>
                             <div className="form-inputs">
                                 <label htmlFor="Username" className="col-4">Username</label>
                                 <input type="text" name="username" className="col-6" onChange={handleChange} validations={[ValidationServiceHelpers.required]} />

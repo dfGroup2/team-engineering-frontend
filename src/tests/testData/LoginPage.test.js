@@ -19,10 +19,6 @@ describe(`Tests for LoginPage`, () => {
 		const element = screen.getByDisplayValue(/login/i);
 		expect(element).toBeInTheDocument();
     });
-     test(`it should render Email`, () => {
-		const element = screen.getByText(/email/i);
-		expect(element).toBeInTheDocument();
-     });
      test(`it should render username`, () => {
 		const element = screen.getByText(/username/i);
 		expect(element).toBeInTheDocument();
@@ -31,6 +27,6 @@ describe(`Tests for LoginPage`, () => {
 		const element = screen.getByText(/password/i);
 		expect(element).toBeInTheDocument();
 	});
-	test
+	
 
 });

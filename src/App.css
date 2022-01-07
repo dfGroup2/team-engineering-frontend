@@ -99,3 +99,7 @@ body {
   color: rgb(6, 20, 80);
   border: 1px solid rgb(0, 54, 80);
 }
+.log-out-btn {
+  margin-left: auto;
+  margin-right: 20px;
+}
