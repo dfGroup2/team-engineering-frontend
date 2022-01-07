@@ -35,11 +35,7 @@ function App() {
             <br /><br />
           </div>
           }></Route>
-<<<<<<< HEAD
-          <Route path="/login" element={<Login />}></Route>
-=======
           <Route exact path="/" element={<LoginPage />}></Route>
->>>>>>> loginPage
           <Route path="/SignUp" element={<SignUp />}></Route>
           <Route path="/IndustryProfile" element={<div className="parent-container">
             <IndustryProfilePage />
