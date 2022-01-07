@@ -6,10 +6,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = ({ setLoginUser }) => {
+const Login = () => {
 
     const [user, setUser] = useState({ email: '', username: '', password: '' });
     const [loggedIn, setLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
     const handleChange = event => {
         const { name, value } = event.target;
@@ -24,9 +25,9 @@ const Login = ({ setLoginUser }) => {
             setLoggedIn(res.data ? true : false);
             localStorage.setItem('user', JSON.stringify(res.data));
             setUser({ email: '', username: '', password: '' });
-            setLoginUser(res.data);
+
             if (loggedIn) {
-                //useNavigate('/')
+                navigate('/')
             }
         }
     }
@@ -41,7 +42,7 @@ const Login = ({ setLoginUser }) => {
                     <h3>Digital Futures</h3>
                     <p>Login in to your account</p>
 
-                    <form onSubmit={login} action="">
+                    <form onSubmit={login} >
                         <div className="">
                             <div className="form-inputs">
                                 <label htmlFor="Email" className="col-4">Email</label>

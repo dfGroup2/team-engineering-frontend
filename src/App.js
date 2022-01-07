@@ -10,7 +10,7 @@ import ProfilePage from './Components/GradProfileComponents/ProfilePage';
 import EditProfilePage from './Components/EditProfileComponents/EditProfilePage';
 import EditPersonalInfoSection from './Components/EditProfileComponents/EditPersonalInfoSection';
 import EditPersonalStory from './Components/EditProfileComponents/EditPersonalStory';
-import LoginPage from './Components/LoginComponents/Login';
+import Login from './Components/LoginComponents/Login';
 import SignUp from './Components/SignUpComponent/SignUp';
 import IndustryProfilePage from './Components/IndustryProfileComponents/IndustryProfilePage';
 import ViewGraduates from './Components/IndustryProfileComponents/ViewGraduates';
@@ -35,7 +35,7 @@ function App() {
             <br /><br />
           </div>
           }></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/login" element={<Login />}></Route>
           <Route path="/SignUp" element={<SignUp />}></Route>
           <Route path="/IndustryProfile" element={<div className="parent-container">
             <IndustryProfilePage />

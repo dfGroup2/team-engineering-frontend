@@ -11,14 +11,16 @@ const token = ``;
 
 const ProfilePage = () => {
 
-  const [graduateProfileData, setGraduateProfileData] = useState([]);
+  const [graduateProfileData, setGraduateProfileData] = useState({});
   const [getError, setGetError] = useState({ message: ``, count: 0 });
   const { _id } = useParams(); //this will not work without data in the database
   const getGraduateProfileById = async () => {
+    const currentGraduateUserDataId = localStorage.getItem('graduateUserData');
+    const webToken = localStorage.getItem('accessToken');
     try {
       const res = await axios
-        .get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateProfiles/${_id}`, { headers: { "x-access-token": token } })
-        .set('x-access-token', token)
+        .get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateProfiles/${currentGraduateUserDataId}`, { headers: { "x-access-token": token } })
+        .set('x-access-token', webToken)
       return res.data.length ? res.data : new Error(`There was an error retrieving graduate data`);
     }
     catch (e) {
