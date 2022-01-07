@@ -4,7 +4,7 @@ import React, { useReducer } from 'react'
 import PropTypes from 'prop-types'
 import '../../css/Login.css';
 import dfxbackground from '../../images/dfx_background.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link } from 'react-router-dom'; 
 import axios from 'axios';
 
 const SignUp = props => {
@@ -28,9 +28,6 @@ const SignUp = props => {
     return (
         <div className="container card">
             <div className="row">
-                <div className="background-image" style={{ backgroundImage: `url(${dfxbackground})` }}
-                >
-                </div>
                 <div className="not-background-image col-4">
                     <h3>Digital Futures</h3>
                     <p>SignUp for an account</p>
@@ -56,10 +53,9 @@ const SignUp = props => {
                         </div>
                         <input type="submit" value="SignUp" className="btn btn-primary col-5 draft-btn" />
                     </form>
+                    <p>Already have an account <Link to="/"> Login </Link></p>
                 </div>
-                {/* <div className="col-4 login-div">
-                    <img src={dfxbackground} alt="" className="background-image borderClass" />
-                </div> */}
+                <div className="col-8"><img src={dfxbackground}></img></div>
             </div>
         </div >
     )
