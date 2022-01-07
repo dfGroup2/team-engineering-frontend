@@ -35,7 +35,7 @@ function App() {
             <br /><br />
           </div>
           }></Route>
-          <Route exact path="/" element={<LoginPage />}></Route>
+          <Route exact path="/" element={<Login />}></Route>
           <Route path="/SignUp" element={<SignUp />}></Route>
           <Route path="/IndustryProfile" element={<div className="parent-container">
             <IndustryProfilePage />
