@@ -17,7 +17,7 @@ describe(`Tests for SignUp Page`, () => {
 	});
 
 	test(`it should render signup for an account`, () => {
-		const element = screen.getByText(/signup for an account/i);
+		const element = screen.getByText(/sign up for an account/i);
 		expect(element).toBeInTheDocument();
 	});
 
@@ -42,7 +42,7 @@ describe(`Tests for SignUp Page`, () => {
 	});
 
 	test(`it should render SignUp button`, () => {
-		const element = screen.getByDisplayValue(/SignUp/i);
+		const element = screen.getByDisplayValue(/Sign Up/i);
 		expect(element).toBeInTheDocument();
 	});
 
