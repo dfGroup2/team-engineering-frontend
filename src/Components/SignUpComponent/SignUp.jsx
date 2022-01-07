@@ -55,7 +55,7 @@ const SignUp = props => {
                     </form>
                     <p>Already have an account <Link to="/"> Login </Link></p>
                 </div>
-                <div className="col-8"><img src={dfxbackground}></img></div>
+                <div className="col-8"><img src={dfxbackground} className="dfximage"></img></div>
             </div>
         </div >
     )
