@@ -26,7 +26,7 @@ const SignUp = props => {
     }
 
     return (
-        <div className="container card">
+        <div className="container card outer-div">
             <div className="row">
                 <div className="not-background-image col-4">
                     <h3>Digital Futures</h3>
