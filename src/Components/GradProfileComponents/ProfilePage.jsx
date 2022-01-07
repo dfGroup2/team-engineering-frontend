@@ -19,8 +19,7 @@ const ProfilePage = () => {
     const webToken = localStorage.getItem('accessToken');
     try {
       const res = await axios
-        .get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateProfiles/${currentGraduateUserDataId}`, { headers: { "x-access-token": token } })
-        .set('x-access-token', webToken)
+        .get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, { headers: { "x-access-token": webToken } })
       return res.data.length ? res.data : new Error(`There was an error retrieving graduate data`);
     }
     catch (e) {
