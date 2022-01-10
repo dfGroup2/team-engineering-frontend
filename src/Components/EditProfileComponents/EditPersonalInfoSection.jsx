@@ -80,7 +80,7 @@ const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
     }
     const handleFileUpload = event => {
       setImagePath(event.target.value);
-      console.log(JSON.stringify(graduateUserProfile));
+     // document.getElementById("imageUpload").src=event.target.value;
     }
 
     return (
@@ -165,7 +165,7 @@ const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
                 </div>
                 <div className="col-4">
                     <div>
-                        <img src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg" alt="" className="thumbnail avatar-image" />
+                        <img src={imagePath ? imagePath: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"} alt="" className="thumbnail avatar-image" />
                     </div>
                     <input type="file" multiple accept="image/*" name="uploadfile" id="img" hidden onChange={handleFileUpload}/>
                     <label htmlFor="img" className="img-label">Upload Image</label>
