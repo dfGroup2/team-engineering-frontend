@@ -13,3 +13,10 @@
     text-align: left;
     padding-left: 5%;
 }
+.img-label {
+    text-decoration: underline;
+    color:blue;
+}
+.img-label:hover{
+   cursor:grab;
+}
