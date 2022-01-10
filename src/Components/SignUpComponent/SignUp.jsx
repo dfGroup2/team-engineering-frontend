@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const SignUp = props => {
 
-    const [user, setUser] = useState({ Email: '', FirstName: '', LastName: '', Company: '', Username: '', Password: '' });
+    const [user, setUser] = useState({ email: '', firstName: '', lastName: '', username: '', password: '' });
     const navigate = useNavigate()
     const handleChange = event => {
         const { name, value } = event.target;
@@ -18,10 +18,12 @@ const SignUp = props => {
 
     const SignUp = async event => {
         event.preventDefault();
-        const { Email, FirstName, LastName, Company, Username, Password } = user;
-        if (Email && FirstName && LastName && Company && Username && Password) {
+        const { email, firstName, lastName, username, password } = user;
+        if (email && firstName && lastName && username && password) {
             const res = await axios.post(`${process.env.REACT_APP_DFXTRAURL}/api/auth/signup`, user)
-            //navigate('/login');
+            if (res.data.message === "Graduate User was registered successfully!") {
+                navigate('/');
+            }
         }
     }
 
@@ -36,27 +38,23 @@ const SignUp = props => {
                         <div className="">
                             <div className="form-inputs">
                                 <label htmlFor="Email" className="col-4">Email</label>
-                                <input type="email" name="Email" className="col-6" onChange={handleChange} />
+                                <input type="email" name="email" className="col-6" onChange={handleChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="FirstName" className="col-4">First name</label>
-                                <input type="text" name="FirstName" className="col-6" onChange={handleChange} />
+                                <input type="text" name="firstName" className="col-6" onChange={handleChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="LastName" className="col-4">Last name</label>
-                                <input type="text" name="LastName" className="col-6" onChange={handleChange} />
-                            </div>
-                            <div className="form-inputs">
-                                <label htmlFor="Company" className="col-4">Company</label>
-                                <input type="text" name="Company" className="col-6" onChange={handleChange} />
+                                <input type="text" name="lastName" className="col-6" onChange={handleChange} />
                             </div>
                              <div className="form-inputs">
                                 <label htmlFor="Company" className="col-4">Username</label>
-                                <input type="text" name="Username" className="col-6" onChange={handleChange} />
+                                <input type="text" name="username" className="col-6" onChange={handleChange} />
                             </div>
                              <div className="form-inputs">
                                 <label htmlFor="Company" className="col-4">Password</label>
-                                <input type="text" name="Password" className="col-6" onChange={handleChange} />
+                                <input type="password" name="password" className="col-6" onChange={handleChange} />
                             </div>
                         </div>
                         <input type="submit" value="Sign Up" className="btn btn-primary col-5 draft-btn" />
