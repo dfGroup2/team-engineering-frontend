@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import EditPersonalInfoSection from '../Components/EditProfileComponents/EditPersonalInfoSection';
+import userEvent from '@testing-library/user-event';
 
 describe(`EditPersonalInfoSection unit test`, () => {
 
@@ -50,4 +51,64 @@ describe(`EditPersonalInfoSection unit test`, () => {
     test(`it should render an image`, () => {
         expect(screen.getByRole(/img/)).toBeInTheDocument();
     });
+
+    describe(`form manipulation tests`, () => {
+        test(`it should register changes to the name input field`, () => {
+            const element = screen.getByPlaceholderText(/name/i);
+
+            const testName = "testName";
+            userEvent.type(element, testName);
+
+            expect(element).toHaveDisplayValue(testName);
+
+        })
+
+        test(`it should register changes to the personal email input field`, () => {
+            const element = screen.getByPlaceholderText(/personal email/i);
+
+            const testPersonalEmail = "testPersonalEmail";
+            userEvent.type(element, testPersonalEmail);
+
+            expect(element).toHaveDisplayValue(testPersonalEmail);
+        })
+
+        test(`it should register changes to the df email input field`, () => {
+            const element = screen.getByPlaceholderText(/df email/i);
+
+            const testDfEmail = "testDfEmail";
+            userEvent.type(element, testDfEmail);
+
+            expect(element).toHaveDisplayValue(testDfEmail);
+        })
+
+        test(`it should register changes to the github input field`, () => {
+            const element = screen.getByPlaceholderText(/github account/i);
+
+            const testGithub = "testGithub";
+            userEvent.type(element, testGithub);
+
+            expect(element).toHaveDisplayValue(testGithub);
+        })
+
+        test(`it should register changes to the linkedin input field`, () => {
+            const element = screen.getByPlaceholderText(/linkedin account/i);
+
+            const testLinkedin = "testLinkedin";
+            userEvent.type(element, testLinkedin);
+
+            expect(element).toHaveDisplayValue(testLinkedin);
+        })
+
+        test(`it should register changes to the phone number input field`, () => {
+            const element = screen.getByPlaceholderText(/Phone number/i);
+
+            const testPhoneNumber = "123456789";
+            userEvent.type(element, testPhoneNumber);
+
+            expect(element).toHaveDisplayValue(testPhoneNumber);
+
+        })
+
+
+    })
 });

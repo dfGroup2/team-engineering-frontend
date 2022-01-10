@@ -1,6 +1,14 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import EditPersonalStory from '../Components/EditProfileComponents/EditPersonalStory';
+import PersonalStoryModal from '../Components/EditProfileComponents/PersonalStoryModal';
+jest.mock('../Components/EditProfileComponents/PersonalStoryModal', () => {
+	return function mockPersonalStoryModal() {
+		return <th>mockPersonalStoryModal</th>
+	}
+});
 
 describe(`Tests for EditPersonalStory`, () => {
 	beforeEach(() => {
@@ -25,4 +33,24 @@ describe(`Tests for EditPersonalStory`, () => {
 	});
 
 
+
+
 });
+
+describe(`Form Interaction tests`, () => {
+	test('a button brings up the modal', () => {
+		const { container } = render(
+			<Router>
+				<EditPersonalStory />
+			</Router>
+		);
+		const element = container.querySelector("button[name='addDegree']");
+		userEvent.click(element);
+		const modal = screen.getByText(/mockPersonalStoryModal/i);
+		expect(modal).toBeInTheDocument();
+
+
+	})
+});
+
+

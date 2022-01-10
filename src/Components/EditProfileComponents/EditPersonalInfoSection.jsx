@@ -1,9 +1,41 @@
 import React from 'react'
+import { useState } from 'react';
 import PropTypes from 'prop-types'
 import '../../css/EditPersonalInfoSection.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 
 const EditPersonalInfoSection = props => {
+    const [name, setName] = useState(``);
+    const [email, setEmail] = useState(``);
+    const [dfEmail, setDfEmail] = useState(``);
+    const [github, setGithub] = useState(``);
+    const [linkedin, setLinkedin] = useState(``);
+    const [phoneNumber, setPhoneNumber] = useState(``);
+
+    const handleNameChange = event => {
+        setName(event.target.value);
+    }
+
+    const handlePersonalEmailChange = event => {
+        setEmail(event.target.value);
+    }
+
+    const handleDfEmailChange = event => {
+        setDfEmail(event.target.value);
+    }
+
+    const handleGithubChange = event => {
+        setGithub(event.target.value);
+    }
+
+    const handleLinkedinChange = event => {
+        setLinkedin(event.target.value);
+    }
+
+    const handlePhoneNumberChange = event => {
+        setPhoneNumber(event.target.value);
+    }
+
     return (
         <div className="container card borderClass">
             <h3 className="col-3">Personal Information</h3>
@@ -13,27 +45,27 @@ const EditPersonalInfoSection = props => {
                         <div className="">
                             <div className="form-inputs">
                                 <label htmlFor="Name" className="col-6">Name</label>
-                                <input type="text" name="Name" className="col-6" />
+                                <input type="text" value={name} name="Name" className="col-6" placeholder="Name" onChange={handleNameChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="p-email" className="col-6">Personal Email</label>
-                                <input type="email" name="p-email" className="col-6" />
+                                <input type="email" value={email} name="p-email" className="col-6" placeholder="Personal Email" onChange={handlePersonalEmailChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="df-email" className="col-6">Digital Futures Email</label>
-                                <input type="email" name="df-email" className="col-6" />
+                                <input type="email" value={dfEmail} name="df-email" className="col-6" placeholder="DF Email" onChange={handleDfEmailChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="GitHub" className="col-6">GitHub</label>
-                                <input type="text" name="GitHub" className="col-6" />
+                                <input type="text" value={github} name="GitHub" className="col-6" placeholder="Github account" onChange={handleGithubChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="linkedIn" className="col-6">LinkedIn</label>
-                                <input type="text" name="linkedIn" className="col-6" />
+                                <input type="text" value={linkedin} name="linkedIn" className="col-6" placeholder="Linkedin account" onChange={handleLinkedinChange} />
                             </div>
                             <div className="form-inputs">
                                 <label htmlFor="phone" className="col-6">Phone</label>
-                                <input type="number" name="phone" className="col-6" />
+                                <input type="number" value={phoneNumber} name="phone" className="col-6" placeholder="Phone number" onChange={handlePhoneNumberChange} />
                             </div>
                         </div>
                     </form>
