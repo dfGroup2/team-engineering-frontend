@@ -19,8 +19,10 @@ const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
     const [nationality, setNationality] = useState(``);
     const [personality, setPersonality] = useState(``);
 
+    const [imagePath, setImagePath] = useState(``);
+
     let graduateUserProfile = {
-        firstName: firstName, lastName: lastName, personalEmail: email, DFEmail: dfEmail, github: github, linkedIn: linkedin, phoneNumber: phoneNumber, profilePicture: "", personalStory: "", gender: gender, nationality: nationality, personality: personality
+        firstName: firstName, lastName: lastName, personalEmail: email, DFEmail: dfEmail, github: github, linkedIn: linkedin, phoneNumber: phoneNumber, profilePicture: imagePath, personalStory: "", gender: gender, nationality: nationality, personality: personality
     };
 
     // add an if statement here to set the graduateUser variable to the prop data passed through?
@@ -75,6 +77,10 @@ const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
     const handlePersonalityClick = event => {
         document.getElementById("personality-dropdown").innerHTML = event.target.innerText;
         setPersonality(event.target.innerText);
+    }
+    const handleFileUpload = event => {
+      setImagePath(event.target.value);
+      console.log(JSON.stringify(graduateUserProfile));
     }
 
     return (
@@ -161,7 +167,7 @@ const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
                     <div>
                         <img src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg" alt="" className="thumbnail avatar-image" />
                     </div>
-                    <input type="file" name="uploadfile" id="img" hidden />
+                    <input type="file" multiple accept="image/*" name="uploadfile" id="img" hidden onChange={handleFileUpload}/>
                     <label htmlFor="img" className="img-label">Upload Image</label>
                 </div>
             </div>
