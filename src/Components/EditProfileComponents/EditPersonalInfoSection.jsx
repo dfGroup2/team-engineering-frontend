@@ -12,8 +12,15 @@ const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
     const [linkedin, setLinkedin] = useState(``);
     const [phoneNumber, setPhoneNumber] = useState(``);
 
+    const [firstName, setFirstName] = useState(``);
+    const [lastName, setLastName] = useState(``);
+
+    const [gender, setGender] = useState(``);
+    const [nationality, setNationality] = useState(``);
+    const [personality, setPersonality] = useState(``);
+
     let graduateUserProfile = {
-        firstName: "", lastName: "", personalEmail: "", DFEmail: "", github: "", linkedIn: "", phoneNumber: "", profilePicture: "", personalStory: "", gender: "", nationality: "", personality: ""
+        firstName: firstName, lastName: lastName, personalEmail: email, DFEmail: dfEmail, github: github, linkedIn: linkedin, phoneNumber: phoneNumber, profilePicture: "", personalStory: "", gender: gender, nationality: nationality, personality: personality
     };
 
     // add an if statement here to set the graduateUser variable to the prop data passed through?
@@ -23,37 +30,51 @@ const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
 
     const handleNameChange = event => {
         setName(event.target.value);
-        graduateUserProfile.firstName = event.target.value;
+
+        if (event.target.value.includes(" ")) {
+            if (event.target.value.length > 0) {
+                const nameArray = event.target.value.split(" ");
+                setFirstName(nameArray[0]);
+                if (nameArray.length > 1) {
+                    setLastName(nameArray[1]);
+                }
+            }
+        }
     }
 
     const handlePersonalEmailChange = event => {
         setEmail(event.target.value);
-        graduateUserProfile.personalEmail = event.target.value;
     }
 
     const handleDfEmailChange = event => {
         setDfEmail(event.target.value);
-        graduateUserProfile.DFEmail = event.target.value;
     }
 
     const handleGithubChange = event => {
         setGithub(event.target.value);
-        graduateUserProfile.github = event.target.value;
     }
 
     const handleLinkedinChange = event => {
         setLinkedin(event.target.value);
-        graduateUserProfile.linkedIn = event.target.value;
     }
 
     const handlePhoneNumberChange = event => {
         setPhoneNumber(event.target.value);
-        graduateUserProfile.phoneNumber = event.target.value;
     }
 
     const handleGenderClick = event => {
         document.getElementById("gender-dropdown").innerHTML = event.target.innerText;
-        graduateUserProfile.gender = event.target.innerText;
+        setGender(event.target.innerText);
+    }
+
+    const handleNationalityClick = event => {
+        document.getElementById("nationality-dropdown").innerHTML = event.target.innerText;
+        setNationality(event.target.innerText);
+    }
+
+    const handlePersonalityClick = event => {
+        document.getElementById("personality-dropdown").innerHTML = event.target.innerText;
+        setPersonality(event.target.innerText);
     }
 
     return (
@@ -93,11 +114,11 @@ const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
                 <div className="col-4 align-dropdowns">
                     <div>
                         <Dropdown>
-                            <Dropdown.Toggle variant="primary" id="dropdown-basic gender-dropdown">
+                            <Dropdown.Toggle variant="primary" id="gender-dropdown">
                                 Gender
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item onClick={handleGenderClick}>Male</Dropdown.Item>
+                                <Dropdown.Item onClick={handleGenderClick} value="Male">Male</Dropdown.Item>
                                 <Dropdown.Item onClick={handleGenderClick}>Female</Dropdown.Item>
                                 <Dropdown.Item onClick={handleGenderClick}>Non-binary</Dropdown.Item>
                                 <Dropdown.Item onClick={handleGenderClick}>Transgender</Dropdown.Item>
@@ -107,31 +128,31 @@ const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
                     </div><br />
                     <div>
                         <Dropdown>
-                            <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                            <Dropdown.Toggle variant="primary" id="nationality-dropdown">
                                 Nationality
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">United Kingdom of Great Britain and Northern Ireland</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">United States of America</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">France</Dropdown.Item>
-                                <Dropdown.Item href="#/action-4">Germany</Dropdown.Item>
-                                <Dropdown.Item href="#/action-5">Italy</Dropdown.Item>
-                                <Dropdown.Item href="#/action-6">Prefer not to say</Dropdown.Item>
+                                <Dropdown.Item onClick={handleNationalityClick}>Great Britain and Northern Ireland</Dropdown.Item>
+                                <Dropdown.Item onClick={handleNationalityClick}>United States of America</Dropdown.Item>
+                                <Dropdown.Item onClick={handleNationalityClick}>France</Dropdown.Item>
+                                <Dropdown.Item onClick={handleNationalityClick}>Germany</Dropdown.Item>
+                                <Dropdown.Item onClick={handleNationalityClick}>Italy</Dropdown.Item>
+                                <Dropdown.Item onClick={handleNationalityClick}>Prefer not to say</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div> <br />
                     <div>
                         <Dropdown>
-                            <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                            <Dropdown.Toggle variant="primary" id="personality-dropdown">
                                 Personality Type
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">INTJ - Architect</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">ENTJ - Commander</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">ENFJ - Protagonist</Dropdown.Item>
-                                <Dropdown.Item href="#/action-4">ESTJ - Executive</Dropdown.Item>
-                                <Dropdown.Item href="#/action-5">ISFP - Adventurer</Dropdown.Item>
-                                <Dropdown.Item href="#/action-6">Prefer not to say</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePersonalityClick}>INTJ - Architect</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePersonalityClick}>ENTJ - Commander</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePersonalityClick}>ENFJ - Protagonist</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePersonalityClick}>ESTJ - Executive</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePersonalityClick}>ISFP - Adventurer</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePersonalityClick}>Prefer not to say</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
