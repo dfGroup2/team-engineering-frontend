@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const ProfileInfo = ({ profileInfo }) => {
+    console.log(profileInfo);
     const { firstName, lastName, personalEmail, DFEmail, github, linkedIn, phoneNumber } = profileInfo;
-
+    //profileInfo is equivalent to the graduate profile schema 
     return (
         <div>
             <p>Name: {firstName} {lastName}</p>

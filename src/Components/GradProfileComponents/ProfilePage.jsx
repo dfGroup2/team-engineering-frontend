@@ -7,38 +7,40 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
 const { graduateTraining, personalInfo } = testGraduateUser;
-const token = ``;
 
 const ProfilePage = () => {
 
-  const [graduateProfileData, setGraduateProfileData] = useState({});
+  const [graduateUserData, setGraduateUserData] = useState({});
   const [getError, setGetError] = useState({ message: ``, count: 0 });
   const { _id } = useParams(); //this will not work without data in the database
-  const getGraduateProfileById = async () => {
-    const currentGraduateUserDataId = localStorage.getItem('graduateUserData');
-    const webToken = localStorage.getItem('accessToken');
+
+  const getGraduateUserDataById = async () => {
+    const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
+    const webToken = JSON.parse(localStorage.getItem('user')).accessToken;
     try {
+
       const res = await axios
         .get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, { headers: { "x-access-token": webToken } })
       return res.data.length ? res.data : new Error(`There was an error retrieving graduate data`);
     }
     catch (e) {
       setGetError({ message: `Data not available from the server: ${e.message}`, count: 0 });
-      return [];
+      return {};
     }
   }
 
   useEffect(() => {
     const getData = async () => {
-      setGraduateProfileData(await getGraduateProfileById());
+      setGraduateUserData(await getGraduateUserDataById());
     }
-    setTimeout(() => getData(), 3000);
+    //setTimeout(() => getData(), 3000);
+    getData();
   }, []);
 
   return (
     <div>
       <div className="parent-container">
-        <ProfileSection graduateUserData={testGraduateUser} />
+        <ProfileSection graduateUserData={graduateUserData} />
       </div>
       <div className="parent-container">
         <TrainingSection graduateTrainingData={graduateTraining} />

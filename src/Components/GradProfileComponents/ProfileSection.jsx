@@ -4,14 +4,15 @@ import ProfileInfo from './ProfileInfo'
 import { Link } from 'react-router-dom';
 import PersonalStory from './PersonalStory';
 import "../../css/ProfileSection.css";
-import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
-const { personalStory } = testGraduateUser;
+//import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
+//const { personalStory } = testGraduateUser;
 
 
 
 const ProfileSection = ({ graduateUserData }) => {
+	console.log(graduateUserData);
 	const { graduateProfile, personalStory } = graduateUserData;
-	
+
 
 	return (
 		<div className="container borderClass">
