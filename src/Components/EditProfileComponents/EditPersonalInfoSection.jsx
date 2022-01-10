@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 import '../../css/EditPersonalInfoSection.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 
-const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
+const EditPersonalInfoSection = (/*{ graduateProfile, graduateProfileEdited }*/) => {
+    // the graduateProfileEdited prop should be used to pass the data changed back up to the EditProfilePage component, this would then (hopefully) allow the data to be sent to the server when the SubmitDraft button is clicked.
     const [name, setName] = useState(``);
     const [email, setEmail] = useState(``);
     const [dfEmail, setDfEmail] = useState(``);
@@ -18,7 +19,6 @@ const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
     const [gender, setGender] = useState(``);
     const [nationality, setNationality] = useState(``);
     const [personality, setPersonality] = useState(``);
-
     const [imagePath, setImagePath] = useState(``);
 
     let graduateUserProfile = {
@@ -78,9 +78,9 @@ const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
         document.getElementById("personality-dropdown").innerHTML = event.target.innerText;
         setPersonality(event.target.innerText);
     }
+
     const handleFileUpload = event => {
-      setImagePath(event.target.value);
-     // document.getElementById("imageUpload").src=event.target.value;
+        setImagePath(event.target.value);
     }
 
     return (
@@ -165,9 +165,9 @@ const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
                 </div>
                 <div className="col-4">
                     <div>
-                        <img src={imagePath ? imagePath: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"} alt="" className="thumbnail avatar-image" />
+                        <img src={graduateUserProfile.profilePicture ? imagePath : "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"} alt="profilePicture" className="thumbnail avatar-image" />
                     </div>
-                    <input type="file" multiple accept="image/*" name="uploadfile" id="img" hidden onChange={handleFileUpload}/>
+                    <input type="file" accept="image/*" name="uploadfile" id="img" hidden onChange={handleFileUpload} />
                     <label htmlFor="img" className="img-label">Upload Image</label>
                 </div>
             </div>
