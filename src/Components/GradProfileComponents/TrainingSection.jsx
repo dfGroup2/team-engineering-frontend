@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TrainingModules from './TrainingModules'
 
-const TrainingSection = ({ graduateTrainingData }) => {
+const TrainingSection = ({ graduateUserData }) => {
 
-    const { cohort, learningPath, trainer, finishedDate, courseModules } = graduateTrainingData;
+    const { learningPath, cohort, trainer, finishedDate, courseModules } = graduateUserData.graduateTraining;
 
     return (
         <div className="container card borderClass">

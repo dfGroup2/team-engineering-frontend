@@ -51,7 +51,7 @@ const ProfilePage = () => {
             <ProfileSection graduateUserData={graduateUserData} />
           </div>
           <div className="parent-container">
-            <TrainingSection graduateTrainingData={graduateTraining} />
+            <TrainingSection graduateUserData={graduateUserData} />
           </div>
           <div className="parent-container">
             <InfoSection infoData={personalInfo} />
