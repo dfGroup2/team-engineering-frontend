@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import '../../css/EditProfilePage.css';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import EditPersonalInfoSection from './EditPersonalInfoSection';
@@ -10,8 +11,18 @@ const EditProfilePage = props => {
 
 	const graduateUserData = localStorage.getItem("user");
 
-	const submitData = () => { }
-	const resetData = () => { }
+	const [graduateUser, setGraduateUser] = useState(``); //we may need to set the default state to {}
+
+	if (graduateUserData) {
+		setGraduateUser(graduateUserData);
+	}
+
+	const submitData = () => {
+		//add an axios request to send a PUT(?) to update the data in the database
+	}
+	const resetData = () => {
+		// setGraduateUser(graduateUserData);
+	}
 
 	return (
 		<>
@@ -34,10 +45,10 @@ const EditProfilePage = props => {
 				</div>
 			</div>
 			<div className="parent-container">
-				<EditPersonalInfoSection />
+				<EditPersonalInfoSection /*graduateUserProfile={graduateUser.graduateProfile}*/ />
 			</div>
 			<div className="parent-container">
-				<EditPersonalStory />
+				<EditPersonalStory /*graduateUserPersonalStory={graduateUser.personalStory}*/ />
 			</div>
 		</>
 	)

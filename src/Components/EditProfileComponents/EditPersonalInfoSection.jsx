@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import '../../css/EditPersonalInfoSection.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 
-const EditPersonalInfoSection = props => {
+const EditPersonalInfoSection = (/*{ graduateProfile }*/) => {
     const [name, setName] = useState(``);
     const [email, setEmail] = useState(``);
     const [dfEmail, setDfEmail] = useState(``);
@@ -12,28 +12,48 @@ const EditPersonalInfoSection = props => {
     const [linkedin, setLinkedin] = useState(``);
     const [phoneNumber, setPhoneNumber] = useState(``);
 
+    let graduateUserProfile = {
+        firstName: "", lastName: "", personalEmail: "", DFEmail: "", github: "", linkedIn: "", phoneNumber: "", profilePicture: "", personalStory: "", gender: "", nationality: "", personality: ""
+    };
+
+    // add an if statement here to set the graduateUser variable to the prop data passed through?
+    // if (graduateProfile) {
+    //     graduateUserProfile = graduateProfile;
+    // }
+
     const handleNameChange = event => {
         setName(event.target.value);
+        graduateUserProfile.firstName = event.target.value;
     }
 
     const handlePersonalEmailChange = event => {
         setEmail(event.target.value);
+        graduateUserProfile.personalEmail = event.target.value;
     }
 
     const handleDfEmailChange = event => {
         setDfEmail(event.target.value);
+        graduateUserProfile.DFEmail = event.target.value;
     }
 
     const handleGithubChange = event => {
         setGithub(event.target.value);
+        graduateUserProfile.github = event.target.value;
     }
 
     const handleLinkedinChange = event => {
         setLinkedin(event.target.value);
+        graduateUserProfile.linkedIn = event.target.value;
     }
 
     const handlePhoneNumberChange = event => {
         setPhoneNumber(event.target.value);
+        graduateUserProfile.phoneNumber = event.target.value;
+    }
+
+    const handleGenderClick = event => {
+        document.getElementById("gender-dropdown").innerHTML = event.target.innerText;
+        graduateUserProfile.gender = event.target.innerText;
     }
 
     return (
@@ -73,15 +93,15 @@ const EditPersonalInfoSection = props => {
                 <div className="col-4 align-dropdowns">
                     <div>
                         <Dropdown>
-                            <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                            <Dropdown.Toggle variant="primary" id="dropdown-basic gender-dropdown">
                                 Gender
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Male</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Female</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Non-binary</Dropdown.Item>
-                                <Dropdown.Item href="#/action-4">Transgender</Dropdown.Item>
-                                <Dropdown.Item href="#/action-5">Prefer not to say</Dropdown.Item>
+                                <Dropdown.Item onClick={handleGenderClick}>Male</Dropdown.Item>
+                                <Dropdown.Item onClick={handleGenderClick}>Female</Dropdown.Item>
+                                <Dropdown.Item onClick={handleGenderClick}>Non-binary</Dropdown.Item>
+                                <Dropdown.Item onClick={handleGenderClick}>Transgender</Dropdown.Item>
+                                <Dropdown.Item onClick={handleGenderClick}>Prefer not to say</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div><br />
