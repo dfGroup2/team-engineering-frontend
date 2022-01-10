@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import '../../css/EditProfilePage.css';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
-
 const EditProfilePage = props => {
 	return (
 		<div className="container card borderClass">
