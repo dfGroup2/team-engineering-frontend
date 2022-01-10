@@ -26,6 +26,7 @@ const EditProfilePage = props => {
 
 	return (
 		<>
+		<div><Link to="/graduatePage">back</Link></div>
 			<div className="container card borderClass">
 				<div className="row profile-padding">
 					<h3 className="col-2">Your profile</h3>
