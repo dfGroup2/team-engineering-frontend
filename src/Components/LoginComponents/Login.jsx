@@ -27,15 +27,21 @@ const Login = () => {
 
         const { username, password } = user;
         if (username && password) {
-            const res = await axios.post(`${process.env.REACT_APP_DFXTRAURL}/api/auth/signin`, { username, password })
-            localStorage.setItem('user', JSON.stringify(res.data));
-            setUser({ username: '', password: '' });
-            if (localStorage.getItem("user")) {
-                navigate(`/graduatePage`);
+            try {
+
+                const res = await axios.post(`${process.env.REACT_APP_DFXTRAURL}/api/auth/signin`, { username, password })
+                localStorage.setItem('user', JSON.stringify(res.data));
+                setUser({ username: '', password: '' });
+                if (localStorage.getItem("user")) {
+                    navigate(`/graduatePage`);
+                }
+                else {
+                    console.log(res);
+                    setMessage(res.message);
+                }
             }
-            else {
-                console.log(res);
-                setMessage(res.message);
+            catch (error) {
+                console.log(error);
             }
         }
     }
