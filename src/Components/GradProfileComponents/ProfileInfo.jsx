@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const ProfileInfo = ({ profileInfo }) => {
-    console.log(profileInfo);
+    //graduateUserData successfully passed as prop
     const { firstName, lastName, personalEmail, DFEmail, github, linkedIn, phoneNumber } = profileInfo;
     //profileInfo is equivalent to the graduate profile schema 
     return (

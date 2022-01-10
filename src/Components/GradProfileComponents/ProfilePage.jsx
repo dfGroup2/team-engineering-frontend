@@ -21,7 +21,8 @@ const ProfilePage = () => {
 
       const res = await axios
         .get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, { headers: { "x-access-token": webToken } })
-      return res.data.length ? res.data : new Error(`There was an error retrieving graduate data`);
+      return objectIsEmpty(res.data) ? res.data : new Error(`There was an error retrieving graduate data`);
+
     }
     catch (e) {
       setGetError({ message: `Data not available from the server: ${e.message}`, count: 0 });
@@ -37,19 +38,28 @@ const ProfilePage = () => {
     getData();
   }, []);
 
+  const objectIsEmpty = userData => {
+    return Object.keys(userData).length > 0
+  }
+
   return (
-    <div>
-      <div className="parent-container">
-        <ProfileSection graduateUserData={graduateUserData} />
-      </div>
-      <div className="parent-container">
-        <TrainingSection graduateTrainingData={graduateTraining} />
-      </div>
-      <div className="parent-container">
-        <InfoSection infoData={personalInfo} />
-      </div >
-      <br /><br />
-    </div>
+    <>
+      {
+        objectIsEmpty(graduateUserData) &&
+        <div>
+          <div className="parent-container">
+            <ProfileSection graduateUserData={graduateUserData} />
+          </div>
+          <div className="parent-container">
+            <TrainingSection graduateTrainingData={graduateTraining} />
+          </div>
+          <div className="parent-container">
+            <InfoSection infoData={personalInfo} />
+          </div >
+          <br /><br />
+        </div>
+      }
+    </>
   )
 }
 

@@ -10,7 +10,7 @@ import "../../css/ProfileSection.css";
 
 
 const ProfileSection = ({ graduateUserData }) => {
-	console.log(graduateUserData);
+	//graduateUserData successfully passed as prop
 	const { graduateProfile, personalStory } = graduateUserData;
 
 
