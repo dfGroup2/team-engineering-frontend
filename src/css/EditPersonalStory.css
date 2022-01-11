@@ -2,15 +2,19 @@ p {
   font-weight: bold;
 }
 
-.profile-padding{
+.profile-padding {
   margin-top: 10px;
 }
 
-.table-heading{
+.table-heading {
   background-color: rgb(202, 202, 202);
 }
 
-.table-title{
+.table-title {
   text-align: left;
   font-size: 21px;
+}
+.add-button {
+  float: left;
+  margin-left: 20px;
 }
