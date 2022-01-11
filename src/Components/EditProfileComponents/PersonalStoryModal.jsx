@@ -13,6 +13,17 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
     const [from, setFrom] = useState('');
     const [to, setTo] = useState('');
     const [description, setDescription] = useState('');
+    const [school, setSchool] = useState('');
+    const [examType, setExamType] = useState('');
+    const [subject, setSubject] = useState('');
+    const [year, setYear] = useState('');
+    const [type, setType] = useState('');
+    const [employer, setEmployer] = useState('');
+    const [position, setPosition] = useState('');
+    const [issuer, setIssuer] = useState('');
+    const [award, setAward] = useState('');
+    const [title, setTitle] = useState('');
+    const [url, setURL] = useState('');
     const handleUniversityChange = changeEvent => {
         setUniversity(changeEvent.target.value)
     }
@@ -42,6 +53,30 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
     }
     const handleSubjectChange = changeEvent => {
         setSubject(changeEvent.target.value)
+    }
+     const handleYearChange = changeEvent => {
+        setYear(changeEvent.target.value)
+    }
+     const handleTypeChange = changeEvent => {
+        setType(changeEvent.target.value)
+    }
+     const handleEmployerChange = changeEvent => {
+        setEmployer(changeEvent.target.value)
+    }
+     const handlePositionChange = changeEvent => {
+        setPosition(changeEvent.target.value)
+    }
+     const handleIssuerChange = changeEvent => {
+        setIssuer(changeEvent.target.value)
+    }
+     const handleAwardChange = changeEvent => {
+        setAward(changeEvent.target.value)
+    }
+     const handleTitleChange = changeEvent => {
+        setTitle(changeEvent.target.value)
+    }
+     const handleURLChange = changeEvent => {
+        setURL(changeEvent.target.value)
     }
     // const handleInputChange = changeEvent => {
     //     const inputFieldName = changeEvent.target.name
