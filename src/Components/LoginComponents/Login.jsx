@@ -8,6 +8,7 @@ import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import ValidationServiceHelpers from '../../services/validation.serviceHelpers';
 
+
 const Login = () => {
 
     const [user, setUser] = useState({ username: '', password: '' });
@@ -69,7 +70,7 @@ const Login = () => {
                     <p>Don't have an account? <Link to="/SignUp">Sign up</Link></p>
 
                 </div>
-                <div className="col-8" ><img src={dfxbackground} className="dfximage"></img></div>
+                <div className="col-8 image-container" ><img src={dfxbackground} className="dfximage"></img></div>
             </div>
         </div >
     )
