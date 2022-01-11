@@ -24,6 +24,8 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
     const [award, setAward] = useState('');
     const [title, setTitle] = useState('');
     const [url, setURL] = useState('');
+
+
     const handleUniversityChange = changeEvent => {
         setUniversity(changeEvent.target.value)
     }
@@ -101,31 +103,31 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
         return (<form action="">
                                 <div className="">
                                     <div className="form-inputs">
-                                        <label htmlFor="Name" className="col-6">University</label>
+                                        <label htmlFor="university" className="col-6">University</label>
                                         <input type="text" value={university} name="university" className="col-6" onChange={handleUniversityChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="p-email" className="col-6">DegreeSubject</label>
-                                        <input type="email" value={degreeSubject} name="degreeSubject" className="col-6" onChange={handleDegreeSubjectChange} />
+                                        <label htmlFor="degreeSubject" className="col-6">DegreeSubject</label>
+                                        <input type="text" value={degreeSubject} name="degreeSubject" className="col-6" onChange={handleDegreeSubjectChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="df-email" className="col-6">Degree Level</label>
-                                        <input type="email" value={degreeLevel} name="degreeLevel" className="col-6" p onChange={handleDegreeLevelChange} />
+                                        <label htmlFor="degreeLevel" className="col-6">Degree Level</label>
+                                        <input type="text" value={degreeLevel} name="degreeLevel" className="col-6" p onChange={handleDegreeLevelChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="GitHub" className="col-6">Grade</label>
+                                        <label htmlFor="grade" className="col-6">Grade</label>
                                         <input type="text" value={grade} name="grade" className="col-6" onChange={handleGradeChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="linkedIn" className="col-6">From</label>
-                                        <input type="text" value={from} name="from" className="col-6" onChange={handleFromChange} />
+                                        <label htmlFor="from" className="col-6">From</label>
+                                        <input type="date" value={from} name="from" className="col-6" onChange={handleFromChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="phone" className="col-6">To</label>
-                                        <input type="number" value={to} name="to" className="col-6" onChange={handleToChange} />
+                                        <label htmlFor="to" className="col-6">To</label>
+                                        <input type="date" value={to} name="to" className="col-6" onChange={handleToChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="phone" className="col-6">Description</label>
+                                        <label htmlFor="description" className="col-6">Description</label>
                                         <input type="text" value={description} name="description" className="col-6" onChange={handleDescriptionChange} />
                                      </div>
                                 </div>
@@ -136,27 +138,27 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
         return (<form action="">
                                 <div className="">
                                     <div className="form-inputs">
-                                        <label htmlFor="Name" className="col-6">School</label>
+                                        <label htmlFor="school" className="col-6">School</label>
                                         <input type="text" value={school} name="school" className="col-6" onChange={handleSchoolChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="p-email" className="col-6">Exam Type</label>
+                                        <label htmlFor="examType" className="col-6">Exam Type</label>
                                         <input type="text" value={examType} name="examType" className="col-6" onChange={handleExamTypeChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="df-email" className="col-6">Subject</label>
+                                        <label htmlFor="subject" className="col-6">Subject</label>
                                         <input type="text" value={subject} name="subject" className="col-6" p onChange={handleSubjectChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="GitHub" className="col-6">Grade</label>
+                                        <label htmlFor="grade" className="col-6">Grade</label>
                                         <input type="text" value={grade} name="grade" className="col-6" onChange={handleGradeChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="phone" className="col-6">Year</label>
+                                        <label htmlFor="year" className="col-6">Year</label>
                                         <input type="date" value={year} name="year" className="col-6" onChange={handleYearChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="phone" className="col-6">Description</label>
+                                        <label htmlFor="description" className="col-6">Description</label>
                                         <input type="text" value={description} name="description" className="col-6" onChange={handleDescriptionChange} />
                                      </div>
                                 </div>
@@ -167,27 +169,27 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
         return(<form action="">
                                 <div className="">
                                     <div className="form-inputs">
-                                        <label htmlFor="Name" className="col-6">Type</label>
+                                        <label htmlFor="type" className="col-6">Type</label>
                                         <input type="text" value={type} name="type" className="col-6" onChange={handleTypeChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="p-email" className="col-6">Employer or other</label>
-                                        <input type="email" value={employer} name="employer" className="col-6" onChange={handleEmployerChange} />
+                                        <label htmlFor="employer" className="col-6">Employer or other</label>
+                                        <input type="text" value={employer} name="employer" className="col-6" onChange={handleEmployerChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="df-email" className="col-6">Position</label>
-                                        <input type="email" value={position} name="position" className="col-6" p onChange={handlePositionChange} />
+                                        <label htmlFor="position" className="col-6">Position</label>
+                                        <input type="text" value={position} name="position" className="col-6" p onChange={handlePositionChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="linkedIn" className="col-6">From</label>
-                                        <input type="text" value={from} name="from" className="col-6" onChange={handleFromChange} />
+                                        <label htmlFor="from" className="col-6">From</label>
+                                        <input type="date" value={from} name="from" className="col-6" onChange={handleFromChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="phone" className="col-6">To</label>
-                                        <input type="number" value={to} name="to" className="col-6" onChange={handleToChange} />
+                                        <label htmlFor="to" className="col-6">To</label>
+                                        <input type="date" value={to} name="to" className="col-6" onChange={handleToChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="phone" className="col-6">Description</label>
+                                        <label htmlFor="description" className="col-6">Description</label>
                                         <input type="text" value={description} name="description" className="col-6" onChange={handleDescriptionChange} />
                                      </div>
                                 </div>
@@ -198,27 +200,27 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
         return(<form action="">
                                 <div className="">
                                     <div className="form-inputs">
-                                        <label htmlFor="Name" className="col-6">Type</label>
+                                        <label htmlFor="type" className="col-6">Type</label>
                                         <input type="text" value={type} name="type" className="col-6" onChange={handleTypeChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="p-email" className="col-6">Issuer</label>
-                                        <input type="email" value={issuer} name="issuer" className="col-6" onChange={handleIssuerChange} />
+                                        <label htmlFor="issuer" className="col-6">Issuer</label>
+                                        <input type="text" value={issuer} name="issuer" className="col-6" onChange={handleIssuerChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="df-email" className="col-6">Award</label>
-                                        <input type="email" value={award} name="award" className="col-6" p onChange={handleAwardChange} />
+                                        <label htmlFor="award" className="col-6">Award</label>
+                                        <input type="text" value={award} name="award" className="col-6" p onChange={handleAwardChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="GitHub" className="col-6">Grade</label>
+                                        <label htmlFor="grade" className="col-6">Grade</label>
                                         <input type="text" value={grade} name="grade" className="col-6" onChange={handleGradeChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="linkedIn" className="col-6">Year</label>
+                                        <label htmlFor="year" className="col-6">Year</label>
                                         <input type="date" value={year} name="year" className="col-6" onChange={handleYearChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="phone" className="col-6">Description</label>
+                                        <label htmlFor="description" className="col-6">Description</label>
                                         <input type="text" value={description} name="description" className="col-6" onChange={handleDescriptionChange} />
                                      </div>
                                 </div>
@@ -229,19 +231,19 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
         return(<form action="">
                                 <div className="">
                                     <div className="form-inputs">
-                                        <label htmlFor="Name" className="col-6">Title</label>
+                                        <label htmlFor="title" className="col-6">Title</label>
                                         <input type="text" value={title} name="title" className="col-6" onChange={handleTitleChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="p-email" className="col-6">URL</label>
-                                        <input type="email" value={url} name="url" className="col-6" onChange={handleURLChange} />
+                                        <label htmlFor="url" className="col-6">URL</label>
+                                        <input type="url" value={url} name="url" className="col-6" onChange={handleURLChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="df-email" className="col-6">Year</label>
-                                        <input type="year" value={year} name="year" className="col-6" p onChange={handleYearChange} />
+                                        <label htmlFor="year" className="col-6">Year</label>
+                                        <input type="date" value={year} name="year" className="col-6" p onChange={handleYearChange} />
                                     </div>
                                     <div className="form-inputs">
-                                        <label htmlFor="phone" className="col-6">Description</label>
+                                        <label htmlFor="description" className="col-6">Description</label>
                                         <input type="text" value={description} name="description" className="col-6" onChange={handleDescriptionChange} />
                                      </div>
                                 </div>
