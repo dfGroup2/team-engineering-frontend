@@ -261,7 +261,74 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 }
 
 EditPersonalStory.propTypes = {
-
-}
+	graduateUserPersonalStory: PropTypes.shape({
+		degree: PropTypes.arrayOf(
+			PropTypes.shape({
+				university: PropTypes.string,
+				subject: PropTypes.string,
+				level: PropTypes.string,
+				grade: PropTypes.string,
+				date: PropTypes.shape({
+					from: PropTypes.instanceOf(Date),
+					to: PropTypes.instanceOf(Date)
+				}),
+				weight: PropTypes.string,
+				priority: PropTypes.number,
+				description: PropTypes.string
+			})
+		),
+		schoolQualifications: PropTypes.arrayOf(
+			PropTypes.shape({
+				school: PropTypes.string,
+				examType: PropTypes.string,
+				subject: PropTypes.string,
+				grade: PropTypes.string,
+				year: PropTypes.shape({
+					from: PropTypes.instanceOf(Date),
+					to: PropTypes.instanceOf(Date)
+				}),
+				weight: PropTypes.string,
+				priority: PropTypes.number,
+				description: PropTypes.string
+			})
+		),
+		workExperience: PropTypes.arrayOf(
+			PropTypes.shape({
+				type: PropTypes.string,
+				employerOrOtherOrganisation: PropTypes.string,
+				position: PropTypes.string,
+				date: PropTypes.shape({
+					from: PropTypes.instanceOf(Date),
+					to: PropTypes.instanceOf(Date)
+				}),
+				weight: PropTypes.string,
+				priority: PropTypes.number,
+				description: PropTypes.string
+			})
+		),
+		certificatesAndAwards: PropTypes.arrayOf(
+			PropTypes.shape({
+				type: PropTypes.string,
+				issuer: PropTypes.string,
+				award: PropTypes.string,
+				grade: PropTypes.string,
+				year: PropTypes.instanceOf(Date),
+				weight: PropTypes.string,
+				priority: PropTypes.number,
+				description: PropTypes.string
+			})
+		),
+		portfolio: PropTypes.arrayOf(
+			PropTypes.shape({
+				title: PropTypes.string,
+				url: PropTypes.string,
+				year: PropTypes.instanceOf(Date),
+				weight: PropTypes.string,
+				priority: PropTypes.number,
+				description: PropTypes.string
+			})
+		)
+	})
+};
 
 export default EditPersonalStory
