@@ -67,7 +67,7 @@ const EditPersonalStory = props => {
 							<td>L</td>
 							<td>10</td>
 							<td>majored in metallurgy</td>
-							<button>Edit</button>
+							<button name="editDegree" onClick={addDegree} className="edit-button">Edit</button>
 							<button>Delete</button>
 						</tr>
 					</tbody>
@@ -100,7 +100,7 @@ const EditPersonalStory = props => {
 							<td>M</td>
 							<td>5</td>
 							<td></td>
-							<button>Edit</button>
+							<button name="editSchoolQuals" onClick={addSchoolQuals} className="edit-button">Edit</button>
 							<button>Delete</button>
 						</tr>
 					</tbody>
@@ -133,7 +133,7 @@ const EditPersonalStory = props => {
 							<td>m</td>
 							<td>0</td>
 							<td></td>
-							<button>Edit</button>
+							<button name="editWorkExperience" onClick={addWorkExperience} className="edit-button">Edit</button>
 							<button>Delete</button>
 						</tr>
 						<tr>
@@ -145,7 +145,7 @@ const EditPersonalStory = props => {
 							<td>l</td>
 							<td>6</td>
 							<td>public speaking is one of my skills</td>
-							<button>Edit</button>
+							<button name="editWorkExperience" onClick={addWorkExperience} className="edit-button">Edit</button>
 							<button>Delete</button>
 						</tr>
 
@@ -179,7 +179,7 @@ const EditPersonalStory = props => {
 							<td>l</td>
 							<td>7</td>
 							<td></td>
-							<button>Edit</button>
+							<button name="editCertificate" onClick={addCertificates} className="edit-button">Edit</button>
 							<button>Delete</button>
 						</tr>
 						<tr>
@@ -191,7 +191,7 @@ const EditPersonalStory = props => {
 							<td>M</td>
 							<td>4</td>
 							<td></td>
-							<button>Edit</button>
+							<button name="editCertificates" onClick={addCertificates} className="edit-button">Edit</button>
 							<button>Delete</button>
 						</tr>
 					</tbody>
@@ -220,7 +220,7 @@ const EditPersonalStory = props => {
 							<td>L</td>
 							<td>9</td>
 							<td>A motivational talk I delivered on how to identify opportunities</td>
-							<button>Edit</button>
+							<button name="editPortfolio" onClick={addPortfolio} className="edit-button">Edit</button>
 							<button>Delete</button>
 						</tr>
 					</tbody>
