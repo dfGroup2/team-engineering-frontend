@@ -50,7 +50,14 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         }
         if (data?.workExperience) {
             setType(data.workExperience.type)
-            
+            setEmployer(data.workExperience.employer)
+            setPosition(data.workExperience.position)
+            setFrom(data.workExperience.from)
+            setTo(data.workExperience.to)
+            setWeight(data.workExperience.weight)
+            setPriority(data.workExperience.priority)
+            setDescription(data.workExperience.description)
+
         }
         if (data?.certificates) {
             setType(data.certificates.type)
