@@ -71,6 +71,12 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         }
         if (data?.portfolio) {
             setTitle(data.portfolio.title)
+            setURL(data.portfolio.url)
+            setYear(data.porfolio.year)
+            setWeight(data.portfolio.weight)
+            setPriority(data.porfolio.priority)
+            setDescription(data.portfolio.description)
+
         }
         
     }, [data])
