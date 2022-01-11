@@ -14,17 +14,22 @@ const EditPersonalStory = props => {
 	const [data, setData] = useState('');
 
 
-	const degree = {
-		university: "Southampton University", degreeSubject: "Chemistry", degreeLevel: "Bachelors",
-		grade: "2:1", from: "2018/09/01", to: "2021/07/01", weight: "L", priority: "10", description: "majored in science"
-	};
+	const editData = {
+		degree: {
+			university: "Southampton University", degreeSubject: "Chemistry", degreeLevel: "Bachelors",
+			grade: "2:1", from: "2018/09/01", to: "2021/07/01", weight: "L", priority: "10", description: "majored in science"
+		},
+		schoolQuals: {
+			
+		}
+	}
 
 	const addDegree = clickEvent => {
 		clickEvent.preventDefault()
 		if (clickEvent.target.name === "addDegree") {
 			setShowDegreeModal(true);
 		} else {
-			setData(degree)
+			setData(editData)
 			setShowDegreeModal(true);
 		}
 		

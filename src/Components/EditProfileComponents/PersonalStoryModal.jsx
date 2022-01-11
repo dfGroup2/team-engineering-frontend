@@ -27,8 +27,14 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const [url, setURL] = useState('');
 
     useEffect(() => {
-        if (data) {
-            setUniversity(data.university)
+        if (data?.degree) {
+            setUniversity(data.degree.university)
+        }
+        if (data?.schoolQuals) {
+            setSchool(data.schoolQuals.school)
+        }
+        if (data?.workExperience) {
+            setType(data.workExperience.type)
         }
     }, [data])
 
