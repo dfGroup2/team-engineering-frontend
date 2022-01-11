@@ -3,33 +3,40 @@ import PropTypes from 'prop-types'
 import '../../css/TrainingSection.css';
 
 const TrainingModules = ({ trainingModules }) => {
-    const trainingModuleItemPairs = { ...trainingModules };
 
-    const createTrainingItem = trainingModuleItemPairs => {
-        const moduleItemTitleArray = Object.keys(trainingModuleItemPairs)
-        return moduleItemTitleArray.map((currentItemTitle, index) => {
-            return <p key={index}> {currentItemTitle}: {trainingModules[currentItemTitle]}</p >
-
+    const createTrainingItem = moduleArray => {
+        const listItemArrayToDisplay = moduleArray.map((currentModuleItem, index) => {
+            const title = currentModuleItem[0];
+            const subTitle = currentModuleItem[1];
+            const subTitleScore = currentModuleItem[2];
+            return (<li key={index}>
+                {title}: {subTitle}: {subTitleScore}
+            </li >)
         })
+        return listItemArrayToDisplay;
     }
-    const { fundamentals, softwareDesign, softwareDevelopment1, softwareDevelopment2, teamEngineering, professionalSkills } = trainingModules;
+
+    const formatTrainingModuleData = nestedObject => {
+        const formattedModuleArray = [];
+        for (const [key, value] of Object.entries(nestedObject)) {
+            //key denotes the different training modules
+            //value denotes an object assigned to key
+            for (const [nestedKey, nestedValue] of Object.entries(value)) {
+                //nestedKey denotes module items
+                //nestedValue denotes module item scores or grades
+                formattedModuleArray.push([key, nestedKey, nestedValue])
+            }
+        }
+        return formattedModuleArray;
+    }
 
     return (
         <div className="row card borderClass">
             <div className="col-8 training-div">
-                {createTrainingItem(trainingModuleItemPairs)}
-                {/* <p>Fundamentals, Javascript Programming: {fundamentals.javascriptProgramming}</p>
-                <p>Software Design, Bank Challenge: {softwareDesign.bankChallenge}</p>
-                <p>Software Design, News Summary Challenge: {softwareDesign.newsSummaryChallenge}</p>
-                <p>Software Design, Rock Paper Scissors Challenge: {softwareDesign.rockPaperScissorsChallenge}</p>
-                <p>Software Design, Chitter Challenge: {softwareDesign.chitterChallenge}</p>
-                <p>Software Design, Test Driven Development: {softwareDesign.testDrivenDevelopment}</p>
-                <p>Software Development 1, Third Party Integration: {softwareDevelopment1.thirdPartyIntegration}</p>
-                <p>Software Development 2, Business Services: {softwareDevelopment2.businessServices}</p>
-                <p>Software Development 2, Full Stack Application: {softwareDevelopment2.fullStackApplication}</p>
-                <p>Team Engineering, Java Challenge: {teamEngineering.javaChallenge}</p>
-                <p>Team Engineering, Agile Team Collaboration: {teamEngineering.agileTeamCollaboration}</p>
-                <p>Professional Skills, Interview Challenges: {professionalSkills.interviewChallenges}</p> */}
+                <h3>Training Modules</h3>
+                <ul>
+                    {createTrainingItem(formatTrainingModuleData(trainingModules))}
+                </ul>
             </div>
         </div>
     )
