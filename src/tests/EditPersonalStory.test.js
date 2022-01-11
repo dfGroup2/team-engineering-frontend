@@ -46,8 +46,8 @@ describe(`Form Interaction tests`, () => {
 		);
 		const element = container.querySelector("button[name='addDegree']");
 		userEvent.click(element);
-		const modal = screen.getByText(/mockPersonalStoryModal/i);
-		expect(modal).toBeInTheDocument();
+		const modal = screen.getAllByText(/mockPersonalStoryModal/i);
+		expect(modal[0]).toBeInTheDocument();
 
 
 	})
