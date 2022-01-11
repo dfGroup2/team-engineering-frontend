@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Dropdown from 'react-bootstrap/Dropdown';
 import Modal from 'react-bootstrap/Modal';
@@ -7,7 +7,7 @@ import "../../css/PersonalStoryModal.css"
 
 
 const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, data }) => {
-    const [university, setUniversity] = useState(data?.university ?data.university:'');
+    const [university, setUniversity] = useState('');
     const [degreeSubject, setDegreeSubject] = useState('');
     const [degreeLevel, setDegreeLevel] = useState('');
     const [grade, setGrade] = useState('');
@@ -25,6 +25,13 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const [award, setAward] = useState('');
     const [title, setTitle] = useState('');
     const [url, setURL] = useState('');
+
+    useEffect(() => {
+        if (data) {
+            setUniversity(data.university)
+        }
+    }, [data])
+
 
     console.log(JSON.stringify(data));
     const handleUniversityChange = changeEvent => {
@@ -96,7 +103,27 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     //     })
 
     // }
-    const handleClose = () => setShowModal(false);
+    const handleClose = () => {
+        setShowModal(false)
+        setUniversity('')
+        setDegreeSubject('')
+        setDegreeLevel('')
+        setGrade('')
+        setFrom('')
+        setTo('')
+        setDescription('')
+        setSchool('')
+        setExamType('')
+        setSubject('')
+        setYear('')
+        setType('')
+        setEmployer('')
+        setPosition('')
+        setIssuer('')
+        setAward('')
+        setTitle('')
+        setURL('')
+    };
 
     const handleSubmit = () => {
 
