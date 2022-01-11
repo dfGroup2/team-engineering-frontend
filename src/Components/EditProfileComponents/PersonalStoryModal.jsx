@@ -50,16 +50,20 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
     // }
     const handleClose = () => setShowModal(false);
 
+    const handleSubmit = () => {
+
+    }
+
     return (
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header >
-                <Modal.Title>degree</Modal.Title>
+                <Modal.Title>Degree</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div className="container card borderClass">
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-8">
                             <form action="">
                                 <div className="">
                                     <div className="form-inputs">
@@ -86,21 +90,25 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
                                         <label htmlFor="phone" className="col-6">To</label>
                                         <input type="number" value={to} name="to" className="col-6" onChange={handleToChange} />
                                     </div>
+                                    <div className="form-inputs">
+                                        <label htmlFor="phone" className="col-6">Description</label>
+                                        <input type="text" value={description} name="description" className="col-6" onChange={handleDescriptionChange} />
+                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div className="col-4 align-dropdowns">
+                            <br />
+                            <br/>
                             <div>
                                 <Dropdown>
                                     <Dropdown.Toggle variant="primary" id="dropdown-basic">
                                         Weight
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">Male</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Female</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Non-binary</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-4">Transgender</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-5">Prefer not to say</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-1">S</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-2">M</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">L</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </div><br />
@@ -110,25 +118,28 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
                                         Priority
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">United Kingdom of Great Britain and Northern Ireland</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">United States of America</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">France</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-4">Germany</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-5">Italy</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-6">Prefer not to say</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-1">1</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-2">2</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">3</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-4">4</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-5">5</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-6">6</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-6">7</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-6">8</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-6">9</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-6">10</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </div> <br />
-                            <div className="form-inputs">
-                                <label htmlFor="phone" className="col-6">Description</label>
-                                <input type="text" value={description} name="description" className="col-6" onChange={handleDescriptionChange} />
-                            </div>
                         </div>
 
                     </div>
                 </div>
             </Modal.Body>
             <Modal.Footer>
+                 <Button variant="danger" className="btn-primary" onClick={handleSubmit}>
+                    Submit
+                </Button>
                 <Button variant="danger" onClick={handleClose}>
                     Close
                 </Button>
