@@ -29,13 +29,29 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     useEffect(() => {
         if (data?.degree) {
             setUniversity(data.degree.university)
+            setDegreeSubject(data.degree.subject)
+            setDegreeLevel(data.degree.level)
+            setGrade(data.degree.grade)
+            setFrom(data.degree.from)
+            setTo(data.degree.to)
+            setWeight(data.degree.weight)
+            setPriority(data.degree.priority)
+            setDescription(data.degree.description)
         }
         if (data?.schoolQuals) {
             setSchool(data.schoolQuals.school)
+            
         }
         if (data?.workExperience) {
             setType(data.workExperience.type)
         }
+        if (data?.certificates) {
+            setType(data.certificates.type)
+        }
+        if (data?.portfolio) {
+            setTitle(data.portfolio.title)
+        }
+        
     }, [data])
 
 
