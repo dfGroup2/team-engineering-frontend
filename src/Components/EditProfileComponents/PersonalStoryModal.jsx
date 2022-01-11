@@ -261,11 +261,11 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType }
                 <div className="container card borderClass">
                     <div className="row">
                         <div className="col-8">
-                            {storyType === 'degree' && renderDegrees} 
-                            {storyType === 'school' && renderSchoolQuals}
-                            {storyType === 'work experience' && renderWorkExperience} 
-                            {storyType === 'certificates' && renderCertificates}
-                            {storyType === 'portfolio' && renderPortfolio} 
+                            {storyType === 'degree' && renderDegrees()} 
+                            {storyType === 'school' && renderSchoolQuals()}
+                            {storyType === 'work experience' && renderWorkExperience()} 
+                            {storyType === 'certificates' && renderCertificates()}
+                            {storyType === 'portfolio' && renderPortfolio()} 
                         </div>
                         <div className="col-4 align-dropdowns">
                             <br />
