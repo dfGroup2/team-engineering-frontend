@@ -25,6 +25,9 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const [award, setAward] = useState('');
     const [title, setTitle] = useState('');
     const [url, setURL] = useState('');
+    const [weight, setWeight] = useState('');
+    const [priority, setPriority] = useState('');
+
 
     useEffect(() => {
         if (data?.degree) {
