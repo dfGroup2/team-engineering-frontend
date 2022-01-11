@@ -4,31 +4,26 @@ import PropTypes from 'prop-types'
 import '../../css/EditPersonalInfoSection.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 
-const EditPersonalInfoSection = (/*{ graduateProfile, graduateProfileEdited }*/) => {
+const EditPersonalInfoSection = ({ graduateProfile } /*, graduateProfileEdited }*/) => {
     // the graduateProfileEdited prop should be used to pass the data changed back up to the EditProfilePage component, this would then (hopefully) allow the data to be sent to the server when the SubmitDraft button is clicked.
-    const [name, setName] = useState(``);
-    const [email, setEmail] = useState(``);
-    const [dfEmail, setDfEmail] = useState(``);
-    const [github, setGithub] = useState(``);
-    const [linkedin, setLinkedin] = useState(``);
-    const [phoneNumber, setPhoneNumber] = useState(``);
+    const [name, setName] = useState((graduateProfile.firstName + " " + graduateProfile.lastName));
+    const [email, setEmail] = useState(graduateProfile.personalEmail);
+    const [dfEmail, setDfEmail] = useState(graduateProfile.DFEmail);
+    const [github, setGithub] = useState(graduateProfile.github);
+    const [linkedin, setLinkedin] = useState(graduateProfile.linkedIn);
+    const [phoneNumber, setPhoneNumber] = useState(graduateProfile.phoneNumber);
 
-    const [firstName, setFirstName] = useState(``);
-    const [lastName, setLastName] = useState(``);
+    const [firstName, setFirstName] = useState(graduateProfile.firstName);
+    const [lastName, setLastName] = useState(graduateProfile.lastName);
 
-    const [gender, setGender] = useState(``);
-    const [nationality, setNationality] = useState(``);
-    const [personality, setPersonality] = useState(``);
-    const [imagePath, setImagePath] = useState(``);
+    const [gender, setGender] = useState(graduateProfile.gender);
+    const [nationality, setNationality] = useState(graduateProfile.nationality);
+    const [personality, setPersonality] = useState(graduateProfile.personality);
+    const [imagePath, setImagePath] = useState(graduateProfile.profilePicture);
 
     let graduateUserProfile = {
         firstName: firstName, lastName: lastName, personalEmail: email, DFEmail: dfEmail, github: github, linkedIn: linkedin, phoneNumber: phoneNumber, profilePicture: imagePath, personalStory: "", gender: gender, nationality: nationality, personality: personality
     };
-
-    // add an if statement here to set the graduateUser variable to the prop data passed through?
-    // if (graduateProfile) {
-    //     graduateUserProfile = graduateProfile;
-    // }
 
     const handleNameChange = event => {
         setName(event.target.value);
@@ -121,7 +116,7 @@ const EditPersonalInfoSection = (/*{ graduateProfile, graduateProfileEdited }*/)
                     <div>
                         <Dropdown>
                             <Dropdown.Toggle variant="primary" id="gender-dropdown">
-                                Gender
+                                {gender ? gender : "Gender"}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item onClick={handleGenderClick} value="Male">Male</Dropdown.Item>
@@ -135,7 +130,7 @@ const EditPersonalInfoSection = (/*{ graduateProfile, graduateProfileEdited }*/)
                     <div>
                         <Dropdown>
                             <Dropdown.Toggle variant="primary" id="nationality-dropdown">
-                                Nationality
+                                {nationality ? nationality : "Nationality"}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item onClick={handleNationalityClick}>Great Britain and Northern Ireland</Dropdown.Item>
@@ -150,7 +145,7 @@ const EditPersonalInfoSection = (/*{ graduateProfile, graduateProfileEdited }*/)
                     <div>
                         <Dropdown>
                             <Dropdown.Toggle variant="primary" id="personality-dropdown">
-                                Personality Type
+                                {personality ? personality : "Personality Type"}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item onClick={handlePersonalityClick}>INTJ - Architect</Dropdown.Item>

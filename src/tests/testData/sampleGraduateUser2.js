@@ -8,7 +8,7 @@ const testGraduateUser = {
         github: "https://github.com/",
         linkedIn: "https://www.linkedin.com/",
         phoneNumber: "01234567",
-        profilePicture: "me.png",
+        profilePicture: "https://static.wikia.nocookie.net/middle-earth-film-saga/images/2/28/Profile_Bilbo_Baggins.png",
         personalStory: "The Hobbit",
         gender: "Male",
         nationality: "New Zealand",

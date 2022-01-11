@@ -48,7 +48,7 @@ const EditProfilePage = props => {
 				</div>
 			</div>
 			<div className="parent-container">
-				<EditPersonalInfoSection /*graduateUserProfile={graduateUser.graduateProfile}*/ />
+				<EditPersonalInfoSection graduateProfile={testGraduateUser.graduateProfile} />
 			</div>
 			<div className="parent-container">
 				<EditPersonalStory graduateUserPersonalStory={testGraduateUser.personalStory} />
