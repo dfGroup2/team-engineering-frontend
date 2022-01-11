@@ -13,66 +13,93 @@ const EditPersonalStory = props => {
 	const [showPortfolio, setShowPortfolioModal] = useState(false);
 	const [data, setData] = useState('');
 
-
-	const editData = {
-		degree: {
-			university: "Southampton University", degreeSubject: "Chemistry", degreeLevel: "Bachelors",
-			grade: "2:1", from: "2018/09/01", to: "2021/07/01", weight: "L", priority: "10", description: "majored in science"
-		},
-		schoolQuals: {
-			
-		}
+	let editData = {
+		degree: {},
+		schoolQualifications: {},
+		workExperience: {},
+		certificatesAndAwards: {},
+		portfolio: {}
 	}
 
 	const addDegree = clickEvent => {
 		clickEvent.preventDefault()
-		if (clickEvent.target.name === "addDegree") {
-			setShowDegreeModal(true);
-		} else {
-			setData(editData)
-			setShowDegreeModal(true);
+		if (clickEvent.target.name === "editDegree") {
+			editData.degree = {
+				university: "Southampton University", degreeSubject: "Chemistry", degreeLevel: "Bachelors", grade: "2:1", from: "2018/09/01", to: "2021/07/01", weight: "L", priority: "10", description: "majored in science"
+			};
+			setData(editData);
 		}
-		
+		setShowDegreeModal(true);
 	}
 	const addSchoolQuals = clickEvent => {
-		clickEvent.preventDefault()
+		clickEvent.preventDefault();
+		if (clickEvent.target.name === "editSchoolQuals") {
+			editData.schoolQualifications = {
+				school: `high school`, examType: `GCSE`, subject: `IT`, grade: `Dist`, year: "2015", weight: `M`, priority: "1", description: `high school qualification`
+			};
+			setData(editData);
+		}
 		setShowSchoolQualsModal(true);
 	}
 	const addWorkExperience = clickEvent => {
-		clickEvent.preventDefault()
+		clickEvent.preventDefault();
+		if (clickEvent.target.name === "editWorkExperience") {
+			editData.workExperience = {
+				type: `Experience`, employerOrOtherOrganisation: `Fred's Ice Cream`, position: `Ice Cream Maker`, from: `2012`, to: `2013`, weight: `M`, priority: "1", description: ``
+			};
+			setData(editData);
+		}
 		setShowWorkExperienceModal(true);
 	}
 	const addCertificates = clickEvent => {
-		clickEvent.preventDefault()
+		clickEvent.preventDefault();
+		if (clickEvent.target.name === "editCertificates") {
+			editData.certificatesAndAwards = {
+				type: `Cert`, issuer: `Oracle`, award: `Oracle-Java SE`, grade: `Distinction`, year: `2021`, weight: `L`, priority: "7", description: ``
+			};
+			setData(editData);
+			console.log(`we are in the addCertificates function ${JSON.stringify(editData)}`);
+		}
 		setShowCertificatesModal(true);
 	}
 	const addPortfolio = clickEvent => {
-		clickEvent.preventDefault()
+		clickEvent.preventDefault();
+		if (clickEvent.target.name === "editPortfolio") {
+			editData.portfolio = {
+				title: `How to identify Opportunities`, url: `https://mysite/howt`, year: `2020`, weight: `L`, priority: "9", description: `A motivational talk I delivered on how to identify opportunities`
+			};
+			setData(editData);
+		}
 		setShowPortfolioModal(true);
 	}
 
-	const degrees = ['university', 'degree subject', 'degree level', 'grade', 'from', 'to', 'weight', 'priority', 'description'];
+	const degreesHeadings = ['University', 'Degree Subject', 'Degree Level', 'Grade', 'From', 'To', 'Weight', 'Priority', 'Description'];
+	const schoolQualificationsHeadings = ['School', 'Exam Type', 'Subject', 'Grade', 'Year', 'Weight', 'Priority', 'Description'];
+	const workExperienceAndPositionsHeadings = ['Type', 'Employer or Other Organisation', 'Position', 'From', 'To', 'Weight', 'Priority', 'Description'];
+	const certificatesAndAwardsHeadings = ['Type', 'Issuer', 'Award', 'Grade', 'Year', 'Weight', 'Priority', 'Description'];
+	const portfolioHeadings = ['Title', 'URL', 'Year', 'Weight', 'Priority', 'Description'];
+
 	const createTableHeaders = arr => {
 		return arr.map(header => {
-			return <th>{header}</th>
-		})
-	}
+			return <th key={header}>{header}</th>
+		});
+	};
+
 	return (
 		<div className="container card borderClass">
 			<h3 className="col-2 profile-padding">Personal Story</h3>
 			<br /><br />
-			
+
 
 			<div>
 				<p className="col-5 table-title">Degrees:</p>
 				<button name="addDegree" onClick={addDegree} className="add-button">Add</button>
-				< PersonalStoryModal show={showDegree} setShowModal={setShowDegreeModal} inputFieldHeaders={degrees} storyType="Degrees" data={data}/>
+				< PersonalStoryModal show={showDegree} setShowModal={setShowDegreeModal} inputFieldHeaders={degreesHeadings} storyType="Degrees" data={data} />
 				<table className="table table-striped">
 					<thead className="table-heading">
 
 						<tr>
-							{createTableHeaders(degrees)}
-
+							{createTableHeaders(degreesHeadings)}
 						</tr>
 					</thead>
 					<tbody>
@@ -93,20 +120,12 @@ const EditPersonalStory = props => {
 				</table>
 				<br /><br />
 				<p className="col-5 table-title">School Qualifications</p>
-				<button name="addDegree" onClick={addSchoolQuals} className="add-button">Add</button>
-					< PersonalStoryModal show={showSchoolQuals} setShowModal={setShowSchoolQualsModal} inputFieldHeaders={degrees} storyType="School Qualifications"/>
+				<button name="addSchoolQuals" onClick={addSchoolQuals} className="add-button">Add</button>
+				< PersonalStoryModal show={showSchoolQuals} setShowModal={setShowSchoolQualsModal} inputFieldHeaders={schoolQualificationsHeadings} storyType="School Qualifications" />
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
-							<th>School</th>
-							<th>Exam Type</th>
-							<th>Subject</th>
-							<th>Grade</th>
-							<th>Year</th>
-							<th>Weight</th>
-							<th>Priority</th>
-							<th>Description</th>
-							{/* <button onClick={addSchoolQualification} >Add</button> */}
+							{createTableHeaders(schoolQualificationsHeadings)}
 						</tr>
 					</thead>
 					<tbody>
@@ -126,20 +145,12 @@ const EditPersonalStory = props => {
 				</table>
 				<br /><br />
 				<p className="col-5 table-title">Work Experience / positions held</p>
-				<button name="addDegree" onClick={addWorkExperience} className="add-button">Add</button>
-					< PersonalStoryModal show={showWorkExperience} setShowModal={setShowWorkExperienceModal} inputFieldHeaders={degrees} storyType="Work Experience"/>
+				<button name="addWorkExperience" onClick={addWorkExperience} className="add-button">Add</button>
+				< PersonalStoryModal show={showWorkExperience} setShowModal={setShowWorkExperienceModal} inputFieldHeaders={workExperienceAndPositionsHeadings} storyType="Work Experience" />
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
-							<th>Type</th>
-							<th>Employer or other organization</th>
-							<th>Position</th>
-							<th>From</th>
-							<th>To</th>
-							<th>Weight</th>
-							<th>Priority</th>
-							<th>Description</th>
-							{/* <button onClick={addWorkExperience} >Add</button> */}
+							{createTableHeaders(workExperienceAndPositionsHeadings)}
 						</tr>
 					</thead>
 					<tbody>
@@ -172,20 +183,12 @@ const EditPersonalStory = props => {
 				</table>
 				<br /><br />
 				<p className="col-5 table-title">Certificates and awards</p>
-				<button name="addDegree" onClick={addCertificates} className="add-button">Add</button>
-					< PersonalStoryModal show={showCertificates} setShowModal={setShowCertificatesModal} inputFieldHeaders={degrees} storyType="Certificates"/>
+				<button name="addCertificates" onClick={addCertificates} className="add-button">Add</button>
+				< PersonalStoryModal show={showCertificates} setShowModal={setShowCertificatesModal} inputFieldHeaders={certificatesAndAwardsHeadings} storyType="Certificates" />
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
-							<th>Type</th>
-							<th>Issuer</th>
-							<th>Award</th>
-							<th>Grade</th>
-							<th>Year</th>
-							<th>Weight</th>
-							<th>Priority</th>
-							<th>Description</th>
-							{/* <button onClick={addCertificatesAndAwards} >Add</button> */}
+							{createTableHeaders(certificatesAndAwardsHeadings)}
 						</tr>
 					</thead>
 					<tbody>
@@ -198,7 +201,7 @@ const EditPersonalStory = props => {
 							<td>l</td>
 							<td>7</td>
 							<td></td>
-							<button name="editCertificate" onClick={addCertificates} className="edit-button">Edit</button>
+							<button name="editCertificates" onClick={addCertificates} className="edit-button">Edit</button>
 							<button>Delete</button>
 						</tr>
 						<tr>
@@ -217,18 +220,12 @@ const EditPersonalStory = props => {
 				</table>
 				<br /><br />
 				<p className="col-5 table-title">Portfolio</p>
-				<button name="addDegree" onClick={addPortfolio} className="add-button">Add</button>
-					< PersonalStoryModal show={showPortfolio} setShowModal={setShowPortfolioModal} inputFieldHeaders={degrees} storyType="Portfolio"/>
+				<button name="addPortfolio" onClick={addPortfolio} className="add-button">Add</button>
+				< PersonalStoryModal show={showPortfolio} setShowModal={setShowPortfolioModal} inputFieldHeaders={portfolioHeadings} storyType="Portfolio" />
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
-							<th>Title</th>
-							<th>URL</th>
-							<th>Year</th>
-							<th>Weight</th>
-							<th>Priority</th>
-							<th>Description</th>
-							{/* <button onClick={addPortfolio} >Add</button> */}
+							{createTableHeaders(portfolioHeadings)}
 						</tr>
 					</thead>
 					<tbody>
