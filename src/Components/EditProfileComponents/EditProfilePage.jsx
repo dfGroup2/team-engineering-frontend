@@ -7,6 +7,8 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import EditPersonalInfoSection from './EditPersonalInfoSection';
 import EditPersonalStory from './EditPersonalStory';
 
+import { testGraduateUser } from '../../tests/testData/sampleGraduateUser2';
+
 const EditProfilePage = props => {
 
 	const graduateUserData = localStorage.getItem("user");
@@ -26,7 +28,7 @@ const EditProfilePage = props => {
 
 	return (
 		<>
-		<div className="back-button"><Link to="/graduatePage">back</Link></div>
+			<div className="back-button"><Link to="/graduatePage">back</Link></div>
 			<div className="container card borderClass">
 				<div className="row profile-padding">
 					<h3 className="col-2">Your profile</h3>
@@ -49,7 +51,7 @@ const EditProfilePage = props => {
 				<EditPersonalInfoSection /*graduateUserProfile={graduateUser.graduateProfile}*/ />
 			</div>
 			<div className="parent-container">
-				<EditPersonalStory /*graduateUserPersonalStory={graduateUser.personalStory}*/ />
+				<EditPersonalStory graduateUserPersonalStory={testGraduateUser.personalStory} />
 			</div>
 		</>
 	)

@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 import "../../css/EditPersonalStory.css"
 import PersonalStoryModal from './PersonalStoryModal'
 
-import { testPersonalStory } from '../../tests/testData/samplePersonalStoryData';
-
-const EditPersonalStory = props => {
+const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const [showDegree, setShowDegreeModal] = useState(false);
 	const [showSchoolQuals, setShowSchoolQualsModal] = useState(false);
 	const [showWorkExperience, setShowWorkExperienceModal] = useState(false);
@@ -197,7 +195,7 @@ const EditPersonalStory = props => {
 						</tr>
 					</thead>
 					<tbody>
-						{renderDegreeTableData(testPersonalStory.degree)}
+						{renderDegreeTableData(graduateUserPersonalStory.degree)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -211,7 +209,7 @@ const EditPersonalStory = props => {
 						</tr>
 					</thead>
 					<tbody>
-						{renderSchoolQualsTableData(testPersonalStory.schoolQualifications)}
+						{renderSchoolQualsTableData(graduateUserPersonalStory.schoolQualifications)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -225,7 +223,7 @@ const EditPersonalStory = props => {
 						</tr>
 					</thead>
 					<tbody>
-						{renderWorkExperienceTableData(testPersonalStory.workExperience)}
+						{renderWorkExperienceTableData(graduateUserPersonalStory.workExperience)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -239,7 +237,7 @@ const EditPersonalStory = props => {
 						</tr>
 					</thead>
 					<tbody>
-						{renderCertificatesTableData(testPersonalStory.certificatesAndAwards)}
+						{renderCertificatesTableData(graduateUserPersonalStory.certificatesAndAwards)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -253,7 +251,7 @@ const EditPersonalStory = props => {
 						</tr>
 					</thead>
 					<tbody>
-						{renderPortfolioTableData(testPersonalStory.portfolio)}
+						{renderPortfolioTableData(graduateUserPersonalStory.portfolio)}
 					</tbody>
 				</table>
 				<br /><br />
