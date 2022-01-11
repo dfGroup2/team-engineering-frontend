@@ -82,6 +82,15 @@ const EditPersonalStory = props => {
 		});
 	};
 
+	const renderEditAndDeleteButtons = (editName, addFunction) => {
+		return (
+			<td>
+				<button name={editName} onClick={addFunction} className="edit-button">Edit</button>
+				<button>Delete</button>
+			</td>
+		);
+	}
+
 	return (
 		<div className="container card borderClass">
 			<h3 className="col-2 profile-padding">Personal Story</h3>
@@ -108,8 +117,7 @@ const EditPersonalStory = props => {
 							<td>L</td>
 							<td>10</td>
 							<td>majored in science</td>
-							<button name="editDegree" onClick={addDegree} className="edit-button">Edit</button>
-							<button>Delete</button>
+							{renderEditAndDeleteButtons("editDegree", addDegree)}
 						</tr>
 					</tbody>
 				</table>
@@ -133,8 +141,7 @@ const EditPersonalStory = props => {
 							<td>M</td>
 							<td>5</td>
 							<td></td>
-							<button name="editSchoolQuals" onClick={addSchoolQuals} className="edit-button">Edit</button>
-							<button>Delete</button>
+							{renderEditAndDeleteButtons("editSchoolQuals", addSchoolQuals)}
 						</tr>
 					</tbody>
 				</table>
@@ -158,8 +165,7 @@ const EditPersonalStory = props => {
 							<td>m</td>
 							<td>0</td>
 							<td></td>
-							<button name="editWorkExperience" onClick={addWorkExperience} className="edit-button">Edit</button>
-							<button>Delete</button>
+							{renderEditAndDeleteButtons("editWorkExperience", addWorkExperience)}
 						</tr>
 						<tr>
 							<td>Position</td>
@@ -170,8 +176,7 @@ const EditPersonalStory = props => {
 							<td>l</td>
 							<td>6</td>
 							<td>public speaking is one of my skills</td>
-							<button name="editWorkExperience" onClick={addWorkExperience} className="edit-button">Edit</button>
-							<button>Delete</button>
+							{renderEditAndDeleteButtons("editWorkExperience", addWorkExperience)}
 						</tr>
 
 					</tbody>
@@ -196,8 +201,7 @@ const EditPersonalStory = props => {
 							<td>l</td>
 							<td>7</td>
 							<td></td>
-							<button name="editCertificates" onClick={addCertificates} className="edit-button">Edit</button>
-							<button>Delete</button>
+							{renderEditAndDeleteButtons("editCertificates", addCertificates)}
 						</tr>
 						<tr>
 							<td>Award</td>
@@ -208,8 +212,7 @@ const EditPersonalStory = props => {
 							<td>M</td>
 							<td>4</td>
 							<td></td>
-							<button name="editCertificates" onClick={addCertificates} className="edit-button">Edit</button>
-							<button>Delete</button>
+							{renderEditAndDeleteButtons("editCertificates", addCertificates)}
 						</tr>
 					</tbody>
 				</table>
@@ -231,8 +234,7 @@ const EditPersonalStory = props => {
 							<td>L</td>
 							<td>9</td>
 							<td>A motivational talk I delivered on how to identify opportunities</td>
-							<button name="editPortfolio" onClick={addPortfolio} className="edit-button">Edit</button>
-							<button>Delete</button>
+							{renderEditAndDeleteButtons("editPortfolio", addPortfolio)}
 						</tr>
 					</tbody>
 				</table>
