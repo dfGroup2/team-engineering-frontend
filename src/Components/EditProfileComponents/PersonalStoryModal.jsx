@@ -6,8 +6,8 @@ import Button from 'react-bootstrap/Button';
 import "../../css/PersonalStoryModal.css"
 
 
-const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType }) => {
-    const [university, setUniversity] = useState('');
+const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, data }) => {
+    const [university, setUniversity] = useState(data?.university ?data.university:'');
     const [degreeSubject, setDegreeSubject] = useState('');
     const [degreeLevel, setDegreeLevel] = useState('');
     const [grade, setGrade] = useState('');
@@ -26,7 +26,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType }
     const [title, setTitle] = useState('');
     const [url, setURL] = useState('');
 
-
+    console.log(JSON.stringify(data));
     const handleUniversityChange = changeEvent => {
         setUniversity(changeEvent.target.value)
     }

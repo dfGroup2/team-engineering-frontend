@@ -11,9 +11,23 @@ const EditPersonalStory = props => {
 	const [showWorkExperience, setShowWorkExperienceModal] = useState(false);
 	const [showCertificates, setShowCertificatesModal] = useState(false);
 	const [showPortfolio, setShowPortfolioModal] = useState(false);
+	const [data, setData] = useState('');
+
+
+	const degree = {
+		university: "Southampton University", degreeSubject: "Chemistry", degreeLevel: "Bachelors",
+		grade: "2:1", from: "2018/09/01", to: "2021/07/01", weight: "L", priority: "10", description: "majored in science"
+	};
+
 	const addDegree = clickEvent => {
 		clickEvent.preventDefault()
-		setShowDegreeModal(true);
+		if (clickEvent.target.name === "addDegree") {
+			setShowDegreeModal(true);
+		} else {
+			setData(degree)
+			setShowDegreeModal(true);
+		}
+		
 	}
 	const addSchoolQuals = clickEvent => {
 		clickEvent.preventDefault()
@@ -47,7 +61,7 @@ const EditPersonalStory = props => {
 			<div>
 				<p className="col-5 table-title">Degrees:</p>
 				<button name="addDegree" onClick={addDegree} className="add-button">Add</button>
-					< PersonalStoryModal show={showDegree} setShowModal={setShowDegreeModal} inputFieldHeaders={degrees} storyType="Degrees"/>
+				< PersonalStoryModal show={showDegree} setShowModal={setShowDegreeModal} inputFieldHeaders={degrees} storyType="Degrees" data={data}/>
 				<table className="table table-striped">
 					<thead className="table-heading">
 
@@ -66,7 +80,7 @@ const EditPersonalStory = props => {
 							<td>2021-07-01</td>
 							<td>L</td>
 							<td>10</td>
-							<td>majored in metallurgy</td>
+							<td>majored in science</td>
 							<button name="editDegree" onClick={addDegree} className="edit-button">Edit</button>
 							<button>Delete</button>
 						</tr>
