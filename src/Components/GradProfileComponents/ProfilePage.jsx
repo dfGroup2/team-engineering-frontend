@@ -5,8 +5,8 @@ import TrainingSection from './TrainingSection'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
-const { graduateTraining, personalInfo } = testGraduateUser;
+//import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
+//const { graduateTraining, personalInfo } = testGraduateUser;
 
 const ProfilePage = () => {
 
@@ -54,7 +54,7 @@ const ProfilePage = () => {
             <TrainingSection graduateUserData={graduateUserData} />
           </div>
           <div className="parent-container">
-            <InfoSection infoData={personalInfo} />
+            <InfoSection infoData={graduateUserData.personalInfo} />
           </div >
           <br /><br />
         </div>
