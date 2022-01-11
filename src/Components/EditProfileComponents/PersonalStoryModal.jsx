@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Dropdown from 'react-bootstrap/Dropdown';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import "../../css/PersonalStoryModal.css"
 
 
 const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType }) => {
@@ -255,17 +256,17 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType }
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header >
-                <Modal.Title>Degrees:</Modal.Title>
+                <Modal.Title>{storyType}:</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div className="container card borderClass">
                     <div className="row">
-                        <div className="col-8">
-                            {storyType === 'degree' && renderDegrees()} 
-                            {storyType === 'school' && renderSchoolQuals()}
-                            {storyType === 'work experience' && renderWorkExperience()} 
-                            {storyType === 'certificates' && renderCertificates()}
-                            {storyType === 'portfolio' && renderPortfolio()} 
+                        <div className="col-8 input-fields">
+                            {storyType === 'Degrees' && renderDegrees()} 
+                            {storyType === 'School Qualifications' && renderSchoolQuals()}
+                            {storyType === 'Work Experience' && renderWorkExperience()} 
+                            {storyType === 'Certificates' && renderCertificates()}
+                            {storyType === 'Portfolio' && renderPortfolio()} 
                         </div>
                         <div className="col-4 align-dropdowns">
                             <br />
