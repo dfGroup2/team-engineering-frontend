@@ -61,6 +61,13 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         }
         if (data?.certificates) {
             setType(data.certificates.type)
+            setIssuer(data.certificates.issuer)
+            setAward(data.certificates.award)
+            setGrade(data.certificates.grade)
+            setYear(data.certificates.year)
+            setWeight(data.certificates.weight)
+            setPriority(data.certificates.priority)
+            setDescription(data.certiicates.description)
         }
         if (data?.portfolio) {
             setTitle(data.portfolio.title)
