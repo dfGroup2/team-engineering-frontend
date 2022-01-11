@@ -40,10 +40,17 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         }
         if (data?.schoolQuals) {
             setSchool(data.schoolQuals.school)
-            
+            setExamType(data.schoolQuals.examType)
+            setSubject(data.schoolQuals.subject)
+            setGrade(data.schoolQuals.grade)
+            setYear(data.schoolQuals.year)
+            setWeight(data.schoolQuals.weight)
+            setPriority(data.schoolQuals.priority)
+            setDescription(data.schoolQuals.description)
         }
         if (data?.workExperience) {
             setType(data.workExperience.type)
+            
         }
         if (data?.certificates) {
             setType(data.certificates.type)
