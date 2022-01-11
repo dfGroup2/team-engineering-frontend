@@ -3,12 +3,18 @@ import TrainingSection from '../Components/GradProfileComponents/TrainingSection
 import { testGraduateUser } from './testData/sampleGraduateUser';
 const { graduateTraining } = testGraduateUser;
 const { cohort, learningPath, trainer, finishedDate } = graduateTraining;
+jest.mock('../Components/GradProfileComponents/TrainingModules', () => {
+    return () => {
+        return <p>MockTrainingModulesComponent</p>
+    }
+})
+
 
 describe(`Test Suite for Training Section`, () => {
 
     beforeEach(() => {
         render(
-            <TrainingSection graduateTrainingData={testGraduateUser} />
+            <TrainingSection graduateUserData={testGraduateUser} />
         );
     });
 
@@ -37,21 +43,6 @@ describe(`Test Suite for Training Section`, () => {
         expect(element).toBeInTheDocument();
     });
 
-    xtest(`it should render module 1, challenge A`, () => {
-        const element = screen.getByText(/module 1, challenge A/i);
-        expect(element).toBeInTheDocument();
-    });
-
-    xtest(`it should render module 1, challenge B`, () => {
-        const element = screen.getByText(/module 1, challenge B/i);
-        expect(element).toBeInTheDocument();
-    });
-
-    xtest(`it should render module 2, challenge C`, () => {
-        const element = screen.getByText(/module 2, challenge C/i);
-        expect(element).toBeInTheDocument();
-    });
-
     describe('render tests', () => {
         test(`it should render "Software Engineering 3" as the cohort`, () => {
             expect(screen.findByText(cohort)).toBeTruthy();
@@ -67,6 +58,10 @@ describe(`Test Suite for Training Section`, () => {
 
         test(`it should render "Jan 11, 2022" as the finish date`, () => {
             expect(screen.findByText(finishedDate)).toBeTruthy();
+        });
+
+        test(`it should render the TrainingModulesComponent`, () => {
+            expect(screen.getByText(/MockTrainingModulesComponent/i)).toBeInTheDocument();
         });
     })
 
