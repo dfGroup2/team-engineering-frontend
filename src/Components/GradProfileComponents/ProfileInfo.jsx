@@ -2,17 +2,29 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const ProfileInfo = ({ profileInfo }) => {
+
     //graduateUserData successfully passed as prop
-    const { firstName, lastName, personalEmail, DFEmail, github, linkedIn, phoneNumber } = profileInfo;
-    //profileInfo is equivalent to the graduate profile schema 
+    //profileInfo is equivalent to the graduate profile schema
+    const formatProfileItems = profileInfo => {
+        const profileInfoArray = [];
+        const profileInfoKeys = Object.keys(profileInfo);
+        for (let i = 0; i < profileInfoKeys.length; i++) {
+            const key = profileInfoKeys[i];
+            const value = profileInfo[profileInfoKeys[i]];
+            profileInfoArray.push([key, value]);
+        }
+        return profileInfoArray;
+    }
+
+    const createProfileItems = profileInfoArray => {
+        return profileInfoArray.map((currentArray, index) => {
+            return <p key={index}>{currentArray[0]}:  {currentArray[1]}</p>
+        })
+    }
+
     return (
         <div>
-            <p>Name: {firstName} {lastName}</p>
-            <p>Personal email: {personalEmail}</p>
-            <p>Digital Futures email: {DFEmail}</p>
-            <p>Github: {github}</p>
-            <p>LinkedIn: {linkedIn}</p>
-            <p>Phone: {phoneNumber}</p>
+            {createProfileItems(formatProfileItems(profileInfo))}
         </div>
     )
 }

@@ -12,7 +12,12 @@ import "../../css/ProfileSection.css";
 const ProfileSection = ({ graduateUserData }) => {
 	//graduateUserData successfully passed as prop
 	const { graduateProfile, personalStory } = graduateUserData;
-
+	const removeMongoId = object => {
+		if (object.hasOwnProperty('_id')) {
+			delete object._id;
+		}
+		return object;
+	}
 
 	return (
 		<div className="container borderClass">
@@ -24,7 +29,7 @@ const ProfileSection = ({ graduateUserData }) => {
 			</div>
 			<div className="row">
 				<div className="col-4 profile-info-div">
-					<ProfileInfo profileInfo={graduateProfile} />
+					<ProfileInfo profileInfo={removeMongoId(graduateProfile)} />
 				</div>
 				<p className="col-1"></p>
 				<div className="col-6">
