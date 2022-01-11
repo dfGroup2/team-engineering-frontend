@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import "../../css/EditPersonalStory.css"
 import PersonalStoryModal from './PersonalStoryModal'
 
+import { testPersonalStory } from '../../tests/testData/samplePersonalStoryData';
+
 const EditPersonalStory = props => {
 	const [showDegree, setShowDegreeModal] = useState(false);
 	const [showSchoolQuals, setShowSchoolQualsModal] = useState(false);
@@ -70,11 +72,11 @@ const EditPersonalStory = props => {
 		setShowPortfolioModal(true);
 	}
 
-	const degreesHeadings = ['University', 'Degree Subject', 'Degree Level', 'Grade', 'From', 'To', 'Weight', 'Priority', 'Description'];
-	const schoolQualificationsHeadings = ['School', 'Exam Type', 'Subject', 'Grade', 'Year', 'Weight', 'Priority', 'Description'];
-	const workExperienceAndPositionsHeadings = ['Type', 'Employer or Other Organisation', 'Position', 'From', 'To', 'Weight', 'Priority', 'Description'];
-	const certificatesAndAwardsHeadings = ['Type', 'Issuer', 'Award', 'Grade', 'Year', 'Weight', 'Priority', 'Description'];
-	const portfolioHeadings = ['Title', 'URL', 'Year', 'Weight', 'Priority', 'Description'];
+	const degreesHeadings = ['University', 'Degree Subject', 'Degree Level', 'Grade', 'From', 'To', 'Weight', 'Priority', 'Description', ''];
+	const schoolQualificationsHeadings = ['School', 'Exam Type', 'Subject', 'Grade', 'Year', 'Weight', 'Priority', 'Description', ''];
+	const workExperienceAndPositionsHeadings = ['Type', 'Employer or Other Organisation', 'Position', 'From', 'To', 'Weight', 'Priority', 'Description', ''];
+	const certificatesAndAwardsHeadings = ['Type', 'Issuer', 'Award', 'Grade', 'Year', 'Weight', 'Priority', 'Description', ''];
+	const portfolioHeadings = ['Title', 'URL', 'Year', 'Weight', 'Priority', 'Description', ''];
 
 	const createTableHeaders = arr => {
 		return arr.map(header => {
@@ -89,6 +91,95 @@ const EditPersonalStory = props => {
 				<button>Delete</button>
 			</td>
 		);
+	};
+
+	const renderDegreeTableData = arr => {
+		return arr.map(degree => {
+			return (
+				<tr key={degree.university}>
+					<td>{degree.university}</td>
+					<td>{degree.subject}</td>
+					<td>{degree.level}</td>
+					<td>{degree.grade}</td>
+					<td>{degree.date.from}</td>
+					<td>{degree.date.to}</td>
+					<td>{degree.weight}</td>
+					<td>{degree.priority}</td>
+					<td>{degree.description}</td>
+					{renderEditAndDeleteButtons("editDegree", addDegree)}
+				</tr>
+			);
+		});
+	}
+
+	const renderSchoolQualsTableData = arr => {
+		return arr.map(schoolQualifications => {
+			return (
+				<tr key={schoolQualifications.school}>
+					<td>{schoolQualifications.school}</td>
+					<td>{schoolQualifications.examType}</td>
+					<td>{schoolQualifications.subject}</td>
+					<td>{schoolQualifications.grade}</td>
+					<td>{schoolQualifications.year.from.split('-')[0]}</td>
+					<td>{schoolQualifications.weight}</td>
+					<td>{schoolQualifications.priority}</td>
+					<td>{schoolQualifications.description}</td>
+					{renderEditAndDeleteButtons("editSchoolQuals", addSchoolQuals)}
+				</tr>
+			);
+		});
+	}
+
+	const renderWorkExperienceTableData = arr => {
+		return arr.map(workExperience => {
+			return (
+				<tr key={workExperience.type}>
+					<td>{workExperience.type}</td>
+					<td>{workExperience.employerOrOtherOrganisation}</td>
+					<td>{workExperience.position}</td>
+					<td>{workExperience.date.from.split('-')[0]}</td>
+					<td>{workExperience.date.to.split('-')[0]}</td>
+					<td>{workExperience.weight}</td>
+					<td>{workExperience.priority}</td>
+					<td>{workExperience.description}</td>
+					{renderEditAndDeleteButtons("editWorkExperience", addWorkExperience)}
+				</tr>
+			);
+		});
+	}
+
+	const renderCertificatesTableData = arr => {
+		return arr.map(certificatesAndAwards => {
+			return (
+				<tr key={certificatesAndAwards.type}>
+					<td>{certificatesAndAwards.type}</td>
+					<td>{certificatesAndAwards.issuer}</td>
+					<td>{certificatesAndAwards.award}</td>
+					<td>{certificatesAndAwards.grade}</td>
+					<td>{certificatesAndAwards.year.split("-")[0]}</td>
+					<td>{certificatesAndAwards.weight}</td>
+					<td>{certificatesAndAwards.priority}</td>
+					<td>{certificatesAndAwards.description}</td>
+					{renderEditAndDeleteButtons("editCertificates", addCertificates)}
+				</tr>
+			);
+		});
+	}
+
+	const renderPortfolioTableData = arr => {
+		return arr.map(portfolio => {
+			return (
+				<tr key={portfolio.title}>
+					<td>{portfolio.title}</td>
+					<td>{portfolio.url}</td>
+					<td>{portfolio.year.split('-')[0]}</td>
+					<td>{portfolio.weight}</td>
+					<td>{portfolio.priority}</td>
+					<td>{portfolio.description}</td>
+					{renderEditAndDeleteButtons("editPortfolio", addPortfolio)}
+				</tr>
+			);
+		});
 	}
 
 	return (
@@ -98,27 +189,15 @@ const EditPersonalStory = props => {
 			<div>
 				<p className="col-5 table-title">Degrees:</p>
 				<button name="addDegree" onClick={addDegree} className="add-button">Add</button>
-				< PersonalStoryModal show={showDegree} setShowModal={setShowDegreeModal} inputFieldHeaders={degreesHeadings} storyType="Degrees" data={data} />
+				<PersonalStoryModal show={showDegree} setShowModal={setShowDegreeModal} inputFieldHeaders={degreesHeadings} storyType="Degrees" data={data} />
 				<table className="table table-striped">
 					<thead className="table-heading">
-
 						<tr>
 							{createTableHeaders(degreesHeadings)}
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Southampton University</td>
-							<td>Chemistry</td>
-							<td>bachelors</td>
-							<td>2:1</td>
-							<td>2018-09-01</td>
-							<td>2021-07-01</td>
-							<td>L</td>
-							<td>10</td>
-							<td>majored in science</td>
-							{renderEditAndDeleteButtons("editDegree", addDegree)}
-						</tr>
+						{renderDegreeTableData(testPersonalStory.degree)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -132,17 +211,7 @@ const EditPersonalStory = props => {
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>St Winifred's</td>
-							<td>a-level</td>
-							<td>Maths</td>
-							<td>A</td>
-							<td>2015</td>
-							<td>M</td>
-							<td>5</td>
-							<td></td>
-							{renderEditAndDeleteButtons("editSchoolQuals", addSchoolQuals)}
-						</tr>
+						{renderSchoolQualsTableData(testPersonalStory.schoolQualifications)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -156,29 +225,7 @@ const EditPersonalStory = props => {
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Experience</td>
-							<td>Fred's Ice Cream</td>
-							<td>Ice cream maker</td>
-							<td>2021</td>
-							<td>2013</td>
-							<td>m</td>
-							<td>0</td>
-							<td></td>
-							{renderEditAndDeleteButtons("editWorkExperience", addWorkExperience)}
-						</tr>
-						<tr>
-							<td>Position</td>
-							<td>Southampton Uni Debate Club</td>
-							<td>Secretary</td>
-							<td>2020</td>
-							<td>2021</td>
-							<td>l</td>
-							<td>6</td>
-							<td>public speaking is one of my skills</td>
-							{renderEditAndDeleteButtons("editWorkExperience", addWorkExperience)}
-						</tr>
-
+						{renderWorkExperienceTableData(testPersonalStory.workExperience)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -192,28 +239,7 @@ const EditPersonalStory = props => {
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Cert</td>
-							<td>Oracle</td>
-							<td>Oracle-Java SE</td>
-							<td>Distinction</td>
-							<td>2021</td>
-							<td>l</td>
-							<td>7</td>
-							<td></td>
-							{renderEditAndDeleteButtons("editCertificates", addCertificates)}
-						</tr>
-						<tr>
-							<td>Award</td>
-							<td>Southampton Uni Debate Club</td>
-							<td>MVP</td>
-							<td></td>
-							<td>2021</td>
-							<td>M</td>
-							<td>4</td>
-							<td></td>
-							{renderEditAndDeleteButtons("editCertificates", addCertificates)}
-						</tr>
+						{renderCertificatesTableData(testPersonalStory.certificatesAndAwards)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -227,15 +253,7 @@ const EditPersonalStory = props => {
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>How to Identify Opportunities</td>
-							<td>https://mysite/howt</td>
-							<td>2020</td>
-							<td>L</td>
-							<td>9</td>
-							<td>A motivational talk I delivered on how to identify opportunities</td>
-							{renderEditAndDeleteButtons("editPortfolio", addPortfolio)}
-						</tr>
+						{renderPortfolioTableData(testPersonalStory.portfolio)}
 					</tbody>
 				</table>
 				<br /><br />
