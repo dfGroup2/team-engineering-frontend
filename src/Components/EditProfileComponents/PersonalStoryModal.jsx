@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
 
-const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
+const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType }) => {
     const [university, setUniversity] = useState('');
     const [degreeSubject, setDegreeSubject] = useState('');
     const [degreeLevel, setDegreeLevel] = useState('');
@@ -80,6 +80,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
      const handleURLChange = changeEvent => {
         setURL(changeEvent.target.value)
     }
+
     // const handleInputChange = changeEvent => {
     //     const inputFieldName = changeEvent.target.name
     //     props.inputFieldHeaders
@@ -260,38 +261,11 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders }) => {
                 <div className="container card borderClass">
                     <div className="row">
                         <div className="col-8">
-                            <form action="">
-                                <div className="">
-                                    <div className="form-inputs">
-                                        <label htmlFor="Name" className="col-6">University</label>
-                                        <input type="text" value={university} name="university" className="col-6" onChange={handleUniversityChange} />
-                                    </div>
-                                    <div className="form-inputs">
-                                        <label htmlFor="p-email" className="col-6">DegreeSubject</label>
-                                        <input type="email" value={degreeSubject} name="degreeSubject" className="col-6" onChange={handleDegreeSubjectChange} />
-                                    </div>
-                                    <div className="form-inputs">
-                                        <label htmlFor="df-email" className="col-6">Degree Level</label>
-                                        <input type="email" value={degreeLevel} name="degreeLevel" className="col-6" p onChange={handleDegreeLevelChange} />
-                                    </div>
-                                    <div className="form-inputs">
-                                        <label htmlFor="GitHub" className="col-6">Grade</label>
-                                        <input type="text" value={grade} name="grade" className="col-6" onChange={handleGradeChange} />
-                                    </div>
-                                    <div className="form-inputs">
-                                        <label htmlFor="linkedIn" className="col-6">From</label>
-                                        <input type="text" value={from} name="from" className="col-6" onChange={handleFromChange} />
-                                    </div>
-                                    <div className="form-inputs">
-                                        <label htmlFor="phone" className="col-6">To</label>
-                                        <input type="number" value={to} name="to" className="col-6" onChange={handleToChange} />
-                                    </div>
-                                    <div className="form-inputs">
-                                        <label htmlFor="phone" className="col-6">Description</label>
-                                        <input type="text" value={description} name="description" className="col-6" onChange={handleDescriptionChange} />
-                                     </div>
-                                </div>
-                            </form>
+                            {storyType === 'degree' && renderDegrees} 
+                            {storyType === 'school' && renderSchoolQuals}
+                            {storyType === 'work experience' && renderWorkExperience} 
+                            {storyType === 'certificates' && renderCertificates}
+                            {storyType === 'portfolio' && renderPortfolio} 
                         </div>
                         <div className="col-4 align-dropdowns">
                             <br />

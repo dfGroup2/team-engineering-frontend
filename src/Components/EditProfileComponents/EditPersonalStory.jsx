@@ -27,7 +27,7 @@ const EditPersonalStory = props => {
 			<div>
 				<p className="col-5 table-title">Degrees:</p>
 				<button name="addDegree" onClick={addDegree} className="add-button">Add</button>
-					< PersonalStoryModal show={showModal} setShowModal={setShowModal} inputFieldHeaders={degrees} />
+					< PersonalStoryModal show={showModal} setShowModal={setShowModal} inputFieldHeaders={degrees} storyType="degree"/>
 				<table className="table table-striped">
 					<thead className="table-heading">
 
@@ -55,7 +55,7 @@ const EditPersonalStory = props => {
 				<br /><br />
 				<p className="col-5 table-title">School Qualifications</p>
 				<button name="addDegree" onClick={addDegree} className="add-button">Add</button>
-					< PersonalStoryModal show={showModal} setShowModal={setShowModal} inputFieldHeaders={degrees} />
+					< PersonalStoryModal show={showModal} setShowModal={setShowModal} inputFieldHeaders={degrees} storyType="school"/>
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
@@ -88,7 +88,7 @@ const EditPersonalStory = props => {
 				<br /><br />
 				<p className="col-5 table-title">Work Experience / positions held</p>
 				<button name="addDegree" onClick={addDegree} className="add-button">Add</button>
-					< PersonalStoryModal show={showModal} setShowModal={setShowModal} inputFieldHeaders={degrees} />
+					< PersonalStoryModal show={showModal} setShowModal={setShowModal} inputFieldHeaders={degrees} storyType="work experience"/>
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
@@ -134,7 +134,7 @@ const EditPersonalStory = props => {
 				<br /><br />
 				<p className="col-5 table-title">Certificates and awards</p>
 				<button name="addDegree" onClick={addDegree} className="add-button">Add</button>
-					< PersonalStoryModal show={showModal} setShowModal={setShowModal} inputFieldHeaders={degrees} />
+					< PersonalStoryModal show={showModal} setShowModal={setShowModal} inputFieldHeaders={degrees} storyType="certificates"/>
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
@@ -179,7 +179,7 @@ const EditPersonalStory = props => {
 				<br /><br />
 				<p className="col-5 table-title">Portfolio</p>
 				<button name="addDegree" onClick={addDegree} className="add-button">Add</button>
-					< PersonalStoryModal show={showModal} setShowModal={setShowModal} inputFieldHeaders={degrees} />
+					< PersonalStoryModal show={showModal} setShowModal={setShowModal} inputFieldHeaders={degrees} storyType="portfolio"/>
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
