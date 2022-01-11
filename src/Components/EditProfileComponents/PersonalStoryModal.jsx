@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import Dropdown from 'react-bootstrap/Dropdown';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -30,7 +29,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
 
 
     useEffect(() => {
-        if (data?.degree) {
+        if (data?.degree?.university) {
             setUniversity(data.degree.university);
             setDegreeSubject(data.degree.subject);
             setDegreeLevel(data.degree.level);
@@ -41,7 +40,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setPriority(data.degree.priority);
             setDescription(data.degree.description);
         }
-        if (data?.schoolQualifications) {
+        if (data?.schoolQualifications?.school) {
             setSchool(data.schoolQualifications.school);
             setExamType(data.schoolQualifications.examType);
             setSubject(data.schoolQualifications.subject);
@@ -51,9 +50,9 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setPriority(data.schoolQualifications.priority);
             setDescription(data.schoolQualifications.description);
         }
-        if (data?.workExperience) {
+        if (data?.workExperience?.type) {
             setType(data.workExperience.type);
-            setEmployer(data.workExperience.employer);
+            setEmployer(data.workExperience.employerOrOtherOrganisation);
             setPosition(data.workExperience.position);
             setFrom(data.workExperience.from);
             setTo(data.workExperience.to);
@@ -62,7 +61,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setDescription(data.workExperience.description);
 
         }
-        if (data?.certificatesAndAwards) {
+        if (data?.certificatesAndAwards?.type) {
             setType(data.certificatesAndAwards.type);
             setIssuer(data.certificatesAndAwards.issuer);
             setAward(data.certificatesAndAwards.award);
@@ -72,21 +71,13 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setPriority(data.certificatesAndAwards.priority);
             setDescription(data.certificatesAndAwards.description);
         }
-        if (data?.portfolio) {
+        if (data?.portfolio?.title) {
             setTitle(data.portfolio.title);
             setURL(data.portfolio.url);
             setYear(data.portfolio.year);
             setWeight(data.portfolio.weight);
             setPriority(data.portfolio.priority);
             setDescription(data.portfolio.description);
-        }
-
-        if (weight) {
-            console.log(`Weight Value: ${weight}`);
-            //document.getElementById("weight-dropdown").innerHTML = weight;
-        }
-        if (priority) {
-            //document.getElementById("priority-dropdown").innerHTML = priority;
         }
     }, [data]);
 
@@ -196,6 +187,8 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         setAward('');
         setTitle('');
         setURL('');
+        setWeight('');
+        setPriority('');
     };
 
     const handleSubmit = () => {
@@ -221,12 +214,12 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                         <input type="text" value={university} name="university" className="col-6" onChange={handleUniversityChange} />
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="degreeSubject" className="col-6">DegreeSubject</label>
+                        <label htmlFor="degreeSubject" className="col-6">Degree Subject</label>
                         <input type="text" value={degreeSubject} name="degreeSubject" className="col-6" onChange={handleDegreeSubjectChange} />
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="degreeLevel" className="col-6">Degree Level</label>
-                        <input type="text" value={degreeLevel} name="degreeLevel" className="col-6" p onChange={handleDegreeLevelChange} />
+                        <input type="text" value={degreeLevel} name="degreeLevel" className="col-6" onChange={handleDegreeLevelChange} />
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="grade" className="col-6">Grade</label>
@@ -263,7 +256,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="subject" className="col-6">Subject</label>
-                        <input type="text" value={subject} name="subject" className="col-6" p onChange={handleSubjectChange} />
+                        <input type="text" value={subject} name="subject" className="col-6" onChange={handleSubjectChange} />
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="grade" className="col-6">Grade</label>
@@ -296,7 +289,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="position" className="col-6">Position</label>
-                        <input type="text" value={position} name="position" className="col-6" p onChange={handlePositionChange} />
+                        <input type="text" value={position} name="position" className="col-6" onChange={handlePositionChange} />
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="from" className="col-6">From</label>
@@ -329,7 +322,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="award" className="col-6">Award</label>
-                        <input type="text" value={award} name="award" className="col-6" p onChange={handleAwardChange} />
+                        <input type="text" value={award} name="award" className="col-6" onChange={handleAwardChange} />
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="grade" className="col-6">Grade</label>
@@ -362,7 +355,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="year" className="col-6">Year</label>
-                        <input type="date" value={year} name="year" className="col-6" p onChange={handleYearChange} />
+                        <input type="date" value={year} name="year" className="col-6" onChange={handleYearChange} />
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="description" className="col-6">Description</label>
@@ -394,7 +387,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                             <div>
                                 <Dropdown>
                                     <Dropdown.Toggle variant="primary" id="weight-dropdown">
-                                        Weight
+                                        {weight ? weight : "Weight"}
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
                                         <Dropdown.Item onClick={handleWeightChange}>S</Dropdown.Item>
@@ -407,7 +400,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                             <div>
                                 <Dropdown>
                                     <Dropdown.Toggle variant="primary" id="priority-dropdown">
-                                        Priority
+                                        {priority ? priority : "Priority"}
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
                                         <Dropdown.Item onClick={handlePriorityChange}>1</Dropdown.Item>
