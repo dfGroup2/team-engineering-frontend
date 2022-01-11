@@ -180,6 +180,15 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const handleSubmit = () => {
 
     }
+    const handleWeightChange=event=>{
+        document.getElementById("weight-dropdown").innerHTML=event.target.innerText
+        setWeight(event.target.innerText)
+    }
+    const handlePriorityChange=event=>{
+        document.getElementById("priority-dropdown").innerHTML=event.target.innerText
+        setPriority(event.target.innerText)
+    }
+
     const renderDegrees = () => {
         return (<form action="">
                                 <div className="">
@@ -352,32 +361,33 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                             <br/>
                             <div>
                                 <Dropdown>
-                                    <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                                    <Dropdown.Toggle variant="primary" id="weight-dropdown">
                                         Weight
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">S</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">M</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">L</Dropdown.Item>
+                                        <Dropdown.Item onClick={handleWeightChange}>S</Dropdown.Item>
+                                        <Dropdown.Item onClick={handleWeightChange}>M</Dropdown.Item>
+                                        <Dropdown.Item onClick={handleWeightChange}>L</Dropdown.Item>
+                                       
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </div><br />
                             <div>
                                 <Dropdown>
-                                    <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                                    <Dropdown.Toggle variant="primary" id="priority-dropdown">
                                         Priority
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">1</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">2</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">3</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-4">4</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-5">5</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-6">6</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-6">7</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-6">8</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-6">9</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-6">10</Dropdown.Item>
+                                    <Dropdown.Item onClick={handlePriorityChange}>1</Dropdown.Item>
+                                    <Dropdown.Item onClick={handlePriorityChange}>2</Dropdown.Item>
+                                    <Dropdown.Item onClick={handlePriorityChange}>3</Dropdown.Item>
+                                    <Dropdown.Item onClick={handlePriorityChange}>4</Dropdown.Item>
+                                    <Dropdown.Item onClick={handlePriorityChange}>5</Dropdown.Item>
+                                    <Dropdown.Item onClick={handlePriorityChange}>6</Dropdown.Item>
+                                    <Dropdown.Item onClick={handlePriorityChange}>7</Dropdown.Item>
+                                    <Dropdown.Item onClick={handlePriorityChange}>8</Dropdown.Item>
+                                    <Dropdown.Item onClick={handlePriorityChange}>9</Dropdown.Item>
+                                    <Dropdown.Item onClick={handlePriorityChange}>10</Dropdown.Item>    
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </div> <br />
