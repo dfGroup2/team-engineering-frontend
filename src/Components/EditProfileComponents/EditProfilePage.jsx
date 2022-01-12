@@ -40,9 +40,8 @@ const EditProfilePage = props => {
 	}, []);
 
 	const submitData = async () => {
-		// const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
-		// const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, graduateUserData);
-		console.log(graduateUserData);
+		const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
+		const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, graduateUserData);
 		navigate("/graduatePage");
 	}
 
