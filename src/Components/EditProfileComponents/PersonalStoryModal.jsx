@@ -184,6 +184,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const handleClose = () => {
         setShowModal(false);
         resetStateData();
+        window.location.reload(false);
     };
 
     const resetStateData = () => {
@@ -244,7 +245,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         }
 
         if (storyType === 'Work Experience') {
-            tempGradUser.personalStory.workExperience = [{ _id, type, employerOrOtherOrganization, position, "date": { from, to }, weight, priority, description }];
+            tempGradUser.personalStory.workExperience = [{ type, employerOrOtherOrganization, position, "date": { from, to }, weight, priority, description }];
             if (!_id) {
                 const concatenatedObject = tempGUObjectForAdd.personalStory.workExperience.concat(tempGradUser.personalStory.workExperience);
                 tempGUObjectForAdd.personalStory.workExperience = concatenatedObject;

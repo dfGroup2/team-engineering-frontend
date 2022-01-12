@@ -101,6 +101,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 		tempFullDO.personalStory = updatedData;
 		const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
 		const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, tempFullDO);
+		window.location.reload(false);
 	}
 
 	const addSchoolQuals = (clickEvent, rowKeyToEdit) => {
