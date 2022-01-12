@@ -181,7 +181,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	}
 
 	return (
-		<div className="container card borderClass">
+		<div className="container card borderClass editCard">
 			<h3 className="col-2 profile-padding">Personal Story</h3>
 			<br /><br />
 			<div>

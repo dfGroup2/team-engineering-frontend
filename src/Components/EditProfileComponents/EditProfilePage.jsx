@@ -32,7 +32,7 @@ const EditProfilePage = props => {
 	return (
 		<>
 			<div className="back-button"><Link to="/graduatePage">back</Link></div>
-			<div className="container card borderClass">
+			<div className="container card borderClass editCard">
 				<div className="row profile-padding">
 					<h3 className="col-2">Your profile</h3>
 					<br />

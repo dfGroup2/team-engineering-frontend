@@ -79,7 +79,7 @@ const EditPersonalInfoSection = ({ graduateProfile } /*, graduateProfileEdited }
     }
 
     return (
-        <div className="container card borderClass">
+        <div className="container card borderClass editCard">
             <h3 className="col-3">Personal Information</h3>
             <div className="row">
                 <div className="col-4">
