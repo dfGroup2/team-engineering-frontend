@@ -42,16 +42,24 @@ const ProfilePage = () => {
     return Object.keys(userData).length > 0
   }
 
+  const capitaliseFirstLetter = string => {
+    // e.g. if string is "jared"
+    // "j" -> "J" 
+    // "jared" -> "ared"
+    // "Jared"
+    return string[0].toUpperCase() + string.slice(1);
+  }
+
   return (
     <>
       {
         objectIsEmpty(graduateUserData) &&
         <div>
           <div className="parent-container">
-            <ProfileSection graduateUserData={graduateUserData} />
+            <ProfileSection graduateUserData={graduateUserData} capitaliseFirstLetter={capitaliseFirstLetter} />
           </div>
           <div className="parent-container">
-            <TrainingSection graduateUserData={graduateUserData} />
+            <TrainingSection graduateUserData={graduateUserData} capitaliseFirstLetter={capitaliseFirstLetter} />
           </div>
           <div className="parent-container">
             <InfoSection infoData={graduateUserData.personalInfo} />

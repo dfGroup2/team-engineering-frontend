@@ -7,9 +7,7 @@ import "../../css/ProfileSection.css";
 //import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
 //const { personalStory } = testGraduateUser;
 
-
-
-const ProfileSection = ({ graduateUserData }) => {
+const ProfileSection = ({ graduateUserData, capitaliseFirstLetter }) => {
 	//graduateUserData successfully passed as prop
 	const { graduateProfile, personalStory } = graduateUserData;
 	const removeMongoId = object => {
@@ -29,7 +27,7 @@ const ProfileSection = ({ graduateUserData }) => {
 			</div>
 			<div className="row">
 				<div className="col-4 profile-info-div">
-					<ProfileInfo profileInfo={removeMongoId(graduateProfile)} />
+					<ProfileInfo profileInfo={removeMongoId(graduateProfile)} capitaliseFirstLetter={capitaliseFirstLetter} />
 				</div>
 				<p className="col-1"></p>
 				<div className="col-6">

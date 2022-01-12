@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TrainingModules from './TrainingModules'
 
-const TrainingSection = ({ graduateUserData }) => {
+const TrainingSection = ({ graduateUserData, capitaliseFirstLetter }) => {
 
     const { learningPath, cohort, trainer, finishedDate, courseModules } = graduateUserData.graduateTraining;
 
@@ -18,7 +18,7 @@ const TrainingSection = ({ graduateUserData }) => {
                 </div>
                 <p className="col-1"></p>
                 <div className="col-8">
-                    <TrainingModules trainingModules={courseModules} />
+                    <TrainingModules trainingModules={courseModules} capitaliseFirstLetter={capitaliseFirstLetter} />
                 </div>
             </div>
         </div>
