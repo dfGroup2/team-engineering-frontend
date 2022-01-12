@@ -86,7 +86,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 		return (
 			<td>
 				<button name={editName} onClick={addFunction} className="edit-button">Edit</button>
-				<button>Delete</button>
+				<button className="delete-button">Delete</button>
 			</td>
 		);
 	};
