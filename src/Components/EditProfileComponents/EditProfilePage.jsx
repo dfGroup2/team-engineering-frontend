@@ -34,7 +34,6 @@ const EditProfilePage = props => {
 	useEffect(() => {
 		const getData = async () => {
 			setGraduateUserData(await getGraduateUserDataById());
-			console.log(graduateUserData);
 		}
 		//setTimeout(() => getData(), 3000);
 		getData();
@@ -44,8 +43,8 @@ const EditProfilePage = props => {
 		//const res=await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers`,graduateUser)
 		navigate("/graduatePage");
 	}
-	const resetData = () => {
-		// setGraduateUser(graduateUserData);
+	const resetData = async () => {
+		setGraduateUserData(await getGraduateUserDataById());
 	}
 
 	return (
