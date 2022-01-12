@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
 
 const InfoSection = ({ infoData }) => {
     const { badges, scores } = infoData
@@ -31,10 +30,10 @@ const InfoSection = ({ infoData }) => {
             const badge1 = badgesArray[i];
             const badge2 = badgesArray[i + 1];
             badgeColumnDivArrayPopulated.push(<div className="col-2">
-                <p className="borderClass">
+                <p className="borderClass shadow p-3 mb-4 bg-body rounded">
                     {badge1}
                 </p>
-                <p className="borderClass">
+                <p className="borderClass shadow p-3 mb-4 bg-body rounded">
                     {badge2}
                 </p>
             </div>)
@@ -42,7 +41,7 @@ const InfoSection = ({ infoData }) => {
         //only run this line if the badges array is odd
         if (!isEven) {
             badgeColumnDivArrayPopulated.push(<div className="col-2">
-                <p className="borderClass">{badgesArray[badgesArray.length - 1]}</p>
+                <p className="borderClass shadow p-3 mb-4 bg-body rounded">{badgesArray[badgesArray.length - 1]}</p>
             </div>)
         }
         return badgeColumnDivArrayPopulated;
@@ -58,12 +57,12 @@ const InfoSection = ({ infoData }) => {
                 <div className="col-1">
                     <p>Scores:</p>
                 </div>
-                <div className="col-5 borderClass overflow-auto " style={{ height: "70px" }}
+                <div className="col-5 borderClass overflow-auto shadow-lg" style={{ height: "140px" }}
                 >
-                    <p>Aptitude:<span>{scores[0]}</span>%</p>
-                    <p>Java:<span>{scores[1]}</span>%</p>
-                    <p>JavaScript:<span>{scores[2]}</span>%</p>
-                    <p>CSS:<span>{scores[3]}</span>%</p>
+                    <p>Aptitude: <span>{scores[0]}</span>%</p>
+                    <p>Java: <span>{scores[1]}</span>%</p>
+                    <p>JavaScript: <span>{scores[2]}</span>%</p>
+                    <p>CSS: <span>{scores[3]}</span>%</p>
                 </div>
             </div>
         </div>
