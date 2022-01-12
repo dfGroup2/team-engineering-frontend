@@ -17,10 +17,10 @@ const TrainingSection = ({ graduateUserData, capitaliseFirstLetter }) => {
             <h3 className="col-2 fw-bold">Your training</h3>
             <div className="row">
                 <div className="col-2">
-                    <p className="titles">Cohort:</p> <p>{cohort}</p>
-                    <p className="titles">Learning Path:</p> <p>{learningPath}</p>
-                    <p className="titles">Trainer:</p> <p> {trainer}</p>
-                    <p className="titles">Training finish date:</p><p> {formatDate(finishedDate)}</p>
+                    <p className="titles">Cohort: <span className="your-profile-titles"> {cohort}</span> </p>
+                    <p className="titles">Learning Path: <span className="your-profile-titles"> {learningPath}</span> </p>
+                    <p className="titles">Trainer:<span className="your-profile-titles"> {trainer}</span> </p>
+                    <p className="titles">Training finish date:<span className="your-profile-titles"> {formatDate(finishedDate)}</span> </p>
                 </div>
                 <p className="col-1"></p>
                 <div className="col-8">
