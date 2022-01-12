@@ -19,13 +19,13 @@ const ProfileSection = ({ graduateUserData, capitaliseFirstLetter }) => {
 
 	return (
 		<div className="container card borderClass editCard">
-			<div className="row">
+			<div className="row mt-3">
 				<h3 className="col-2 fw-bold">Your profile</h3>
 				<br />
 				<br />
 				<Link className="col-2 edit-link" to="/edit" >Edit</Link>
 			</div>
-			<div className="row">
+			<div className="row mt-3">
 				<div className="col-4 profile-info-div">
 					<ProfileInfo profileInfo={removeMongoId(graduateProfile)} capitaliseFirstLetter={capitaliseFirstLetter} />
 				</div>

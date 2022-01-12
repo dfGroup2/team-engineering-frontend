@@ -14,8 +14,8 @@ const TrainingSection = ({ graduateUserData, capitaliseFirstLetter }) => {
 
     return (
         <div className="container card borderClass editCard">
-            <h3 className="col-2 fw-bold">Your training</h3>
-            <div className="row">
+            <h3 className="col-2 fw-bold mt-3">Your training</h3>
+            <div className="row mt-3">
                 <div className="col-2">
                     <p className="titles">Cohort: <span className="your-profile-titles"> {cohort}</span> </p>
                     <p className="titles">Learning Path: <span className="your-profile-titles"> {learningPath}</span> </p>

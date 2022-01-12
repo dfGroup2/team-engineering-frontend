@@ -30,11 +30,11 @@ const TrainingModules = ({ trainingModules, capitaliseFirstLetter }) => {
                 &nbsp;
                 &nbsp;
                 &nbsp;
-                    <div className="badge-div">
-                <Badge pill bg="primary" className="text-end">
-                    {currentArray[1]}
+                <div className="badge-div">
+                    <Badge pill bg="primary" className="text-end">
+                        {currentArray[1]}
                     </Badge>{' '}
-                    </div>
+                </div>
             </li>
         })
         return currentModuleItems;
@@ -50,6 +50,7 @@ const TrainingModules = ({ trainingModules, capitaliseFirstLetter }) => {
         <div className="row card borderClass shadow-lg p-3 mb-5 bg-white rounded">
             {/* <div className="col-8 training-div"> */}
             <h3>Training Modules</h3>
+            &nbsp;
             <div class="container ">
                 <div class="row padding">
                     {createFormattedModuleTitle(trainingModules)}
