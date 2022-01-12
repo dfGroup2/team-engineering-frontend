@@ -6,6 +6,11 @@ const TrainingSection = ({ graduateUserData, capitaliseFirstLetter }) => {
 
     const { learningPath, cohort, trainer, finishedDate, courseModules } = graduateUserData.graduateTraining;
 
+    const formatDate = dateISOstring => {
+        const date = new Date(dateISOstring);
+        return date.toLocaleDateString();
+    }
+
     return (
         <div className="container card borderClass">
             <h3 className="col-2">Your training</h3>
@@ -14,7 +19,7 @@ const TrainingSection = ({ graduateUserData, capitaliseFirstLetter }) => {
                     <p>Cohort: {cohort}</p>
                     <p>Learning Path: {learningPath}</p>
                     <p>Trainer: {trainer}</p>
-                    <p>Training finish date: {finishedDate}</p>
+                    <p>Training finish date: {formatDate(finishedDate)}</p>
                 </div>
                 <p className="col-1"></p>
                 <div className="col-8">
