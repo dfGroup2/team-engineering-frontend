@@ -91,8 +91,10 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const renderEditAndDeleteButtons = (editName, addFunction) => {
 		return (
 			<td>
+				<div className="button-div">
 				<button name={editName} onClick={addFunction} className="edit-button">Edit</button>
-				<button className="delete-button">Delete</button>
+					<button className="delete-button">Delete</button>
+					</div>
 			</td>
 		);
 	};
