@@ -1,29 +1,48 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import '../../css/EditProfilePage.css';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import EditPersonalInfoSection from './EditPersonalInfoSection';
 import EditPersonalStory from './EditPersonalStory';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { testGraduateUser } from '../../tests/testData/sampleGraduateUser2';
-
 const EditProfilePage = props => {
-    let navigate=useNavigate()
-	const graduateUserData = localStorage.getItem("user");
+	let navigate = useNavigate()
+	const [graduateUserData, setGraduateUserData] = useState('');
+	const [getError, setGetError] = useState({ message: ``, count: 0 });
 
-	const [graduateUser, setGraduateUser] = useState(``); //we may need to set the default state to {}
-
-	if (graduateUserData) {
-		setGraduateUser(graduateUserData);
+	const getGraduateUserDataById = async () => {
+		const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
+		const webToken = JSON.parse(localStorage.getItem('user')).accessToken;
+		try {
+			const res = await axios
+				.get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, { headers: { "x-access-token": webToken } })
+			return objectIsEmpty(res.data) ? res.data : new Error(`There was an error retrieving graduate data`);
+		}
+		catch (e) {
+			setGetError({ message: `Data not available from the server: ${e.message}`, count: 0 });
+			return {};
+		}
+	}
+	const objectIsEmpty = userData => {
+		return Object.keys(userData).length > 0
 	}
 
-	const submitData = async() => {
-		//const res=await axios.put(`${process.env.REACT_APP_DFXTRLURL}/api/content/graduateUsers`,graduateUser)
-		navigate("/graduatePage")
+	useEffect(() => {
+		const getData = async () => {
+			setGraduateUserData(await getGraduateUserDataById());
+			console.log(graduateUserData);
+		}
+		//setTimeout(() => getData(), 3000);
+		getData();
+	}, []);
+
+	const submitData = () => {
+		//const res=await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers`,graduateUser)
+		navigate("/graduatePage");
 	}
 	const resetData = () => {
 		// setGraduateUser(graduateUserData);
@@ -51,10 +70,10 @@ const EditProfilePage = props => {
 				</div>
 			</div>
 			<div className="parent-container">
-				<EditPersonalInfoSection graduateProfile={testGraduateUser.graduateProfile} />
+				<EditPersonalInfoSection graduateProfile={graduateUserData.graduateProfile} />
 			</div>
 			<div className="parent-container">
-				<EditPersonalStory graduateUserPersonalStory={testGraduateUser.personalStory} />
+				<EditPersonalStory graduateUserPersonalStory={graduateUserData.personalStory} />
 			</div>
 		</>
 	)

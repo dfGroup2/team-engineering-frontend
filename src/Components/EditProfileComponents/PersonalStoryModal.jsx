@@ -27,7 +27,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const [url, setURL] = useState('');
     const [weight, setWeight] = useState('');
     const [priority, setPriority] = useState('');
-    const graduateUserData={}
+    let graduateUserData = {}
 
     useEffect(() => {
         if (data?.degree?.university) {
@@ -192,10 +192,48 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         setPriority('');
     };
 
-    const handleSubmit = async() => {
-        const res=await axios.put(`${process.env.REACT_APP_DFXTRLURL}/api/content/graduateUsers`,graduateUserData)
-        handleClose();
+    const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
 
+    const handleSubmit = async () => {
+        let postPath = ''
+        if (storyType === 'Degrees') {
+            graduateUserData = { university: { university }, subject: { degreeSubject }, level: { degreeLevel }, grade: { grade }, date: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
+            postPath = 'degrees';
+            if (data?.degree?.university) {
+                postPath = `degrees/${data._id}`;
+            }
+        }
+        if (storyType === 'School Qualifications') {
+            graduateUserData = { school: { school }, examType: { examType }, subject: { subject }, grade: { grade }, year: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
+            postPath = 'schoolQualifications';
+            if (data?.schoolQualifications?.school) {
+                postPath = `schoolQualifications/${data._id}`;
+            }
+        }
+        if (storyType === 'Work Experience') {
+            graduateUserData = { type: { type }, employerOrOtherOrganisation: { employer }, position: { position }, date: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
+            postPath = 'workExperience';
+            if (data?.workExperience?.type) {
+                postPath = `workExperience/${data._id}`;
+            }
+        }
+        if (storyType === 'Certificates') {
+            graduateUserData = { type: { type }, issuer: { issuer }, award: { award }, grade: { grade }, year: { year }, weight: { weight }, priority: { priority }, description: { description } };
+            postPath = 'certificatesAndAwards';
+            if (data?.certificatesAndAwards?.type) {
+                postPath = `certificatesAndAwards/${data._id}`;
+            }
+        }
+        if (storyType === 'Portfolio') {
+            graduateUserData = { title: { title }, url: { url }, year: { year }, weight: { weight }, priority: { priority }, description: { description } };
+            postPath = 'portfolio';
+            if (data?.portfolio?.title) {
+                postPath = `portfolio/${data._id}`;
+            }
+        }
+
+        const res = await axios.post(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}/personalStory/${postPath}`, graduateUserData);
+        handleClose();
     }
 
     const handleWeightChange = event => {
