@@ -4,6 +4,8 @@ import { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import EditPersonalStory from '../Components/EditProfileComponents/EditPersonalStory';
 import PersonalStoryModal from '../Components/EditProfileComponents/PersonalStoryModal';
+import { testGraduateUser } from './testData/sampleGraduateUser2';
+
 jest.mock('../Components/EditProfileComponents/PersonalStoryModal', () => {
 	return function mockPersonalStoryModal() {
 		return <th>mockPersonalStoryModal</th>
@@ -14,7 +16,7 @@ describe(`Tests for EditPersonalStory`, () => {
 	beforeEach(() => {
 		render(
 			<Router>
-				<EditPersonalStory />
+				<EditPersonalStory graduateUserPersonalStory={testGraduateUser.personalStory} />
 			</Router>
 		);
 	});
@@ -41,13 +43,13 @@ describe(`Form Interaction tests`, () => {
 	test('a button brings up the modal', () => {
 		const { container } = render(
 			<Router>
-				<EditPersonalStory />
+				<EditPersonalStory graduateUserPersonalStory={testGraduateUser.personalStory} />
 			</Router>
 		);
 		const element = container.querySelector("button[name='addDegree']");
 		userEvent.click(element);
-		const modal = screen.getByText(/mockPersonalStoryModal/i);
-		expect(modal).toBeInTheDocument();
+		const modal = screen.getAllByText(/mockPersonalStoryModal/i);
+		expect(modal[0]).toBeInTheDocument();
 
 
 	})

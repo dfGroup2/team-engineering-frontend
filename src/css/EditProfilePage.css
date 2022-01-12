@@ -15,11 +15,15 @@
   margin-bottom: 7%;
 }
 
-.profile-padding{
+.profile-padding {
   padding-top: 10px;
 }
 
 .progressbar {
   margin-bottom: 0rem;
   text-align: left;
+}
+
+.back-button {
+  padding-bottom: 20px;
 }

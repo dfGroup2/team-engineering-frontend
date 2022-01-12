@@ -4,16 +4,39 @@ import PropTypes from 'prop-types'
 import '../../css/EditPersonalInfoSection.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 
-const EditPersonalInfoSection = props => {
-    const [name, setName] = useState(``);
-    const [email, setEmail] = useState(``);
-    const [dfEmail, setDfEmail] = useState(``);
-    const [github, setGithub] = useState(``);
-    const [linkedin, setLinkedin] = useState(``);
-    const [phoneNumber, setPhoneNumber] = useState(``);
+const EditPersonalInfoSection = ({ graduateProfile } /*, graduateProfileEdited }*/) => {
+    // the graduateProfileEdited prop should be used to pass the data changed back up to the EditProfilePage component, this would then (hopefully) allow the data to be sent to the server when the SubmitDraft button is clicked.
+    const [name, setName] = useState((graduateProfile.firstName + " " + graduateProfile.lastName));
+    const [email, setEmail] = useState(graduateProfile.personalEmail);
+    const [dfEmail, setDfEmail] = useState(graduateProfile.DFEmail);
+    const [github, setGithub] = useState(graduateProfile.github);
+    const [linkedin, setLinkedin] = useState(graduateProfile.linkedIn);
+    const [phoneNumber, setPhoneNumber] = useState(graduateProfile.phoneNumber);
+
+    const [firstName, setFirstName] = useState(graduateProfile.firstName);
+    const [lastName, setLastName] = useState(graduateProfile.lastName);
+
+    const [gender, setGender] = useState(graduateProfile.gender);
+    const [nationality, setNationality] = useState(graduateProfile.nationality);
+    const [personality, setPersonality] = useState(graduateProfile.personality);
+    const [imagePath, setImagePath] = useState(graduateProfile.profilePicture);
+
+    let graduateUserProfile = {
+        firstName: firstName, lastName: lastName, personalEmail: email, DFEmail: dfEmail, github: github, linkedIn: linkedin, phoneNumber: phoneNumber, profilePicture: imagePath, personalStory: "", gender: gender, nationality: nationality, personality: personality
+    };
 
     const handleNameChange = event => {
         setName(event.target.value);
+
+        if (event.target.value.includes(" ")) {
+            if (event.target.value.length > 0) {
+                const nameArray = event.target.value.split(" ");
+                setFirstName(nameArray[0]);
+                if (nameArray.length > 1) {
+                    setLastName(nameArray[1]);
+                }
+            }
+        }
     }
 
     const handlePersonalEmailChange = event => {
@@ -34,6 +57,25 @@ const EditPersonalInfoSection = props => {
 
     const handlePhoneNumberChange = event => {
         setPhoneNumber(event.target.value);
+    }
+
+    const handleGenderClick = event => {
+        document.getElementById("gender-dropdown").innerHTML = event.target.innerText;
+        setGender(event.target.innerText);
+    }
+
+    const handleNationalityClick = event => {
+        document.getElementById("nationality-dropdown").innerHTML = event.target.innerText;
+        setNationality(event.target.innerText);
+    }
+
+    const handlePersonalityClick = event => {
+        document.getElementById("personality-dropdown").innerHTML = event.target.innerText;
+        setPersonality(event.target.innerText);
+    }
+
+    const handleFileUpload = event => {
+        setImagePath(event.target.value);
     }
 
     return (
@@ -73,55 +115,55 @@ const EditPersonalInfoSection = props => {
                 <div className="col-4 align-dropdowns">
                     <div>
                         <Dropdown>
-                            <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                                Gender
+                            <Dropdown.Toggle variant="primary" id="gender-dropdown">
+                                {gender ? gender : "Gender"}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Male</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Female</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Non-binary</Dropdown.Item>
-                                <Dropdown.Item href="#/action-4">Transgender</Dropdown.Item>
-                                <Dropdown.Item href="#/action-5">Prefer not to say</Dropdown.Item>
+                                <Dropdown.Item onClick={handleGenderClick} value="Male">Male</Dropdown.Item>
+                                <Dropdown.Item onClick={handleGenderClick}>Female</Dropdown.Item>
+                                <Dropdown.Item onClick={handleGenderClick}>Non-binary</Dropdown.Item>
+                                <Dropdown.Item onClick={handleGenderClick}>Transgender</Dropdown.Item>
+                                <Dropdown.Item onClick={handleGenderClick}>Prefer not to say</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div><br />
                     <div>
                         <Dropdown>
-                            <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                                Nationality
+                            <Dropdown.Toggle variant="primary" id="nationality-dropdown">
+                                {nationality ? nationality : "Nationality"}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">United Kingdom of Great Britain and Northern Ireland</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">United States of America</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">France</Dropdown.Item>
-                                <Dropdown.Item href="#/action-4">Germany</Dropdown.Item>
-                                <Dropdown.Item href="#/action-5">Italy</Dropdown.Item>
-                                <Dropdown.Item href="#/action-6">Prefer not to say</Dropdown.Item>
+                                <Dropdown.Item onClick={handleNationalityClick}>Great Britain and Northern Ireland</Dropdown.Item>
+                                <Dropdown.Item onClick={handleNationalityClick}>United States of America</Dropdown.Item>
+                                <Dropdown.Item onClick={handleNationalityClick}>France</Dropdown.Item>
+                                <Dropdown.Item onClick={handleNationalityClick}>Germany</Dropdown.Item>
+                                <Dropdown.Item onClick={handleNationalityClick}>Italy</Dropdown.Item>
+                                <Dropdown.Item onClick={handleNationalityClick}>Prefer not to say</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div> <br />
                     <div>
                         <Dropdown>
-                            <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                                Personality Type
+                            <Dropdown.Toggle variant="primary" id="personality-dropdown">
+                                {personality ? personality : "Personality Type"}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">INTJ - Architect</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">ENTJ - Commander</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">ENFJ - Protagonist</Dropdown.Item>
-                                <Dropdown.Item href="#/action-4">ESTJ - Executive</Dropdown.Item>
-                                <Dropdown.Item href="#/action-5">ISFP - Adventurer</Dropdown.Item>
-                                <Dropdown.Item href="#/action-6">Prefer not to say</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePersonalityClick}>INTJ - Architect</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePersonalityClick}>ENTJ - Commander</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePersonalityClick}>ENFJ - Protagonist</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePersonalityClick}>ESTJ - Executive</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePersonalityClick}>ISFP - Adventurer</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePersonalityClick}>Prefer not to say</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
                 </div>
                 <div className="col-4">
                     <div>
-                        <img src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg" alt="" className="thumbnail avatar-image" />
+                        <img src={graduateUserProfile.profilePicture ? imagePath : "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"} alt="profilePicture" className="thumbnail avatar-image" />
                     </div>
-                    <input type="file" name="uploadfile" id="img" hidden />
-                    <label htmlFor="img">Upload Image</label>
+                    <input type="file" accept="image/*" name="uploadfile" id="img" hidden onChange={handleFileUpload} />
+                    <label htmlFor="img" className="img-label">Upload Image</label>
                 </div>
             </div>
         </div>

@@ -25,13 +25,6 @@ function App() {
           <Route path="/graduatePage" element={<ProfilePage />}></Route>
           <Route path="/edit" element={<div className="parent-container">
             <EditProfilePage />
-            <div className="parent-container">
-              <EditPersonalInfoSection />
-            </div><br /><br />
-
-            <div className="parent-container">
-              <EditPersonalStory />
-            </div>
             <br /><br />
           </div>
           }></Route>
