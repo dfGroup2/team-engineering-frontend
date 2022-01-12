@@ -48,7 +48,7 @@ const InfoSection = ({ infoData }) => {
         return badgeColumnDivArrayPopulated;
     }
     return (
-        <div className="container card borderClass">
+        <div className="container card borderClass editCard">
             <h3 className="col-3 fw-bold">Your information </h3>
             <div className="row">
                 <div className="col-1">

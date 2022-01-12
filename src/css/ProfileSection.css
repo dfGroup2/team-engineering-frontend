@@ -5,11 +5,19 @@
   border: 2px solid black;
 }
 
-.edit-link{
+.edit-link {
   margin-top: 1%;
 }
 
-.profile-info-div{
+.profile-info-div {
   text-align: left;
   padding-left: 1.5%;
+}
+
+.editCard {
+  box-shadow: 10px 10px 5px rgb(97, 94, 94);
+  border-radius: 10px rgb(48, 45, 45);
+}
+.borderClass {
+  border: 2px solid rgb(80, 80, 80);
 }

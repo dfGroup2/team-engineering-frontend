@@ -18,7 +18,7 @@ const ProfileSection = ({ graduateUserData, capitaliseFirstLetter }) => {
 	}
 
 	return (
-		<div className="container borderClass">
+		<div className="container card borderClass editCard">
 			<div className="row">
 				<h3 className="col-2 fw-bold">Your profile</h3>
 				<br />

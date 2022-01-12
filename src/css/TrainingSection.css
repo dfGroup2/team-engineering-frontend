@@ -1,5 +1,8 @@
-
-.training-div{
+.training-div {
   padding-left: 15px;
   padding-top: 6px;
+}
+
+.badge-div {
+  float: right;
 }

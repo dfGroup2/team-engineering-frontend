@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TrainingModules from './TrainingModules'
 
+
 const TrainingSection = ({ graduateUserData, capitaliseFirstLetter }) => {
 
     const { learningPath, cohort, trainer, finishedDate, courseModules } = graduateUserData.graduateTraining;
@@ -12,7 +13,7 @@ const TrainingSection = ({ graduateUserData, capitaliseFirstLetter }) => {
     }
 
     return (
-        <div className="container card borderClass">
+        <div className="container card borderClass editCard">
             <h3 className="col-2 fw-bold">Your training</h3>
             <div className="row">
                 <div className="col-2">

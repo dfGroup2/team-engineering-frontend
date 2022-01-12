@@ -30,9 +30,11 @@ const TrainingModules = ({ trainingModules, capitaliseFirstLetter }) => {
                 &nbsp;
                 &nbsp;
                 &nbsp;
+                    <div className="badge-div">
                 <Badge pill bg="primary" className="text-end">
                     {currentArray[1]}
-                </Badge>{' '}
+                    </Badge>{' '}
+                    </div>
             </li>
         })
         return currentModuleItems;
