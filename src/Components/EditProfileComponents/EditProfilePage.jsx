@@ -1,16 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../../css/EditProfilePage.css';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import EditPersonalInfoSection from './EditPersonalInfoSection';
 import EditPersonalStory from './EditPersonalStory';
+import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 import { testGraduateUser } from '../../tests/testData/sampleGraduateUser2';
 
 const EditProfilePage = props => {
-
+    let navigate=useNavigate()
 	const graduateUserData = localStorage.getItem("user");
 
 	const [graduateUser, setGraduateUser] = useState(``); //we may need to set the default state to {}
@@ -19,8 +21,9 @@ const EditProfilePage = props => {
 		setGraduateUser(graduateUserData);
 	}
 
-	const submitData = () => {
-		//add an axios request to send a PUT(?) to update the data in the database
+	const submitData = async() => {
+		//const res=await axios.put(`${process.env.REACT_APP_DFXTRLURL}/api/content/graduateUsers`,graduateUser)
+		navigate("/graduatePage")
 	}
 	const resetData = () => {
 		// setGraduateUser(graduateUserData);

@@ -3,6 +3,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import "../../css/PersonalStoryModal.css"
+import axios from 'axios';
 
 
 const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, data }) => {
@@ -26,7 +27,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const [url, setURL] = useState('');
     const [weight, setWeight] = useState('');
     const [priority, setPriority] = useState('');
-
+    const graduateUserData={}
 
     useEffect(() => {
         if (data?.degree?.university) {
@@ -191,7 +192,9 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         setPriority('');
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async() => {
+        const res=await axios.put(`${process.env.REACT_APP_DFXTRLURL}/api/content/graduateUsers`,graduateUserData)
+        handleClose();
 
     }
 
