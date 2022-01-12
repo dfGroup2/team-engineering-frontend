@@ -8,8 +8,7 @@ import axios from 'axios';
 
 const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, data }) => {
     const [university, setUniversity] = useState('');
-    const [degreeSubject, setDegreeSubject] = useState('');
-    const [degreeLevel, setDegreeLevel] = useState('');
+    const [level, setLevel] = useState('');
     const [grade, setGrade] = useState('');
     const [from, setFrom] = useState('');
     const [to, setTo] = useState('');
@@ -19,7 +18,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const [subject, setSubject] = useState('');
     const [year, setYear] = useState('');
     const [type, setType] = useState('');
-    const [employer, setEmployer] = useState('');
+    const [employerOrOtherOrganization, setEmployerOrOtherOrganization] = useState('');
     const [position, setPosition] = useState('');
     const [issuer, setIssuer] = useState('');
     const [award, setAward] = useState('');
@@ -27,19 +26,48 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const [url, setURL] = useState('');
     const [weight, setWeight] = useState('');
     const [priority, setPriority] = useState('');
-    let graduateUserData = {}
+    const [_id, set_id] = useState('');
+
+    const [graduateUserDataObject, setGraduateUserDataObject] = useState('');
+    const [graduateUserDataObjectForAdd, setGraduateUserDataObjectForAdd] = useState('');
+    const [getError, setGetError] = useState({ message: ``, count: 0 });
+
+    const getGraduateUserDataById = async () => {
+        const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
+        const webToken = JSON.parse(localStorage.getItem('user')).accessToken;
+        try {
+            const res = await axios
+                .get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, { headers: { "x-access-token": webToken } })
+            return objectIsEmpty(res.data) ? res.data : new Error(`There was an error retrieving graduate data`);
+        }
+        catch (e) {
+            setGetError({ message: `Data not available from the server: ${e.message}`, count: 0 });
+            return {};
+        }
+    }
+    const objectIsEmpty = userData => {
+        return Object.keys(userData).length > 0
+    }
 
     useEffect(() => {
+        const getData = async () => {
+            setGraduateUserDataObject(await getGraduateUserDataById());
+            setGraduateUserDataObjectForAdd(await getGraduateUserDataById());
+        }
+        //setTimeout(() => getData(), 3000);
+        getData();
+
         if (data?.degree?.university) {
             setUniversity(data.degree.university);
-            setDegreeSubject(data.degree.subject);
-            setDegreeLevel(data.degree.level);
+            setSubject(data.degree.subject);
+            setLevel(data.degree.level);
             setGrade(data.degree.grade);
             setFrom(data.degree.from);
             setTo(data.degree.to);
             setWeight(data.degree.weight);
             setPriority(data.degree.priority);
             setDescription(data.degree.description);
+            set_id(data.degree._id);
         }
         if (data?.schoolQualifications?.school) {
             setSchool(data.schoolQualifications.school);
@@ -50,19 +78,20 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setWeight(data.schoolQualifications.weight);
             setPriority(data.schoolQualifications.priority);
             setDescription(data.schoolQualifications.description);
+            set_id(data.schoolQualifications._id);
         }
         if (data?.workExperience?.type) {
             setType(data.workExperience.type);
-            setEmployer(data.workExperience.employerOrOtherOrganisation);
+            setEmployerOrOtherOrganization(data.workExperience.employerOrOtherOrganization);
             setPosition(data.workExperience.position);
             setFrom(data.workExperience.from);
             setTo(data.workExperience.to);
             setWeight(data.workExperience.weight);
             setPriority(data.workExperience.priority);
             setDescription(data.workExperience.description);
-
+            set_id(data.workExperience._id);
         }
-        if (data?.certificatesAndAwards?.type) {
+        if (data?.certificatesAndAwards?.year) {
             setType(data.certificatesAndAwards.type);
             setIssuer(data.certificatesAndAwards.issuer);
             setAward(data.certificatesAndAwards.award);
@@ -71,6 +100,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setWeight(data.certificatesAndAwards.weight);
             setPriority(data.certificatesAndAwards.priority);
             setDescription(data.certificatesAndAwards.description);
+            set_id(data.certificatesAndAwards._id);
         }
         if (data?.portfolio?.title) {
             setTitle(data.portfolio.title);
@@ -79,6 +109,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setWeight(data.portfolio.weight);
             setPriority(data.portfolio.priority);
             setDescription(data.portfolio.description);
+            set_id(data.portfolio._id);
         }
     }, [data]);
 
@@ -86,12 +117,8 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         setUniversity(changeEvent.target.value);
     }
 
-    const handleDegreeSubjectChange = changeEvent => {
-        setDegreeSubject(changeEvent.target.value);
-    }
-
-    const handleDegreeLevelChange = changeEvent => {
-        setDegreeLevel(changeEvent.target.value);
+    const handleLevelChange = changeEvent => {
+        setLevel(changeEvent.target.value);
     }
 
     const handleGradeChange = changeEvent => {
@@ -131,7 +158,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     }
 
     const handleEmployerChange = changeEvent => {
-        setEmployer(changeEvent.target.value);
+        setEmployerOrOtherOrganization(changeEvent.target.value);
     }
 
     const handlePositionChange = changeEvent => {
@@ -154,25 +181,15 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         setURL(changeEvent.target.value);
     }
 
-    // const handleInputChange = changeEvent => {
-    //     const inputFieldName = changeEvent.target.name
-    //     props.inputFieldHeaders
-    // }
-
-    // const createFormItem = headerArray => {
-    //     headerArray.map(header => {
-    //         <div className="form-inputs">
-    //             <label htmlFor={header} className="col-6">{header}</label>
-    //             <input type="text" value={ } name={header} className="col-6" placeholder={header} onChange={ } />
-    //         </div>
-    //     })
-
-    // }
     const handleClose = () => {
         setShowModal(false);
+        resetStateData();
+        window.location.reload(false);
+    };
+
+    const resetStateData = () => {
         setUniversity('');
-        setDegreeSubject('');
-        setDegreeLevel('');
+        setLevel('');
         setGrade('');
         setFrom('');
         setTo('');
@@ -182,7 +199,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         setSubject('');
         setYear('');
         setType('');
-        setEmployer('');
+        setEmployerOrOtherOrganization('');
         setPosition('');
         setIssuer('');
         setAward('');
@@ -190,49 +207,86 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         setURL('');
         setWeight('');
         setPriority('');
-    };
+        set_id('');
+    }
 
     const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
 
     const handleSubmit = async () => {
-        let postPath = ''
+        let tempGradUser = graduateUserDataObject;
+        let tempGUObjectForAdd = graduateUserDataObjectForAdd;
+
         if (storyType === 'Degrees') {
-            graduateUserData = { university: { university }, subject: { degreeSubject }, level: { degreeLevel }, grade: { grade }, date: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
-            postPath = 'degrees';
-            if (data?.degree?.university) {
-                postPath = `degrees/${data._id}`;
+            tempGradUser.personalStory.degree = [{ university, subject, level, grade, "date": { from, to }, weight, priority, description }];
+            if (!_id) {
+                const concatenatedObject = tempGUObjectForAdd.personalStory.degree.concat(tempGradUser.personalStory.degree);
+                tempGUObjectForAdd.personalStory.degree = concatenatedObject;
+                tempGradUser = tempGUObjectForAdd;
             }
-        }
-        if (storyType === 'School Qualifications') {
-            graduateUserData = { school: { school }, examType: { examType }, subject: { subject }, grade: { grade }, year: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
-            postPath = 'schoolQualifications';
-            if (data?.schoolQualifications?.school) {
-                postPath = `schoolQualifications/${data._id}`;
-            }
-        }
-        if (storyType === 'Work Experience') {
-            graduateUserData = { type: { type }, employerOrOtherOrganisation: { employer }, position: { position }, date: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
-            postPath = 'workExperience';
-            if (data?.workExperience?.type) {
-                postPath = `workExperience/${data._id}`;
-            }
-        }
-        if (storyType === 'Certificates') {
-            graduateUserData = { type: { type }, issuer: { issuer }, award: { award }, grade: { grade }, year: { year }, weight: { weight }, priority: { priority }, description: { description } };
-            postPath = 'certificatesAndAwards';
-            if (data?.certificatesAndAwards?.type) {
-                postPath = `certificatesAndAwards/${data._id}`;
-            }
-        }
-        if (storyType === 'Portfolio') {
-            graduateUserData = { title: { title }, url: { url }, year: { year }, weight: { weight }, priority: { priority }, description: { description } };
-            postPath = 'portfolio';
-            if (data?.portfolio?.title) {
-                postPath = `portfolio/${data._id}`;
+            else {
+                const rowToEditIndex = tempGUObjectForAdd.personalStory.degree.findIndex(o => o._id === _id);
+                tempGUObjectForAdd.personalStory.degree[rowToEditIndex] = tempGradUser.personalStory.degree[0];
+                tempGradUser = tempGUObjectForAdd;
             }
         }
 
-        const res = await axios.post(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}/personalStory/${postPath}`, graduateUserData);
+        if (storyType === 'School Qualifications') {
+            tempGradUser.personalStory.schoolQualifications = [{ school, examType, subject, grade, "year": { from, to }, weight, priority, description }];
+            if (!_id) {
+                const concatenatedObject = tempGUObjectForAdd.personalStory.schoolQualifications.concat(tempGradUser.personalStory.schoolQualifications);
+                tempGUObjectForAdd.personalStory.schoolQualifications = concatenatedObject;
+                tempGradUser = tempGUObjectForAdd;
+            }
+            else {
+                const rowToEditIndex = tempGUObjectForAdd.personalStory.schoolQualifications.findIndex(o => o._id === _id);
+                tempGUObjectForAdd.personalStory.schoolQualifications[rowToEditIndex] = tempGradUser.personalStory.schoolQualifications[0];
+                tempGradUser = tempGUObjectForAdd;
+            }
+        }
+
+        if (storyType === 'Work Experience') {
+            tempGradUser.personalStory.workExperience = [{ type, employerOrOtherOrganization, position, "date": { from, to }, weight, priority, description }];
+            if (!_id) {
+                const concatenatedObject = tempGUObjectForAdd.personalStory.workExperience.concat(tempGradUser.personalStory.workExperience);
+                tempGUObjectForAdd.personalStory.workExperience = concatenatedObject;
+                tempGradUser = tempGUObjectForAdd;
+            }
+            else {
+                const rowToEditIndex = tempGUObjectForAdd.personalStory.workExperience.findIndex(o => o._id === _id);
+                tempGUObjectForAdd.personalStory.workExperience[rowToEditIndex] = tempGradUser.personalStory.workExperience[0];
+                tempGradUser = tempGUObjectForAdd;
+            }
+        }
+
+        if (storyType === 'Certificates') {
+            tempGradUser.personalStory.certificatesAndAwards = [{ type, issuer, award, grade, year, weight, priority, description }];
+            if (!_id) {
+                const concatenatedObject = tempGUObjectForAdd.personalStory.certificatesAndAwards.concat(tempGradUser.personalStory.certificatesAndAwards);
+                tempGUObjectForAdd.personalStory.certificatesAndAwards = concatenatedObject;
+                tempGradUser = tempGUObjectForAdd;
+            }
+            else {
+                const rowToEditIndex = tempGUObjectForAdd.personalStory.certificatesAndAwards.findIndex(o => o._id === _id);
+                tempGUObjectForAdd.personalStory.certificatesAndAwards[rowToEditIndex] = tempGradUser.personalStory.certificatesAndAwards[0];
+                tempGradUser = tempGUObjectForAdd;
+            }
+        }
+
+        if (storyType === 'Portfolio') {
+            tempGradUser.personalStory.portfolio = [{ title, url, year, weight, priority, description }];
+            if (!_id) {
+                const concatenatedObject = tempGUObjectForAdd.personalStory.portfolio.concat(tempGradUser.personalStory.portfolio);
+                tempGUObjectForAdd.personalStory.portfolio = concatenatedObject;
+                tempGradUser = tempGUObjectForAdd;
+            }
+            else {
+                const rowToEditIndex = tempGUObjectForAdd.personalStory.portfolio.findIndex(o => o._id === _id);
+                tempGUObjectForAdd.personalStory.portfolio[rowToEditIndex] = tempGradUser.personalStory.portfolio[0];
+                tempGradUser = tempGUObjectForAdd;
+            }
+        }
+
+        const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, tempGradUser);
         handleClose();
     }
 
@@ -255,12 +309,12 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                         <input type="text" value={university} name="university" className="col-6" onChange={handleUniversityChange} />
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="degreeSubject" className="col-6">Degree Subject</label>
-                        <input type="text" value={degreeSubject} name="degreeSubject" className="col-6" onChange={handleDegreeSubjectChange} />
+                        <label htmlFor="subject" className="col-6">Degree Subject</label>
+                        <input type="text" value={subject} name="subject" className="col-6" onChange={handleSubjectChange} />
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="degreeLevel" className="col-6">Degree Level</label>
-                        <input type="text" value={degreeLevel} name="degreeLevel" className="col-6" onChange={handleDegreeLevelChange} />
+                        <label htmlFor="level" className="col-6">Degree Level</label>
+                        <input type="text" value={level} name="level" className="col-6" onChange={handleLevelChange} />
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="grade" className="col-6">Grade</label>
@@ -325,8 +379,8 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                         <input type="text" value={type} name="type" className="col-6" onChange={handleTypeChange} />
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="employer" className="col-6">Employer or other</label>
-                        <input type="text" value={employer} name="employer" className="col-6" onChange={handleEmployerChange} />
+                        <label htmlFor="employerOrOtherOrganization" className="col-6">Employer or other</label>
+                        <input type="text" value={employerOrOtherOrganization} name="employerOrOtherOrganization" className="col-6" onChange={handleEmployerChange} />
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="position" className="col-6">Position</label>

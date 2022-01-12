@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import "../../css/EditPersonalStory.css"
 import PersonalStoryModal from './PersonalStoryModal'
+import axios from 'axios';
 
 const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const [showDegree, setShowDegreeModal] = useState(false);
@@ -10,11 +11,39 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const [showCertificates, setShowCertificatesModal] = useState(false);
 	const [showPortfolio, setShowPortfolioModal] = useState(false);
 	const [data, setData] = useState('');
+	const [editDataObject, setEditDataObject] = useState({
+		degree: {},
+		schoolQualifications: {},
+		workExperience: {},
+		certificatesAndAwards: {},
+		portfolio: {}
+	});
+	const [fullDataObject, setFullDataObject] = useState(``);
+
+	//not the best way to do this at all but ran out of time
+	const getGraduateUserDataById = async () => {
+		const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
+		const webToken = JSON.parse(localStorage.getItem('user')).accessToken;
+		try {
+			const res = await axios
+				.get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, { headers: { "x-access-token": webToken } })
+			return objectIsEmpty(res.data) ? res.data : new Error(`There was an error retrieving graduate data`);
+		}
+		catch (e) {
+			return {};
+		}
+	}
+	const objectIsEmpty = userData => {
+		return Object.keys(userData).length > 0
+	}
 
 	useEffect(() => {
-		if (graduateUserPersonalStory) {
-
+		const getData = async () => {
+			setData(await graduateUserPersonalStory);
+			setFullDataObject(await getGraduateUserDataById());
 		}
+		setTimeout(() => getData(), 500);
+		getData();
 	}, [graduateUserPersonalStory]);
 
 	let editData = {
@@ -24,54 +53,90 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 		certificatesAndAwards: {},
 		portfolio: {}
 	}
+	const resetEditDataVariable = () => {
+		editData = { degree: {}, schoolQualifications: {}, workExperience: {}, certificatesAndAwards: {}, portfolio: {} };
+		setEditDataObject(editData);
+	}
 
-	const addDegree = clickEvent => {
-		clickEvent.preventDefault()
+	const addDegree = (clickEvent, rowKeyToEdit) => {
+		clickEvent.preventDefault();
+		resetEditDataVariable();
 		if (clickEvent.target.name === "editDegree") {
-			editData.degree = {
-				university: "Southampton University", subject: "Chemistry", level: "Bachelors", grade: "2:1", from: "2018-09-01", to: "2021-07-01", weight: "L", priority: "10", description: "majored in science"
-			};
-			setData(editData);
+			editData.degree = data.degree.find(o => o._id === rowKeyToEdit);
+			editData.degree.date.from = splitDateData(editData.degree.date.from, "T");
+			editData.degree.date.to = splitDateData(editData.degree.date.to, "T");
+			setEditDataObject(editData);
 		}
 		setShowDegreeModal(true);
 	}
-	const addSchoolQuals = clickEvent => {
+
+	const deleteData = (clickEvent, rowKey) => {
 		clickEvent.preventDefault();
+		let tempData = data;
+		switch (clickEvent.target.name) {
+			case "editDegree":
+				tempData.degree.splice(rowKey, 1);
+				break;
+			case "editSchoolQuals":
+				tempData.schoolQualifications.splice(rowKey, 1);
+				break;
+			case "editCertificates":
+				tempData.certificatesAndAwards.splice(rowKey, 1);
+				break;
+			case "editWorkExperience":
+				tempData.workExperience.splice(rowKey, 1);
+				break;
+			case "editPortfolio":
+				tempData.portfolio.splice(rowKey, 1);
+				break;
+			default:
+				console.log(`No data to delete`);
+				break;
+		}
+		putRequestToDeleteItem(tempData);
+	}
+
+	const putRequestToDeleteItem = async (updatedData) => {
+		let tempFullDO = fullDataObject;
+		tempFullDO.personalStory = updatedData;
+		const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
+		const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, tempFullDO);
+		window.location.reload(false);
+	}
+
+	const addSchoolQuals = (clickEvent, rowKeyToEdit) => {
+		clickEvent.preventDefault();
+		resetEditDataVariable();
 		if (clickEvent.target.name === "editSchoolQuals") {
-			editData.schoolQualifications = {
-				school: `high school`, examType: `GCSE`, subject: `IT`, grade: `Dist`, year: "2015-01-01", weight: `M`, priority: "1", description: `high school qualification`
-			};
-			setData(editData);
+			editData.schoolQualifications = data.schoolQualifications.find(o => o._id === rowKeyToEdit);
+			setEditDataObject(editData);
 		}
 		setShowSchoolQualsModal(true);
 	}
-	const addWorkExperience = clickEvent => {
+	const addWorkExperience = (clickEvent, rowKeyToEdit) => {
 		clickEvent.preventDefault();
+		resetEditDataVariable();
 		if (clickEvent.target.name === "editWorkExperience") {
-			editData.workExperience = {
-				type: `Experience`, employerOrOtherOrganisation: `Fred's Ice Cream`, position: `Ice Cream Maker`, from: `2012-01-01`, to: `2013-01-01`, weight: `M`, priority: "1", description: ``
-			};
-			setData(editData);
+			editData.workExperience = data.workExperience.find(o => o._id === rowKeyToEdit);
+			setEditDataObject(editData);
 		}
 		setShowWorkExperienceModal(true);
 	}
-	const addCertificates = clickEvent => {
+	const addCertificates = (clickEvent, rowKeyToEdit) => {
 		clickEvent.preventDefault();
+		resetEditDataVariable();
 		if (clickEvent.target.name === "editCertificates") {
-			editData.certificatesAndAwards = {
-				type: `Cert`, issuer: `Oracle`, award: `Oracle-Java SE`, grade: `Distinction`, year: `2021-01-01`, weight: `L`, priority: "7", description: ``
-			};
-			setData(editData);
+			editData.certificatesAndAwards = data.certificatesAndAwards.find(o => o._id === rowKeyToEdit);
+			setEditDataObject(editData);
 		}
 		setShowCertificatesModal(true);
 	}
-	const addPortfolio = clickEvent => {
+	const addPortfolio = (clickEvent, rowKeyToEdit) => {
 		clickEvent.preventDefault();
+		resetEditDataVariable();
 		if (clickEvent.target.name === "editPortfolio") {
-			editData.portfolio = {
-				title: `How to identify Opportunities`, url: `https://mysite/howt`, year: `2020-01-01`, weight: `L`, priority: "9", description: `A motivational talk I delivered on how to identify opportunities`
-			};
-			setData(editData);
+			editData.portfolio = data.portfolio.find(o => o._id === rowKeyToEdit);
+			setEditDataObject(editData);
 		}
 		setShowPortfolioModal(true);
 	}
@@ -88,13 +153,17 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 		});
 	};
 
-	const renderEditAndDeleteButtons = (editName, addFunction) => {
+	const renderEditAndDeleteButtons = (editName, addFunction, rowKey) => {
 		return (
 			<td>
 				<div className="button-div">
-				<button name={editName} onClick={addFunction} className="edit-button">Edit</button>
-					<button className="delete-button">Delete</button>
-					</div>
+					<button name={editName} onClick={event => {
+						addFunction(event, rowKey);
+					}} className="edit-button">Edit</button>
+					<button className="delete-button" name={editName} onClick={event => {
+						deleteData(event, rowKey);
+					}}>Delete</button>
+				</div>
 			</td>
 		);
 	};
@@ -102,17 +171,17 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const renderDegreeTableData = arr => {
 		return arr.map(degree => {
 			return (
-				<tr key={degree.university}>
+				<tr key={degree._id}>
 					<td>{degree.university}</td>
 					<td>{degree.subject}</td>
 					<td>{degree.level}</td>
 					<td>{degree.grade}</td>
-					<td>{degree.date.from.split('T')[0]}</td>
-					<td>{degree.date.to.split('T')[0]}</td>
+					<td>{splitDateData(degree.date.from, "T")}</td>
+					<td>{splitDateData(degree.date.to, "T")}</td>
 					<td>{degree.weight}</td>
 					<td>{degree.priority}</td>
 					<td>{degree.description}</td>
-					{renderEditAndDeleteButtons("editDegree", addDegree)}
+					{renderEditAndDeleteButtons("editDegree", addDegree, degree._id)}
 				</tr>
 			);
 		});
@@ -121,16 +190,16 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const renderSchoolQualsTableData = arr => {
 		return arr.map(schoolQualifications => {
 			return (
-				<tr key={schoolQualifications.school}>
+				<tr key={schoolQualifications._id}>
 					<td>{schoolQualifications.school}</td>
 					<td>{schoolQualifications.examType}</td>
 					<td>{schoolQualifications.subject}</td>
 					<td>{schoolQualifications.grade}</td>
-					<td>{schoolQualifications.year.from.split('-')[0]}</td>
+					<td>{splitDateData(schoolQualifications.year.from, "-")}</td>
 					<td>{schoolQualifications.weight}</td>
 					<td>{schoolQualifications.priority}</td>
 					<td>{schoolQualifications.description}</td>
-					{renderEditAndDeleteButtons("editSchoolQuals", addSchoolQuals)}
+					{renderEditAndDeleteButtons("editSchoolQuals", addSchoolQuals, schoolQualifications._id)}
 				</tr>
 			);
 		});
@@ -139,16 +208,16 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const renderWorkExperienceTableData = arr => {
 		return arr.map(workExperience => {
 			return (
-				<tr key={workExperience.type}>
+				<tr key={workExperience._id}>
 					<td>{workExperience.type}</td>
-					<td>{workExperience.employerOrOtherOrganisation}</td>
+					<td>{workExperience.employerOrOtherOrganization}</td>
 					<td>{workExperience.position}</td>
-					<td>{workExperience.date.from.split('-')[0]}</td>
-					<td>{workExperience.date.to.split('-')[0]}</td>
+					<td>{splitDateData(workExperience.date.from, "-")}</td>
+					<td>{splitDateData(workExperience.date.to, "-")}</td>
 					<td>{workExperience.weight}</td>
 					<td>{workExperience.priority}</td>
 					<td>{workExperience.description}</td>
-					{renderEditAndDeleteButtons("editWorkExperience", addWorkExperience)}
+					{renderEditAndDeleteButtons("editWorkExperience", addWorkExperience, workExperience._id)}
 				</tr>
 			);
 		});
@@ -157,16 +226,16 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const renderCertificatesTableData = arr => {
 		return arr.map(certificatesAndAwards => {
 			return (
-				<tr key={certificatesAndAwards.type}>
+				<tr key={certificatesAndAwards._id}>
 					<td>{certificatesAndAwards.type}</td>
 					<td>{certificatesAndAwards.issuer}</td>
 					<td>{certificatesAndAwards.award}</td>
 					<td>{certificatesAndAwards.grade}</td>
-					<td>{certificatesAndAwards.year.split("-")[0]}</td>
+					<td>{splitDateData(certificatesAndAwards.year, "-")}</td>
 					<td>{certificatesAndAwards.weight}</td>
 					<td>{certificatesAndAwards.priority}</td>
 					<td>{certificatesAndAwards.description}</td>
-					{renderEditAndDeleteButtons("editCertificates", addCertificates)}
+					{renderEditAndDeleteButtons("editCertificates", addCertificates, certificatesAndAwards._id)}
 				</tr>
 			);
 		});
@@ -175,17 +244,21 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const renderPortfolioTableData = arr => {
 		return arr.map(portfolio => {
 			return (
-				<tr key={portfolio.title}>
+				<tr key={portfolio._id}>
 					<td>{portfolio.title}</td>
 					<td>{portfolio.url}</td>
-					<td>{portfolio.year.split('-')[0]}</td>
+					<td>{splitDateData(portfolio.year, "-")}</td>
 					<td>{portfolio.weight}</td>
 					<td>{portfolio.priority}</td>
 					<td>{portfolio.description}</td>
-					{renderEditAndDeleteButtons("editPortfolio", addPortfolio)}
+					{renderEditAndDeleteButtons("editPortfolio", addPortfolio, portfolio._id)}
 				</tr>
 			);
 		});
+	}
+
+	const splitDateData = (dateValue, splitDecider) => {
+		return dateValue.split(splitDecider)[0];
 	}
 
 	return (
@@ -195,7 +268,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 			<div>
 				<p className="col-5 table-title">Degrees:</p>
 				<button name="addDegree" onClick={addDegree} className="add-button">Add</button>
-				<PersonalStoryModal show={showDegree} setShowModal={setShowDegreeModal} inputFieldHeaders={degreesHeadings} storyType="Degrees" data={data} />
+				<PersonalStoryModal show={showDegree} setShowModal={setShowDegreeModal} inputFieldHeaders={degreesHeadings} storyType="Degrees" data={editDataObject} />
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
@@ -209,7 +282,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 				<br /><br />
 				<p className="col-5 table-title">School Qualifications</p>
 				<button name="addSchoolQuals" onClick={addSchoolQuals} className="add-button">Add</button>
-				< PersonalStoryModal show={showSchoolQuals} setShowModal={setShowSchoolQualsModal} inputFieldHeaders={schoolQualificationsHeadings} storyType="School Qualifications" data={data} />
+				< PersonalStoryModal show={showSchoolQuals} setShowModal={setShowSchoolQualsModal} inputFieldHeaders={schoolQualificationsHeadings} storyType="School Qualifications" data={editDataObject} />
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
@@ -223,7 +296,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 				<br /><br />
 				<p className="col-5 table-title">Work Experience / positions held</p>
 				<button name="addWorkExperience" onClick={addWorkExperience} className="add-button">Add</button>
-				< PersonalStoryModal show={showWorkExperience} setShowModal={setShowWorkExperienceModal} inputFieldHeaders={workExperienceAndPositionsHeadings} storyType="Work Experience" data={data} />
+				< PersonalStoryModal show={showWorkExperience} setShowModal={setShowWorkExperienceModal} inputFieldHeaders={workExperienceAndPositionsHeadings} storyType="Work Experience" data={editDataObject} />
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
@@ -237,7 +310,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 				<br /><br />
 				<p className="col-5 table-title">Certificates and awards</p>
 				<button name="addCertificates" onClick={addCertificates} className="add-button">Add</button>
-				< PersonalStoryModal show={showCertificates} setShowModal={setShowCertificatesModal} inputFieldHeaders={certificatesAndAwardsHeadings} storyType="Certificates" data={data} />
+				< PersonalStoryModal show={showCertificates} setShowModal={setShowCertificatesModal} inputFieldHeaders={certificatesAndAwardsHeadings} storyType="Certificates" data={editDataObject} />
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
@@ -251,7 +324,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 				<br /><br />
 				<p className="col-5 table-title">Portfolio</p>
 				<button name="addPortfolio" onClick={addPortfolio} className="add-button">Add</button>
-				< PersonalStoryModal show={showPortfolio} setShowModal={setShowPortfolioModal} inputFieldHeaders={portfolioHeadings} storyType="Portfolio" data={data} />
+				< PersonalStoryModal show={showPortfolio} setShowModal={setShowPortfolioModal} inputFieldHeaders={portfolioHeadings} storyType="Portfolio" data={editDataObject} />
 				<table className="table table-striped">
 					<thead className="table-heading">
 						<tr>
@@ -303,7 +376,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 // 		workExperience: PropTypes.arrayOf(
 // 			PropTypes.shape({
 // 				type: PropTypes.string,
-// 				employerOrOtherOrganisation: PropTypes.string,
+// 				employerOrOtherOrganization: PropTypes.string,
 // 				position: PropTypes.string,
 // 				date: PropTypes.shape({
 // 					from: PropTypes.instanceOf(Date),
