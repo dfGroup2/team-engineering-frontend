@@ -26,8 +26,10 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const [url, setURL] = useState('');
     const [weight, setWeight] = useState('');
     const [priority, setPriority] = useState('');
+    const [_id, set_id] = useState('');
 
     const [graduateUserDataObject, setGraduateUserDataObject] = useState('');
+    const [graduateUserDataObjectForAdd, setGraduateUserDataObjectForAdd] = useState('');
     const [getError, setGetError] = useState({ message: ``, count: 0 });
 
     const getGraduateUserDataById = async () => {
@@ -50,6 +52,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     useEffect(() => {
         const getData = async () => {
             setGraduateUserDataObject(await getGraduateUserDataById());
+            setGraduateUserDataObjectForAdd(await getGraduateUserDataById());
         }
         //setTimeout(() => getData(), 3000);
         getData();
@@ -64,6 +67,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setWeight(data.degree.weight);
             setPriority(data.degree.priority);
             setDescription(data.degree.description);
+            set_id(data.degree._id);
         }
         if (data?.schoolQualifications?.school) {
             setSchool(data.schoolQualifications.school);
@@ -74,6 +78,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setWeight(data.schoolQualifications.weight);
             setPriority(data.schoolQualifications.priority);
             setDescription(data.schoolQualifications.description);
+            set_id(data.schoolQualifications._id);
         }
         if (data?.workExperience?.type) {
             setType(data.workExperience.type);
@@ -84,9 +89,9 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setWeight(data.workExperience.weight);
             setPriority(data.workExperience.priority);
             setDescription(data.workExperience.description);
-
+            set_id(data.workExperience._id);
         }
-        if (data?.certificatesAndAwards?.type) {
+        if (data?.certificatesAndAwards?.year) {
             setType(data.certificatesAndAwards.type);
             setIssuer(data.certificatesAndAwards.issuer);
             setAward(data.certificatesAndAwards.award);
@@ -95,6 +100,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setWeight(data.certificatesAndAwards.weight);
             setPriority(data.certificatesAndAwards.priority);
             setDescription(data.certificatesAndAwards.description);
+            set_id(data.certificatesAndAwards._id);
         }
         if (data?.portfolio?.title) {
             setTitle(data.portfolio.title);
@@ -103,6 +109,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setWeight(data.portfolio.weight);
             setPriority(data.portfolio.priority);
             setDescription(data.portfolio.description);
+            set_id(data.portfolio._id);
         }
     }, [data]);
 
@@ -199,33 +206,86 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         setURL('');
         setWeight('');
         setPriority('');
+        set_id('');
     }
 
     const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
 
     const handleSubmit = async () => {
         let tempGradUser = graduateUserDataObject;
+        let tempGUObjectForAdd = graduateUserDataObjectForAdd;
+
         if (storyType === 'Degrees') {
-            tempGradUser.personalStory.degree = { university, subject, level, grade, "date": { from, to }, weight, priority, description };
+            tempGradUser.personalStory.degree = [{ university, subject, level, grade, "date": { from, to }, weight, priority, description }];
+            if (!_id) {
+                const concatenatedObject = tempGUObjectForAdd.personalStory.degree.concat(tempGradUser.personalStory.degree);
+                tempGUObjectForAdd.personalStory.degree = concatenatedObject;
+                tempGradUser = tempGUObjectForAdd;
+            }
+            else {
+                const rowToEditIndex = tempGUObjectForAdd.personalStory.degree.findIndex(o => o._id === _id);
+                tempGUObjectForAdd.personalStory.degree[rowToEditIndex] = tempGradUser.personalStory.degree[0];
+                tempGradUser = tempGUObjectForAdd;
+            }
         }
 
         if (storyType === 'School Qualifications') {
-            tempGradUser.personalStory.schoolQualifications = { school, examType, subject, grade, "year": { from, to }, weight, priority, description };
+            tempGradUser.personalStory.schoolQualifications = [{ school, examType, subject, grade, "year": { from, to }, weight, priority, description }];
+            if (!_id) {
+                const concatenatedObject = tempGUObjectForAdd.personalStory.schoolQualifications.concat(tempGradUser.personalStory.schoolQualifications);
+                tempGUObjectForAdd.personalStory.schoolQualifications = concatenatedObject;
+                tempGradUser = tempGUObjectForAdd;
+            }
+            else {
+                const rowToEditIndex = tempGUObjectForAdd.personalStory.schoolQualifications.findIndex(o => o._id === _id);
+                tempGUObjectForAdd.personalStory.schoolQualifications[rowToEditIndex] = tempGradUser.personalStory.schoolQualifications[0];
+                tempGradUser = tempGUObjectForAdd;
+            }
         }
 
         if (storyType === 'Work Experience') {
-            tempGradUser.personalStory.workExperience = { type, employerOrOtherOrganization, position, "date": { from, to }, weight, priority, description };
+            tempGradUser.personalStory.workExperience = [{ _id, type, employerOrOtherOrganization, position, "date": { from, to }, weight, priority, description }];
+            if (!_id) {
+                const concatenatedObject = tempGUObjectForAdd.personalStory.workExperience.concat(tempGradUser.personalStory.workExperience);
+                tempGUObjectForAdd.personalStory.workExperience = concatenatedObject;
+                tempGradUser = tempGUObjectForAdd;
+            }
+            else {
+                const rowToEditIndex = tempGUObjectForAdd.personalStory.workExperience.findIndex(o => o._id === _id);
+                tempGUObjectForAdd.personalStory.workExperience[rowToEditIndex] = tempGradUser.personalStory.workExperience[0];
+                tempGradUser = tempGUObjectForAdd;
+            }
         }
 
         if (storyType === 'Certificates') {
-            tempGradUser.personalStory.certificatesAndAwards = { type, issuer, award, grade, year, weight, priority, description };
-        }
-        if (storyType === 'Portfolio') {
-            tempGradUser.personalStory.portfolio = { title, url, year, weight, priority, description };
+            tempGradUser.personalStory.certificatesAndAwards = [{ type, issuer, award, grade, year, weight, priority, description }];
+            if (!_id) {
+                const concatenatedObject = tempGUObjectForAdd.personalStory.certificatesAndAwards.concat(tempGradUser.personalStory.certificatesAndAwards);
+                tempGUObjectForAdd.personalStory.certificatesAndAwards = concatenatedObject;
+                tempGradUser = tempGUObjectForAdd;
+            }
+            else {
+                const rowToEditIndex = tempGUObjectForAdd.personalStory.certificatesAndAwards.findIndex(o => o._id === _id);
+                tempGUObjectForAdd.personalStory.certificatesAndAwards[rowToEditIndex] = tempGradUser.personalStory.certificatesAndAwards[0];
+                tempGradUser = tempGUObjectForAdd;
+            }
         }
 
-        setGraduateUserDataObject(tempGradUser);
-        const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, graduateUserDataObject);
+        if (storyType === 'Portfolio') {
+            tempGradUser.personalStory.portfolio = [{ title, url, year, weight, priority, description }];
+            if (!_id) {
+                const concatenatedObject = tempGUObjectForAdd.personalStory.portfolio.concat(tempGradUser.personalStory.portfolio);
+                tempGUObjectForAdd.personalStory.portfolio = concatenatedObject;
+                tempGradUser = tempGUObjectForAdd;
+            }
+            else {
+                const rowToEditIndex = tempGUObjectForAdd.personalStory.portfolio.findIndex(o => o._id === _id);
+                tempGUObjectForAdd.personalStory.portfolio[rowToEditIndex] = tempGradUser.personalStory.portfolio[0];
+                tempGradUser = tempGUObjectForAdd;
+            }
+        }
+
+        const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, tempGradUser);
         handleClose();
     }
 

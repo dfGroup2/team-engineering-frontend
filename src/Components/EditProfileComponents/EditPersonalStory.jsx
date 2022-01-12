@@ -42,7 +42,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 		clickEvent.preventDefault();
 		resetEditDataVariable();
 		if (clickEvent.target.name === "editDegree") {
-			editData.degree = data.degree.find(o => o._id === rowKeyToEdit);;
+			editData.degree = data.degree.find(o => o._id === rowKeyToEdit);
 			editData.degree.date.from = splitDateData(editData.degree.date.from, "T");
 			editData.degree.date.to = splitDateData(editData.degree.date.to, "T");
 			setEditDataObject(editData);
