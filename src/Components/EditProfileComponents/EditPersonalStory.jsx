@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import "../../css/EditPersonalStory.css"
 import PersonalStoryModal from './PersonalStoryModal'
+import axios from 'axios';
 
 const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const [showDegree, setShowDegreeModal] = useState(false);
@@ -17,10 +18,29 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 		certificatesAndAwards: {},
 		portfolio: {}
 	});
+	const [fullDataObject, setFullDataObject] = useState(``);
+
+	//not the best way to do this at all but ran out of time
+	const getGraduateUserDataById = async () => {
+		const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
+		const webToken = JSON.parse(localStorage.getItem('user')).accessToken;
+		try {
+			const res = await axios
+				.get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, { headers: { "x-access-token": webToken } })
+			return objectIsEmpty(res.data) ? res.data : new Error(`There was an error retrieving graduate data`);
+		}
+		catch (e) {
+			return {};
+		}
+	}
+	const objectIsEmpty = userData => {
+		return Object.keys(userData).length > 0
+	}
 
 	useEffect(() => {
 		const getData = async () => {
 			setData(await graduateUserPersonalStory);
+			setFullDataObject(await getGraduateUserDataById());
 		}
 		setTimeout(() => getData(), 500);
 		getData();
@@ -49,6 +69,40 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 		}
 		setShowDegreeModal(true);
 	}
+
+	const deleteData = (clickEvent, rowKey) => {
+		clickEvent.preventDefault();
+		let tempData = data;
+		switch (clickEvent.target.name) {
+			case "editDegree":
+				tempData.degree.splice(rowKey, 1);
+				break;
+			case "editSchoolQuals":
+				tempData.schoolQualifications.splice(rowKey, 1);
+				break;
+			case "editCertificates":
+				tempData.certificatesAndAwards.splice(rowKey, 1);
+				break;
+			case "editWorkExperience":
+				tempData.workExperience.splice(rowKey, 1);
+				break;
+			case "editPortfolio":
+				tempData.portfolio.splice(rowKey, 1);
+				break;
+			default:
+				console.log(`No data to delete`);
+				break;
+		}
+		putRequestToDeleteItem(tempData);
+	}
+
+	const putRequestToDeleteItem = async (updatedData) => {
+		let tempFullDO = fullDataObject;
+		tempFullDO.personalStory = updatedData;
+		const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
+		const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, tempFullDO);
+	}
+
 	const addSchoolQuals = (clickEvent, rowKeyToEdit) => {
 		clickEvent.preventDefault();
 		resetEditDataVariable();
@@ -105,10 +159,9 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 					<button name={editName} onClick={event => {
 						addFunction(event, rowKey);
 					}} className="edit-button">Edit</button>
-					<button className="delete-button" >Delete</button>
-					{/* onClick={event => {
-						deleteFunction(event, rowKey);
-					}} */}
+					<button className="delete-button" name={editName} onClick={event => {
+						deleteData(event, rowKey);
+					}}>Delete</button>
 				</div>
 			</td>
 		);
