@@ -18,7 +18,7 @@ import CurrentVacancies from './Components/IndustryProfileComponents/CurrentVaca
 
 function App() {
   return (
-    <div className="App">
+    <div className="App body-image">
       <Router>
         <Header />
         <Routes>

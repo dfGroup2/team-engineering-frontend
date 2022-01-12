@@ -22,4 +22,5 @@ p {
   background-color: rgb(6, 20, 80);
   color: rgb(255, 255, 255);
   border: 1px solid rgb(6, 20, 80);
+  border: radius 5px;
 }
