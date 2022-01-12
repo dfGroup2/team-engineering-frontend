@@ -6,3 +6,10 @@
 .badge-div {
   float: right;
 }
+
+.titles {
+  font-weight: bold;
+}
+.your-profile-titles {
+  font-weight: normal;
+}

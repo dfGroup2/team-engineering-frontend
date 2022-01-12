@@ -22,8 +22,9 @@ const ProfileInfo = ({ profileInfo, capitaliseFirstLetter }) => {
     const createProfileItems = profileInfoArray => {
         return profileInfoArray.map((currentArray, index) => {
             return (
-                <p key={index}>
-                    {capitaliseFirstLetter(formatGraduateProfileKey(currentArray[0]))}:  {currentArray[1]}
+                <p className="titles" key={index}>
+                    {capitaliseFirstLetter(formatGraduateProfileKey(currentArray[0]))}: <span className=" your-profile-titles">{currentArray[1]}
+                        </span> 
                 </p>
             )
         })
