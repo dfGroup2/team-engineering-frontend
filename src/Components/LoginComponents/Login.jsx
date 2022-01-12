@@ -76,7 +76,8 @@ const Login = () => {
                     <p>Don't have an account? <Link to="/SignUp">Sign up</Link></p>
 
                 </div>
-                <div className="col-8 image-container" ><img src={dfxbackground} className="dfximage"></img></div>
+                    <div className="col-8 image-container dfx-image" >
+                    </div>
             </div>
         </div >
     )
