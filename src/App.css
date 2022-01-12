@@ -41,17 +41,17 @@ header,
 footer {
   background-color: rgb(6, 20, 80);
   color: rgb(255, 255, 255);
-  height: 7vh;
+  height: auto;
 }
 
 footer {
   left: 0;
   bottom: 0;
-  width: 100%;
 }
 
 .footer-div {
   padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 /* Clear Sans /
@@ -103,6 +103,6 @@ body {
   margin-left: auto;
   margin-right: 20px;
 }
-.body-image{
-  background-image:url(./images/bg.png)
+.body-image {
+  background-image: url(./images/bg.png);
 }
