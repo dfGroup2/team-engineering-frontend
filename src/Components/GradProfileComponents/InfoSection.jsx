@@ -49,7 +49,7 @@ const InfoSection = ({ infoData }) => {
     }
     return (
         <div className="container card borderClass">
-            <h3 className="col-3">Your information </h3>
+            <h3 className="col-3 fw-bold">Your information </h3>
             <div className="row">
                 <div className="col-1">
                     <p>Badges:</p>

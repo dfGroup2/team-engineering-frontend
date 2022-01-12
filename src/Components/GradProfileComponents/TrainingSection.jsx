@@ -13,7 +13,7 @@ const TrainingSection = ({ graduateUserData, capitaliseFirstLetter }) => {
 
     return (
         <div className="container card borderClass">
-            <h3 className="col-2">Your training</h3>
+            <h3 className="col-2 fw-bold">Your training</h3>
             <div className="row">
                 <div className="col-2">
                     <p>Cohort: {cohort}</p>

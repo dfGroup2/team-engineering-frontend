@@ -20,7 +20,7 @@ const ProfileSection = ({ graduateUserData, capitaliseFirstLetter }) => {
 	return (
 		<div className="container borderClass">
 			<div className="row">
-				<h3 className="col-2">Your profile</h3>
+				<h3 className="col-2 fw-bold">Your profile</h3>
 				<br />
 				<br />
 				<Link className="col-2 edit-link" to="/edit" >Edit</Link>
