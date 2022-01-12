@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import "../../css/EditPersonalStory.css"
 import PersonalStoryModal from './PersonalStoryModal'
@@ -10,6 +10,12 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const [showCertificates, setShowCertificatesModal] = useState(false);
 	const [showPortfolio, setShowPortfolioModal] = useState(false);
 	const [data, setData] = useState('');
+
+	useEffect(() => {
+		if (graduateUserPersonalStory) {
+
+		}
+	}, [graduateUserPersonalStory]);
 
 	let editData = {
 		degree: {},
@@ -85,8 +91,10 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const renderEditAndDeleteButtons = (editName, addFunction) => {
 		return (
 			<td>
+				<div className="button-div">
 				<button name={editName} onClick={addFunction} className="edit-button">Edit</button>
-				<button>Delete</button>
+					<button className="delete-button">Delete</button>
+					</div>
 			</td>
 		);
 	};
@@ -99,8 +107,8 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 					<td>{degree.subject}</td>
 					<td>{degree.level}</td>
 					<td>{degree.grade}</td>
-					<td>{degree.date.from}</td>
-					<td>{degree.date.to}</td>
+					<td>{degree.date.from.split('T')[0]}</td>
+					<td>{degree.date.to.split('T')[0]}</td>
 					<td>{degree.weight}</td>
 					<td>{degree.priority}</td>
 					<td>{degree.description}</td>
@@ -181,7 +189,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	}
 
 	return (
-		<div className="container card borderClass">
+		<div className="container card borderClass editCard">
 			<h3 className="col-2 profile-padding">Personal Story</h3>
 			<br /><br />
 			<div>
@@ -195,7 +203,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{renderDegreeTableData(graduateUserPersonalStory.degree)}
+						{graduateUserPersonalStory && renderDegreeTableData(graduateUserPersonalStory.degree)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -209,7 +217,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{renderSchoolQualsTableData(graduateUserPersonalStory.schoolQualifications)}
+						{graduateUserPersonalStory && renderSchoolQualsTableData(graduateUserPersonalStory.schoolQualifications)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -223,7 +231,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{renderWorkExperienceTableData(graduateUserPersonalStory.workExperience)}
+						{graduateUserPersonalStory && renderWorkExperienceTableData(graduateUserPersonalStory.workExperience)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -237,7 +245,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{renderCertificatesTableData(graduateUserPersonalStory.certificatesAndAwards)}
+						{graduateUserPersonalStory && renderCertificatesTableData(graduateUserPersonalStory.certificatesAndAwards)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -251,7 +259,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{renderPortfolioTableData(graduateUserPersonalStory.portfolio)}
+						{graduateUserPersonalStory && renderPortfolioTableData(graduateUserPersonalStory.portfolio)}
 					</tbody>
 				</table>
 				<br /><br />
@@ -260,75 +268,75 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	)
 }
 
-EditPersonalStory.propTypes = {
-	graduateUserPersonalStory: PropTypes.shape({
-		degree: PropTypes.arrayOf(
-			PropTypes.shape({
-				university: PropTypes.string,
-				subject: PropTypes.string,
-				level: PropTypes.string,
-				grade: PropTypes.string,
-				date: PropTypes.shape({
-					from: PropTypes.instanceOf(Date),
-					to: PropTypes.instanceOf(Date)
-				}),
-				weight: PropTypes.string,
-				priority: PropTypes.number,
-				description: PropTypes.string
-			})
-		),
-		schoolQualifications: PropTypes.arrayOf(
-			PropTypes.shape({
-				school: PropTypes.string,
-				examType: PropTypes.string,
-				subject: PropTypes.string,
-				grade: PropTypes.string,
-				year: PropTypes.shape({
-					from: PropTypes.instanceOf(Date),
-					to: PropTypes.instanceOf(Date)
-				}),
-				weight: PropTypes.string,
-				priority: PropTypes.number,
-				description: PropTypes.string
-			})
-		),
-		workExperience: PropTypes.arrayOf(
-			PropTypes.shape({
-				type: PropTypes.string,
-				employerOrOtherOrganisation: PropTypes.string,
-				position: PropTypes.string,
-				date: PropTypes.shape({
-					from: PropTypes.instanceOf(Date),
-					to: PropTypes.instanceOf(Date)
-				}),
-				weight: PropTypes.string,
-				priority: PropTypes.number,
-				description: PropTypes.string
-			})
-		),
-		certificatesAndAwards: PropTypes.arrayOf(
-			PropTypes.shape({
-				type: PropTypes.string,
-				issuer: PropTypes.string,
-				award: PropTypes.string,
-				grade: PropTypes.string,
-				year: PropTypes.instanceOf(Date),
-				weight: PropTypes.string,
-				priority: PropTypes.number,
-				description: PropTypes.string
-			})
-		),
-		portfolio: PropTypes.arrayOf(
-			PropTypes.shape({
-				title: PropTypes.string,
-				url: PropTypes.string,
-				year: PropTypes.instanceOf(Date),
-				weight: PropTypes.string,
-				priority: PropTypes.number,
-				description: PropTypes.string
-			})
-		)
-	})
-};
+// EditPersonalStory.propTypes = {
+// 	graduateUserPersonalStory: PropTypes.shape({
+// 		degree: PropTypes.arrayOf(
+// 			PropTypes.shape({
+// 				university: PropTypes.string,
+// 				subject: PropTypes.string,
+// 				level: PropTypes.string,
+// 				grade: PropTypes.string,
+// 				date: PropTypes.shape({
+// 					from: PropTypes.instanceOf(Date),
+// 					to: PropTypes.instanceOf(Date)
+// 				}),
+// 				weight: PropTypes.string,
+// 				priority: PropTypes.number,
+// 				description: PropTypes.string
+// 			})
+// 		),
+// 		schoolQualifications: PropTypes.arrayOf(
+// 			PropTypes.shape({
+// 				school: PropTypes.string,
+// 				examType: PropTypes.string,
+// 				subject: PropTypes.string,
+// 				grade: PropTypes.string,
+// 				year: PropTypes.shape({
+// 					from: PropTypes.instanceOf(Date),
+// 					to: PropTypes.instanceOf(Date)
+// 				}),
+// 				weight: PropTypes.string,
+// 				priority: PropTypes.number,
+// 				description: PropTypes.string
+// 			})
+// 		),
+// 		workExperience: PropTypes.arrayOf(
+// 			PropTypes.shape({
+// 				type: PropTypes.string,
+// 				employerOrOtherOrganisation: PropTypes.string,
+// 				position: PropTypes.string,
+// 				date: PropTypes.shape({
+// 					from: PropTypes.instanceOf(Date),
+// 					to: PropTypes.instanceOf(Date)
+// 				}),
+// 				weight: PropTypes.string,
+// 				priority: PropTypes.number,
+// 				description: PropTypes.string
+// 			})
+// 		),
+// 		certificatesAndAwards: PropTypes.arrayOf(
+// 			PropTypes.shape({
+// 				type: PropTypes.string,
+// 				issuer: PropTypes.string,
+// 				award: PropTypes.string,
+// 				grade: PropTypes.string,
+// 				year: PropTypes.instanceOf(Date),
+// 				weight: PropTypes.string,
+// 				priority: PropTypes.number,
+// 				description: PropTypes.string
+// 			})
+// 		),
+// 		portfolio: PropTypes.arrayOf(
+// 			PropTypes.shape({
+// 				title: PropTypes.string,
+// 				url: PropTypes.string,
+// 				year: PropTypes.instanceOf(Date),
+// 				weight: PropTypes.string,
+// 				priority: PropTypes.number,
+// 				description: PropTypes.string
+// 			})
+// 		)
+// 	})
+// };
 
 export default EditPersonalStory

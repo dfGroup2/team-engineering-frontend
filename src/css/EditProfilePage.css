@@ -27,3 +27,15 @@
 .back-button {
   padding-bottom: 20px;
 }
+.editCard {
+  box-shadow: 10px 10px 5px rgb(97, 94, 94);
+  border-radius: 10px rgb(48, 45, 45);
+}
+.borderClass {
+  border: 2px solid rgb(80, 80, 80);
+}
+.back-outer {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+}

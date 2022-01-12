@@ -12,10 +12,26 @@
 }
 .add-button {
   float: left;
-  margin-left: 20px;
+  margin-left: 10px;
+  background-color: rgb(6, 20, 80);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(6, 20, 80);
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 .edit-button {
   background-color: rgb(6, 20, 80);
   color: rgb(255, 255, 255);
   border: 1px solid rgb(6, 20, 80);
+  border-radius: 5px;
+  margin-right: 2px;
+}
+.delete-button {
+  background-color: rgb(190, 18, 18);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(190, 18, 18);
+  border-radius: 5px;
+}
+.button-div {
+  float: right;
 }

@@ -41,7 +41,7 @@ header,
 footer {
   background-color: rgb(6, 20, 80);
   color: rgb(255, 255, 255);
-  height: 7vh;
+  height: auto;
 }
 
 footer {
@@ -52,6 +52,7 @@ footer {
 
 .footer-div {
   padding-top: 15px;
+  padding-bottom: 12px;
 }
 
 /* Clear Sans /
@@ -102,4 +103,7 @@ body {
 .log-out-btn {
   margin-left: auto;
   margin-right: 20px;
+}
+.body-image {
+  background-image: url(./images/bg.png);
 }

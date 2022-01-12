@@ -1,25 +1,42 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types'
 import '../../css/EditPersonalInfoSection.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 
-const EditPersonalInfoSection = ({ graduateProfile } /*, graduateProfileEdited }*/) => {
+const EditPersonalInfoSection = ({ graduateProfile, dataForEdit }) => {
     // the graduateProfileEdited prop should be used to pass the data changed back up to the EditProfilePage component, this would then (hopefully) allow the data to be sent to the server when the SubmitDraft button is clicked.
-    const [name, setName] = useState((graduateProfile.firstName + " " + graduateProfile.lastName));
-    const [email, setEmail] = useState(graduateProfile.personalEmail);
-    const [dfEmail, setDfEmail] = useState(graduateProfile.DFEmail);
-    const [github, setGithub] = useState(graduateProfile.github);
-    const [linkedin, setLinkedin] = useState(graduateProfile.linkedIn);
-    const [phoneNumber, setPhoneNumber] = useState(graduateProfile.phoneNumber);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [dfEmail, setDfEmail] = useState('');
+    const [github, setGithub] = useState('');
+    const [linkedin, setLinkedin] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
 
-    const [firstName, setFirstName] = useState(graduateProfile.firstName);
-    const [lastName, setLastName] = useState(graduateProfile.lastName);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
 
-    const [gender, setGender] = useState(graduateProfile.gender);
-    const [nationality, setNationality] = useState(graduateProfile.nationality);
-    const [personality, setPersonality] = useState(graduateProfile.personality);
-    const [imagePath, setImagePath] = useState(graduateProfile.profilePicture);
+    const [gender, setGender] = useState('');
+    const [nationality, setNationality] = useState('');
+    const [personality, setPersonality] = useState('');
+    const [imagePath, setImagePath] = useState('');
+
+    useEffect(() => {
+        if (graduateProfile) {
+            setName((graduateProfile.firstName + " " + graduateProfile.lastName));
+            setEmail(graduateProfile.personalEmail);
+            setDfEmail(graduateProfile.DFEmail);
+            setGithub(graduateProfile.github);
+            setLinkedin(graduateProfile.linkedIn);
+            setPhoneNumber(graduateProfile.phoneNumber);
+            setFirstName(graduateProfile.firstName);
+            setLastName(graduateProfile.lastName);
+            setGender(graduateProfile.gender);
+            setNationality(graduateProfile.nationality);
+            setPersonality(graduateProfile.personality);
+            setImagePath(graduateProfile.profilePicture);
+        }
+    }, [graduateProfile]);
 
     let graduateUserProfile = {
         firstName: firstName, lastName: lastName, personalEmail: email, DFEmail: dfEmail, github: github, linkedIn: linkedin, phoneNumber: phoneNumber, profilePicture: imagePath, personalStory: "", gender: gender, nationality: nationality, personality: personality
@@ -37,49 +54,64 @@ const EditPersonalInfoSection = ({ graduateProfile } /*, graduateProfileEdited }
                 }
             }
         }
+
+        setDataForEdit();
     }
+
+    const setDataForEdit = () => {
+        dataForEdit(graduateUserProfile);
+    };
 
     const handlePersonalEmailChange = event => {
         setEmail(event.target.value);
+        setDataForEdit();
     }
 
     const handleDfEmailChange = event => {
         setDfEmail(event.target.value);
+        setDataForEdit();
     }
 
     const handleGithubChange = event => {
         setGithub(event.target.value);
+        setDataForEdit();
     }
 
     const handleLinkedinChange = event => {
         setLinkedin(event.target.value);
+        setDataForEdit();
     }
 
     const handlePhoneNumberChange = event => {
         setPhoneNumber(event.target.value);
+        setDataForEdit();
     }
 
     const handleGenderClick = event => {
         document.getElementById("gender-dropdown").innerHTML = event.target.innerText;
         setGender(event.target.innerText);
+        setDataForEdit();
     }
 
     const handleNationalityClick = event => {
         document.getElementById("nationality-dropdown").innerHTML = event.target.innerText;
         setNationality(event.target.innerText);
+        setDataForEdit();
     }
 
     const handlePersonalityClick = event => {
         document.getElementById("personality-dropdown").innerHTML = event.target.innerText;
         setPersonality(event.target.innerText);
+        setDataForEdit();
     }
 
     const handleFileUpload = event => {
         setImagePath(event.target.value);
+        setDataForEdit();
     }
 
     return (
-        <div className="container card borderClass">
+        <div className="container card borderClass editCard">
             <h3 className="col-3">Personal Information</h3>
             <div className="row">
                 <div className="col-4">

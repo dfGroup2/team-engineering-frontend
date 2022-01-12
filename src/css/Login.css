@@ -6,10 +6,17 @@
 }
 .dfximage {
   width: 100%;
-  height: 110%;
-  object-fit: cover;
 }
 
 .outer-div {
   height: 86vh;
+}
+.dfx-image {
+  background: url(../images/dfx_background.png);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border: 50px solid #0014a0;
 }
