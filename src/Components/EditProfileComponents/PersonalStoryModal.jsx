@@ -27,9 +27,34 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const [url, setURL] = useState('');
     const [weight, setWeight] = useState('');
     const [priority, setPriority] = useState('');
-    let graduateUserData = {}
+
+    const [graduateUserDataObject, setGraduateUserDataObject] = useState('');
+    const [getError, setGetError] = useState({ message: ``, count: 0 });
+
+    const getGraduateUserDataById = async () => {
+        const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
+        const webToken = JSON.parse(localStorage.getItem('user')).accessToken;
+        try {
+            const res = await axios
+                .get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, { headers: { "x-access-token": webToken } })
+            return objectIsEmpty(res.data) ? res.data : new Error(`There was an error retrieving graduate data`);
+        }
+        catch (e) {
+            setGetError({ message: `Data not available from the server: ${e.message}`, count: 0 });
+            return {};
+        }
+    }
+    const objectIsEmpty = userData => {
+        return Object.keys(userData).length > 0
+    }
 
     useEffect(() => {
+        const getData = async () => {
+            setGraduateUserDataObject(await getGraduateUserDataById());
+        }
+        //setTimeout(() => getData(), 3000);
+        getData();
+
         if (data?.degree?.university) {
             setUniversity(data.degree.university);
             setDegreeSubject(data.degree.subject);
@@ -154,20 +179,6 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         setURL(changeEvent.target.value);
     }
 
-    // const handleInputChange = changeEvent => {
-    //     const inputFieldName = changeEvent.target.name
-    //     props.inputFieldHeaders
-    // }
-
-    // const createFormItem = headerArray => {
-    //     headerArray.map(header => {
-    //         <div className="form-inputs">
-    //             <label htmlFor={header} className="col-6">{header}</label>
-    //             <input type="text" value={ } name={header} className="col-6" placeholder={header} onChange={ } />
-    //         </div>
-    //     })
-
-    // }
     const handleClose = () => {
         setShowModal(false);
         setUniversity('');
@@ -195,44 +206,28 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
 
     const handleSubmit = async () => {
-        let postPath = ''
+        let tempGradUser = graduateUserDataObject;
         if (storyType === 'Degrees') {
-            graduateUserData = { university: { university }, subject: { degreeSubject }, level: { degreeLevel }, grade: { grade }, date: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
-            postPath = 'degrees';
-            if (data?.degree?.university) {
-                postPath = `degrees/${data._id}`;
-            }
-        }
-        if (storyType === 'School Qualifications') {
-            graduateUserData = { school: { school }, examType: { examType }, subject: { subject }, grade: { grade }, year: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
-            postPath = 'schoolQualifications';
-            if (data?.schoolQualifications?.school) {
-                postPath = `schoolQualifications/${data._id}`;
-            }
-        }
-        if (storyType === 'Work Experience') {
-            graduateUserData = { type: { type }, employerOrOtherOrganisation: { employer }, position: { position }, date: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
-            postPath = 'workExperience';
-            if (data?.workExperience?.type) {
-                postPath = `workExperience/${data._id}`;
-            }
-        }
-        if (storyType === 'Certificates') {
-            graduateUserData = { type: { type }, issuer: { issuer }, award: { award }, grade: { grade }, year: { year }, weight: { weight }, priority: { priority }, description: { description } };
-            postPath = 'certificatesAndAwards';
-            if (data?.certificatesAndAwards?.type) {
-                postPath = `certificatesAndAwards/${data._id}`;
-            }
-        }
-        if (storyType === 'Portfolio') {
-            graduateUserData = { title: { title }, url: { url }, year: { year }, weight: { weight }, priority: { priority }, description: { description } };
-            postPath = 'portfolio';
-            if (data?.portfolio?.title) {
-                postPath = `portfolio/${data._id}`;
-            }
+            tempGradUser.personalStory.degree = { university: { university }, subject: { degreeSubject }, level: { degreeLevel }, grade: { grade }, date: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
         }
 
-        const res = await axios.post(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}/personalStory/${postPath}`, graduateUserData);
+        if (storyType === 'School Qualifications') {
+            tempGradUser.personalStory.schoolQualifications = { school: { school }, examType: { examType }, subject: { subject }, grade: { grade }, year: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
+        }
+
+        if (storyType === 'Work Experience') {
+            tempGradUser.personalStory.workExperience = { type: { type }, employerOrOtherOrganisation: { employer }, position: { position }, date: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
+        }
+
+        if (storyType === 'Certificates') {
+            tempGradUser.personalStory.certificatesAndAwards = { type: { type }, issuer: { issuer }, award: { award }, grade: { grade }, year: { year }, weight: { weight }, priority: { priority }, description: { description } };
+        }
+        if (storyType === 'Portfolio') {
+            tempGradUser.personalStory.portfolio = { title: { title }, url: { url }, year: { year }, weight: { weight }, priority: { priority }, description: { description } };
+        }
+
+        setGraduateUserDataObject(tempGradUser);
+        const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, graduateUserDataObject);
         handleClose();
     }
 
