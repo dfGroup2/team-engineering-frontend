@@ -1,12 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../../css/EditProfilePage.css';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import EditPersonalInfoSection from './EditPersonalInfoSection';
 import EditPersonalStory from './EditPersonalStory';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const EditProfilePage = props => {
@@ -85,10 +83,6 @@ const EditProfilePage = props => {
 			</div>
 		</>
 	)
-}
-
-EditProfilePage.propTypes = {
-
 }
 
 export default EditProfilePage;

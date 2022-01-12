@@ -8,8 +8,7 @@ import axios from 'axios';
 
 const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, data }) => {
     const [university, setUniversity] = useState('');
-    const [degreeSubject, setDegreeSubject] = useState('');
-    const [degreeLevel, setDegreeLevel] = useState('');
+    const [level, setLevel] = useState('');
     const [grade, setGrade] = useState('');
     const [from, setFrom] = useState('');
     const [to, setTo] = useState('');
@@ -19,7 +18,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     const [subject, setSubject] = useState('');
     const [year, setYear] = useState('');
     const [type, setType] = useState('');
-    const [employer, setEmployer] = useState('');
+    const [employerOrOtherOrganization, setEmployerOrOtherOrganization] = useState('');
     const [position, setPosition] = useState('');
     const [issuer, setIssuer] = useState('');
     const [award, setAward] = useState('');
@@ -57,8 +56,8 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
 
         if (data?.degree?.university) {
             setUniversity(data.degree.university);
-            setDegreeSubject(data.degree.subject);
-            setDegreeLevel(data.degree.level);
+            setSubject(data.degree.subject);
+            setLevel(data.degree.level);
             setGrade(data.degree.grade);
             setFrom(data.degree.from);
             setTo(data.degree.to);
@@ -78,7 +77,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         }
         if (data?.workExperience?.type) {
             setType(data.workExperience.type);
-            setEmployer(data.workExperience.employerOrOtherOrganisation);
+            setEmployerOrOtherOrganization(data.workExperience.employerOrOtherOrganization);
             setPosition(data.workExperience.position);
             setFrom(data.workExperience.from);
             setTo(data.workExperience.to);
@@ -111,12 +110,8 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         setUniversity(changeEvent.target.value);
     }
 
-    const handleDegreeSubjectChange = changeEvent => {
-        setDegreeSubject(changeEvent.target.value);
-    }
-
-    const handleDegreeLevelChange = changeEvent => {
-        setDegreeLevel(changeEvent.target.value);
+    const handleLevelChange = changeEvent => {
+        setLevel(changeEvent.target.value);
     }
 
     const handleGradeChange = changeEvent => {
@@ -156,7 +151,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     }
 
     const handleEmployerChange = changeEvent => {
-        setEmployer(changeEvent.target.value);
+        setEmployerOrOtherOrganization(changeEvent.target.value);
     }
 
     const handlePositionChange = changeEvent => {
@@ -181,9 +176,12 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
 
     const handleClose = () => {
         setShowModal(false);
+        resetStateData();
+    };
+
+    const resetStateData = () => {
         setUniversity('');
-        setDegreeSubject('');
-        setDegreeLevel('');
+        setLevel('');
         setGrade('');
         setFrom('');
         setTo('');
@@ -193,7 +191,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         setSubject('');
         setYear('');
         setType('');
-        setEmployer('');
+        setEmployerOrOtherOrganization('');
         setPosition('');
         setIssuer('');
         setAward('');
@@ -201,29 +199,29 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
         setURL('');
         setWeight('');
         setPriority('');
-    };
+    }
 
     const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
 
     const handleSubmit = async () => {
         let tempGradUser = graduateUserDataObject;
         if (storyType === 'Degrees') {
-            tempGradUser.personalStory.degree = { university: { university }, subject: { degreeSubject }, level: { degreeLevel }, grade: { grade }, date: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
+            tempGradUser.personalStory.degree = { university, subject, level, grade, "date": { from, to }, weight, priority, description };
         }
 
         if (storyType === 'School Qualifications') {
-            tempGradUser.personalStory.schoolQualifications = { school: { school }, examType: { examType }, subject: { subject }, grade: { grade }, year: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
+            tempGradUser.personalStory.schoolQualifications = { school, examType, subject, grade, "year": { from, to }, weight, priority, description };
         }
 
         if (storyType === 'Work Experience') {
-            tempGradUser.personalStory.workExperience = { type: { type }, employerOrOtherOrganisation: { employer }, position: { position }, date: { from: { from }, to: { to } }, weight: { weight }, priority: { priority }, description: { description } };
+            tempGradUser.personalStory.workExperience = { type, employerOrOtherOrganization, position, "date": { from, to }, weight, priority, description };
         }
 
         if (storyType === 'Certificates') {
-            tempGradUser.personalStory.certificatesAndAwards = { type: { type }, issuer: { issuer }, award: { award }, grade: { grade }, year: { year }, weight: { weight }, priority: { priority }, description: { description } };
+            tempGradUser.personalStory.certificatesAndAwards = { type, issuer, award, grade, year, weight, priority, description };
         }
         if (storyType === 'Portfolio') {
-            tempGradUser.personalStory.portfolio = { title: { title }, url: { url }, year: { year }, weight: { weight }, priority: { priority }, description: { description } };
+            tempGradUser.personalStory.portfolio = { title, url, year, weight, priority, description };
         }
 
         setGraduateUserDataObject(tempGradUser);
@@ -250,12 +248,12 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                         <input type="text" value={university} name="university" className="col-6" onChange={handleUniversityChange} />
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="degreeSubject" className="col-6">Degree Subject</label>
-                        <input type="text" value={degreeSubject} name="degreeSubject" className="col-6" onChange={handleDegreeSubjectChange} />
+                        <label htmlFor="subject" className="col-6">Degree Subject</label>
+                        <input type="text" value={subject} name="subject" className="col-6" onChange={handleSubjectChange} />
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="degreeLevel" className="col-6">Degree Level</label>
-                        <input type="text" value={degreeLevel} name="degreeLevel" className="col-6" onChange={handleDegreeLevelChange} />
+                        <label htmlFor="level" className="col-6">Degree Level</label>
+                        <input type="text" value={level} name="level" className="col-6" onChange={handleLevelChange} />
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="grade" className="col-6">Grade</label>
@@ -320,8 +318,8 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                         <input type="text" value={type} name="type" className="col-6" onChange={handleTypeChange} />
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="employer" className="col-6">Employer or other</label>
-                        <input type="text" value={employer} name="employer" className="col-6" onChange={handleEmployerChange} />
+                        <label htmlFor="employerOrOtherOrganization" className="col-6">Employer or other</label>
+                        <input type="text" value={employerOrOtherOrganization} name="employerOrOtherOrganization" className="col-6" onChange={handleEmployerChange} />
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="position" className="col-6">Position</label>
