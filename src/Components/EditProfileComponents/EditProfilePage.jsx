@@ -39,18 +39,27 @@ const EditProfilePage = props => {
 		getData();
 	}, []);
 
-	const submitData = () => {
-		//const res=await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers`,graduateUser)
+	const submitData = async () => {
+		// const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
+		// const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, graduateUserData);
+		console.log(graduateUserData);
 		navigate("/graduatePage");
 	}
+
 	const resetData = async () => {
 		setGraduateUserData(await getGraduateUserDataById());
 	}
 
+	const updateGraduateUserData = async graduateUserInfo => {
+		const gradUserDataTempObject = graduateUserData;
+		gradUserDataTempObject.graduateProfile = graduateUserInfo;
+		setGraduateUserData(gradUserDataTempObject);
+	}
+
 	return (
 		<>	<div className="back-outer">
-				<div className="back-button"><Link to="/graduatePage">back</Link></div>
-			</div>
+			<div className="back-button"><Link to="/graduatePage">Go back</Link></div>
+		</div>
 			<div className="container card borderClass editCard">
 				<div className="row profile-padding">
 					<h3 className="col-2">Your profile</h3>
@@ -70,7 +79,7 @@ const EditProfilePage = props => {
 				</div>
 			</div>
 			<div className="parent-container">
-				<EditPersonalInfoSection graduateProfile={graduateUserData.graduateProfile} />
+				<EditPersonalInfoSection graduateProfile={graduateUserData.graduateProfile} dataForEdit={updateGraduateUserData} />
 			</div>
 			<div className="parent-container">
 				<EditPersonalStory graduateUserPersonalStory={graduateUserData.personalStory} />

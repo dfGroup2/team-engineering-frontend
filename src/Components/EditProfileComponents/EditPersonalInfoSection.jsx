@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import '../../css/EditPersonalInfoSection.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 
-const EditPersonalInfoSection = ({ graduateProfile } /*, graduateProfileEdited }*/) => {
+const EditPersonalInfoSection = ({ graduateProfile, dataForEdit }) => {
     // the graduateProfileEdited prop should be used to pass the data changed back up to the EditProfilePage component, this would then (hopefully) allow the data to be sent to the server when the SubmitDraft button is clicked.
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -54,45 +54,60 @@ const EditPersonalInfoSection = ({ graduateProfile } /*, graduateProfileEdited }
                 }
             }
         }
+
+        setDataForEdit();
     }
+
+    const setDataForEdit = () => {
+        dataForEdit(graduateUserProfile);
+    };
 
     const handlePersonalEmailChange = event => {
         setEmail(event.target.value);
+        setDataForEdit();
     }
 
     const handleDfEmailChange = event => {
         setDfEmail(event.target.value);
+        setDataForEdit();
     }
 
     const handleGithubChange = event => {
         setGithub(event.target.value);
+        setDataForEdit();
     }
 
     const handleLinkedinChange = event => {
         setLinkedin(event.target.value);
+        setDataForEdit();
     }
 
     const handlePhoneNumberChange = event => {
         setPhoneNumber(event.target.value);
+        setDataForEdit();
     }
 
     const handleGenderClick = event => {
         document.getElementById("gender-dropdown").innerHTML = event.target.innerText;
         setGender(event.target.innerText);
+        setDataForEdit();
     }
 
     const handleNationalityClick = event => {
         document.getElementById("nationality-dropdown").innerHTML = event.target.innerText;
         setNationality(event.target.innerText);
+        setDataForEdit();
     }
 
     const handlePersonalityClick = event => {
         document.getElementById("personality-dropdown").innerHTML = event.target.innerText;
         setPersonality(event.target.innerText);
+        setDataForEdit();
     }
 
     const handleFileUpload = event => {
         setImagePath(event.target.value);
+        setDataForEdit();
     }
 
     return (
