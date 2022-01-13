@@ -39,7 +39,8 @@ const EditProfilePage = props => {
 
 	const submitData = async () => {
 		const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
-		const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, graduateUserData);
+		const webToken = JSON.parse(localStorage.getItem('user')).accessToken;
+		const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, graduateUserData, { headers: { "x-access-token": webToken } });
 		navigate("/graduatePage");
 	}
 

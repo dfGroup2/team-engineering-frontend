@@ -212,6 +212,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
     }
 
     const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
+    const webToken = JSON.parse(localStorage.getItem('user')).accessToken;
 
     const handleSubmit = async () => {
         let tempGradUser = graduateUserDataObject;
@@ -287,7 +288,7 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             }
         }
 
-        const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, tempGradUser);
+        const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, tempGradUser, { headers: { "x-access-token": webToken } });
         handleClose();
     }
 
