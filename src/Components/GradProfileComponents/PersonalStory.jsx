@@ -16,7 +16,7 @@ const PersonalStory = ({ personalStoryData }) => {
         <div className="ps-section">
             <p className="fw-bold">Personal story summary:</p>
             <div className="card borderClass story-div shadow-lg">
-                <p>Degree in {degree[0].subject} from {degree[0].university}</p>
+                {degree?.length > 0 && <p>Degree in {degree[0].subject} from {degree[0].university}</p>}
                 <p>{numOfQuals} {formatStory(numOfQuals, "school qualification")}</p>
                 <p>{numOfWorkExperience} {formatStory(numOfWorkExperience, "work experience")}</p>
                 <p>{numOfAchievements} {formatStory(numOfAchievements, "personal achievement")}</p>
