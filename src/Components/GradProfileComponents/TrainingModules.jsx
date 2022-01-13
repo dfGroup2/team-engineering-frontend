@@ -7,13 +7,13 @@ const TrainingModules = ({ trainingModules, capitaliseFirstLetter }) => {
     const createFormattedModuleTitle = nestedObject => {
         const rows = [];
         for (const [moduleTitle, moduleItems] of Object.entries(nestedObject)) {
-            const currentModuleTitle = <div class="col-6 border-bottom">{capitaliseFirstLetter(moduleTitle)}</div>;
+            const currentModuleTitle = <div className="col-6 border-bottom">{capitaliseFirstLetter(moduleTitle)}</div>;
             const currentModuleItems = createFormattedRow(formatTrainingModuleItems(moduleItems));
             rows.push(
                 <>
                     {currentModuleTitle}
-                    <div class="col-6 ">
-                        <ul class="list-group">
+                    <div className="col-6 ">
+                        <ul className="list-group">
                             {currentModuleItems}
                         </ul>
                     </div>
@@ -25,7 +25,7 @@ const TrainingModules = ({ trainingModules, capitaliseFirstLetter }) => {
 
     const createFormattedRow = (array) => {
         const currentModuleItems = array.map(currentArray => {
-            return <li class="list-group-item align-items-center text-start">
+            return <li className="list-group-item align-items-center text-start">
                 {capitaliseFirstLetter(currentArray[0])}
                 &nbsp;
                 &nbsp;
@@ -51,8 +51,8 @@ const TrainingModules = ({ trainingModules, capitaliseFirstLetter }) => {
             {/* <div className="col-8 training-div"> */}
             <h3>Training Modules</h3>
             &nbsp;
-            <div class="container ">
-                <div class="row padding">
+            <div className="container ">
+                <div className="row padding">
                     {createFormattedModuleTitle(trainingModules)}
                 </div>
             </div>
