@@ -22,9 +22,9 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 
 	//not the best way to do this at all but ran out of time
 	const getGraduateUserDataById = async () => {
-		const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
-		const webToken = JSON.parse(localStorage.getItem('user')).accessToken;
 		try {
+			const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
+			const webToken = JSON.parse(localStorage.getItem('user')).accessToken;
 			const res = await axios
 				.get(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, { headers: { "x-access-token": webToken } })
 			return objectIsEmpty(res.data) ? res.data : new Error(`There was an error retrieving graduate data`);
@@ -102,7 +102,8 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 		let tempFullDO = fullDataObject;
 		tempFullDO.personalStory = updatedData;
 		const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
-		const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, tempFullDO);
+		const webToken = JSON.parse(localStorage.getItem('user')).accessToken;
+		const res = await axios.put(`${process.env.REACT_APP_DFXTRAURL}/api/content/graduateUsers/${currentGraduateUserDataId}`, tempFullDO, { headers: { "x-access-token": webToken } });
 		window.location.reload(false);
 	}
 

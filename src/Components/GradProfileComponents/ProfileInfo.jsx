@@ -24,7 +24,7 @@ const ProfileInfo = ({ profileInfo, capitaliseFirstLetter }) => {
             return (
                 <p className="titles" key={index}>
                     {capitaliseFirstLetter(formatGraduateProfileKey(currentArray[0]))}: <span className=" your-profile-titles">{currentArray[1]}
-                        </span> 
+                    </span>
                 </p>
             )
         })
@@ -43,7 +43,7 @@ const ProfileInfo = ({ profileInfo, capitaliseFirstLetter }) => {
             }
         }
         const formattedKey = characterArr.join("");
-        console.log(formattedKey);
+        //console.log(formattedKey);
         return formattedKey;
     }
 
