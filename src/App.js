@@ -23,11 +23,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/graduatePage" element={<ProfilePage />}></Route>
-          <Route path="/edit" element={<div className="parent-container">
-            <EditProfilePage />
-            <br /><br />
-          </div>
-          }></Route>
+          <Route path="/edit" element={<EditProfilePage />}></Route>
           <Route exact path="/" element={<Login />}></Route>
           <Route path="/SignUp" element={<SignUp />}></Route>
           <Route path="/IndustryProfile" element={<div className="parent-container">

@@ -54,33 +54,38 @@ const EditProfilePage = props => {
 	}
 
 	return (
-		<>	<div className="back-outer">
-			<div className="back-button"><Link to="/graduatePage">Go back</Link></div>
-		</div>
-			<div className="container card borderClass editCard">
-				<div className="row profile-padding">
-					<h3 className="col-2">Your profile</h3>
-					<br />
-					<br />
-					<div className="col-3">
-						<p className="progressbar">Profile completion: </p>
-						<ProgressBar now={50} />
-						<br />
+		<>
+			{objectIsEmpty(graduateUserData) &&
+				<div>
+					<div className="back-outer">
+						<div className="back-button"><Link to="/graduatePage">Go back</Link></div>
 					</div>
-					<p className="col-3"></p>
-					<div className="col-4 ">
-						<input type="submit" value="submit draft" className="btn btn-primary col-5 draft-btn" onClick={submitData} />
-						&nbsp;&nbsp;
-						<input type="submit" value="reset draft" className="btn btn-primary col-5 draft-btn" onClick={resetData} />
+					<div className="container card borderClass editCard">
+						<div className="row profile-padding">
+							<h3 className="col-2">Your profile</h3>
+							<br />
+							<br />
+							<div className="col-3">
+								<p className="progressbar">Profile completion: </p>
+								<ProgressBar now={50} />
+								<br />
+							</div>
+							<p className="col-3"></p>
+							<div className="col-4 ">
+								<input type="submit" value="submit draft" className="btn btn-primary col-5 draft-btn" onClick={submitData} />
+								&nbsp;&nbsp;
+								<input type="submit" value="reset draft" className="btn btn-primary col-5 draft-btn" onClick={resetData} />
+							</div>
+						</div>
+					</div>
+					<div className="parent-container">
+						<EditPersonalInfoSection graduateProfile={graduateUserData.graduateProfile} dataForEdit={updateGraduateUserData} />
+					</div>
+					<div className="parent-container">
+						<EditPersonalStory graduateUserPersonalStory={graduateUserData.personalStory} />
 					</div>
 				</div>
-			</div>
-			<div className="parent-container">
-				<EditPersonalInfoSection graduateProfile={graduateUserData.graduateProfile} dataForEdit={updateGraduateUserData} />
-			</div>
-			<div className="parent-container">
-				<EditPersonalStory graduateUserPersonalStory={graduateUserData.personalStory} />
-			</div>
+			}
 		</>
 	)
 }
