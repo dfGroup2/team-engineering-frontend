@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import TrainingSection from '../Components/GradProfileComponents/TrainingSection';
-import { testGraduateUser } from './testData/sampleGraduateUser';
+import { testGraduateUser } from './testData/sampleGraduateUser2';
 const { graduateTraining } = testGraduateUser;
 const { cohort, learningPath, trainer, finishedDate } = graduateTraining;
 jest.mock('../Components/GradProfileComponents/TrainingModules', () => {

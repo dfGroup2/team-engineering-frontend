@@ -6,10 +6,12 @@ import { testGraduateUser } from './testData/sampleGraduateUser2';
 
 describe(`EditPersonalInfoSection unit test`, () => {
 
+    const mockUpdatedData = jest.fn();
+
     beforeEach(() => {
         render(
             <Router>
-                <EditPersonalInfoSection graduateProfile={testGraduateUser.graduateProfile} />
+                <EditPersonalInfoSection graduateProfile={testGraduateUser.graduateProfile} dataForEdit={mockUpdatedData} />
             </Router>
         );
     });

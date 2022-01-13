@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 
 import PersonalStory from '../Components/GradProfileComponents/PersonalStory';
 
-import { testGraduateUser } from './testData/sampleGraduateUser';
+import { testGraduateUser } from './testData/sampleGraduateUser2';
 const { personalStory } = testGraduateUser;
 
 describe(`PersonalStory component tests`, () => {
@@ -23,7 +23,7 @@ describe(`PersonalStory component tests`, () => {
         });
 
         test(`it should render school qualifications`, () => {
-            const element = screen.getByText(/School qualifications/i);
+            const element = screen.getByText(/School qualification/i);
             expect(element).toBeInTheDocument();
         });
 

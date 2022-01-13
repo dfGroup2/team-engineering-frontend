@@ -1,13 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ProfileSection from '../Components/GradProfileComponents/ProfileSection';
-import { testGraduateUser } from './testData/sampleGraduateUser';
+import { testGraduateUser } from './testData/sampleGraduateUser2';
 
 describe(`Tests for ProfileSection`, () => {
+
+	const mockCapitaliseFirstLetter = jest.fn();
+
 	beforeEach(() => {
 		render(
 			<Router>
-				<ProfileSection graduateUserData={testGraduateUser}/>
+				<ProfileSection graduateUserData={testGraduateUser} capitaliseFirstLetter={mockCapitaliseFirstLetter} />
 			</Router>
 		);
 	})

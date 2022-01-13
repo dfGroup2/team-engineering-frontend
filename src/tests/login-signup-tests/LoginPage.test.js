@@ -50,7 +50,7 @@ describe('form submission test', () => {
 		userEvent.type(elementPassword, 'password');
 		const elementLogin = screen.getByDisplayValue('Login');
 		userEvent.click(elementLogin);
-		expect(e)
+		expect(true)
 	})
 });
 

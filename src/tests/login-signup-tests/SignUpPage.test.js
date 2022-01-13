@@ -47,7 +47,7 @@ describe(`Tests for SignUp Page`, () => {
 				<SignUp />
 			</Router>
 		)
-		const element = container.querySelector('.dfximage')
+		const element = container.querySelector('.dfx-image')
 		expect(element).toBeTruthy();
 	});
 });

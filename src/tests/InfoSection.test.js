@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
 
 import InfoSection from '../Components/GradProfileComponents/InfoSection';
-import { testGraduateUser } from './testData/sampleGraduateUser';
-const {personalInfo} = testGraduateUser
+import { testGraduateUser } from './testData/sampleGraduateUser2';
+const { personalInfo } = testGraduateUser
 
 describe(`InfoSection component tests`, () => {
     beforeEach(() => {
-        render(<InfoSection infoData={personalInfo}/>);
+        render(<InfoSection infoData={personalInfo} />);
     });
 
     describe('Render Test', () => {
@@ -59,23 +59,23 @@ describe(`InfoSection component tests`, () => {
             const element = screen.getByText(personalInfo.badges[3]);
             expect(element).toBeInTheDocument();
         })
-         test(`it should render 65%`, () => {
+        test(`it should render 65%`, () => {
             const element = screen.getByText(personalInfo.scores[0]);
             expect(element).toBeInTheDocument();
-         })
-         test(`it should render 80%`, () => {
+        })
+        test(`it should render 80%`, () => {
             const element = screen.getByText(personalInfo.scores[1]);
             expect(element).toBeInTheDocument();
-         })
-         test(`it should render 97%`, () => {
+        })
+        test(`it should render 97%`, () => {
             const element = screen.getByText(personalInfo.scores[2]);
             expect(element).toBeInTheDocument();
-         })
-         test(`it should render 70%`, () => {
+        })
+        test(`it should render 70%`, () => {
             const element = screen.getByText(personalInfo.scores[3]);
             expect(element).toBeInTheDocument();
         })
-})
+    })
 
 })
-;
+    ;
