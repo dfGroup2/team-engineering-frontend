@@ -4,11 +4,8 @@ import ProfileInfo from './ProfileInfo'
 import { Link } from 'react-router-dom';
 import PersonalStory from './PersonalStory';
 import "../../css/ProfileSection.css";
-//import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
-//const { personalStory } = testGraduateUser;
 
 const ProfileSection = ({ graduateUserData, capitaliseFirstLetter }) => {
-	//graduateUserData successfully passed as prop
 	const { graduateProfile, personalStory } = graduateUserData;
 	const removeMongoId = object => {
 		if (object.hasOwnProperty('_id')) {

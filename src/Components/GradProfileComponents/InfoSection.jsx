@@ -4,23 +4,6 @@ import PropTypes from 'prop-types'
 const InfoSection = ({ infoData }) => {
     const { badges, scores } = infoData
 
-    // const createBadges = badgesArray => {
-    //     return badgesArray.map(currentBadge => {
-    //         return <p className="borderClass">{currentBadge}</p>
-    //     })
-    // }
-    // //badges denotes an array of strings
-    // const createColumns = badgesArray => {
-    //     const badgeColumnDivArray = [];
-    //     const numOfColumns = Math.ceil(badgesArray.length / 2)
-    //     for (let i = 0; i < numOfColumns; i++) {
-    //         badgeColumnDivArray.push(<div className="col-2"></div>)
-    //     }
-    //     //[[badge1,badge2],[badge3,badge4]]
-    //     //[{key: value}{}]
-    //     return badgeColumnDivArray;
-    // }
-
     const formatBadgesInColumns = badgesArray => {
         const badgeColumnDivArrayPopulated = [];
         const isEven = badgesArray.length % 2 == 0;

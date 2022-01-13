@@ -5,14 +5,11 @@ import TrainingSection from './TrainingSection'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-//import { testGraduateUser } from '../../tests/testData/sampleGraduateUser';
-//const { graduateTraining, personalInfo } = testGraduateUser;
 
 const ProfilePage = () => {
 
   const [graduateUserData, setGraduateUserData] = useState({});
   const [getError, setGetError] = useState({ message: ``, count: 0 });
-  const { _id } = useParams(); //this will not work without data in the database
 
   const getGraduateUserDataById = async () => {
     const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
@@ -34,7 +31,6 @@ const ProfilePage = () => {
     const getData = async () => {
       setGraduateUserData(await getGraduateUserDataById());
     }
-    //setTimeout(() => getData(), 3000);
     getData();
   }, []);
 
@@ -43,10 +39,6 @@ const ProfilePage = () => {
   }
 
   const capitaliseFirstLetter = string => {
-    // e.g. if string is "jared"
-    // "j" -> "J" 
-    // "jared" -> "ared"
-    // "Jared"
     return string[0].toUpperCase() + string.slice(1);
   }
 
