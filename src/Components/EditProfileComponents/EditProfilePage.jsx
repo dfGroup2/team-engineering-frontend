@@ -57,7 +57,7 @@ const EditProfilePage = props => {
 	return (
 		<>
 			{objectIsEmpty(graduateUserData) &&
-				<div>
+				<div className="parent-container">
 					<div className="back-outer">
 						<div className="back-button"><Link to="/graduatePage">Go back</Link></div>
 					</div>
