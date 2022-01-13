@@ -74,7 +74,8 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
             setExamType(data.schoolQualifications.examType);
             setSubject(data.schoolQualifications.subject);
             setGrade(data.schoolQualifications.grade);
-            setYear(data.schoolQualifications.year);
+            setFrom(data.schoolQualifications.from);
+            setTo(data.schoolQualifications.to);
             setWeight(data.schoolQualifications.weight);
             setPriority(data.schoolQualifications.priority);
             setDescription(data.schoolQualifications.description);
@@ -358,8 +359,12 @@ const PersonalStoryModal = ({ show, setShowModal, inputFieldHeaders, storyType, 
                         <input type="text" value={grade} name="grade" className="col-6" onChange={handleGradeChange} />
                     </div>
                     <div className="form-inputs">
-                        <label htmlFor="year" className="col-6">Year</label>
-                        <input type="date" value={year} name="year" className="col-6" onChange={handleYearChange} />
+                        <label htmlFor="from" className="col-6">From</label>
+                        <input type="date" value={from} name="from" className="col-6" onChange={handleFromChange} />
+                    </div>
+                    <div className="form-inputs">
+                        <label htmlFor="to" className="col-6">To</label>
+                        <input type="date" value={to} name="to" className="col-6" onChange={handleToChange} />
                     </div>
                     <div className="form-inputs">
                         <label htmlFor="description" className="col-6">Description</label>

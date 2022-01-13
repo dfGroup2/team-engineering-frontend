@@ -73,9 +73,11 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	const deleteData = (clickEvent, rowKey) => {
 		clickEvent.preventDefault();
 		let tempData = data;
+
 		switch (clickEvent.target.name) {
 			case "editDegree":
-				tempData.degree.splice(rowKey, 1);
+				const indexOfRow = tempData.degree.findIndex(o => o._id === rowKey);
+				tempData.degree.splice(indexOfRow, 1);
 				break;
 			case "editSchoolQuals":
 				tempData.schoolQualifications.splice(rowKey, 1);
@@ -90,7 +92,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 				tempData.portfolio.splice(rowKey, 1);
 				break;
 			default:
-				console.log(`No data to delete`);
+				console.log(`No data to delete `);
 				break;
 		}
 		putRequestToDeleteItem(tempData);
@@ -142,7 +144,7 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 	}
 
 	const degreesHeadings = ['University', 'Degree Subject', 'Degree Level', 'Grade', 'From', 'To', 'Weight', 'Priority', 'Description', ''];
-	const schoolQualificationsHeadings = ['School', 'Exam Type', 'Subject', 'Grade', 'Year', 'Weight', 'Priority', 'Description', ''];
+	const schoolQualificationsHeadings = ['School', 'Exam Type', 'Subject', 'Grade', 'From', 'To', 'Weight', 'Priority', 'Description', ''];
 	const workExperienceAndPositionsHeadings = ['Type', 'Employer or Other Organisation', 'Position', 'From', 'To', 'Weight', 'Priority', 'Description', ''];
 	const certificatesAndAwardsHeadings = ['Type', 'Issuer', 'Award', 'Grade', 'Year', 'Weight', 'Priority', 'Description', ''];
 	const portfolioHeadings = ['Title', 'URL', 'Year', 'Weight', 'Priority', 'Description', ''];
@@ -195,7 +197,8 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 					<td>{schoolQualifications.examType}</td>
 					<td>{schoolQualifications.subject}</td>
 					<td>{schoolQualifications.grade}</td>
-					<td>{splitDateData(schoolQualifications.year.from, "-")}</td>
+					<td>{splitDateData(schoolQualifications.year.from, "T")}</td>
+					<td>{splitDateData(schoolQualifications.year.to, "T")}</td>
 					<td>{schoolQualifications.weight}</td>
 					<td>{schoolQualifications.priority}</td>
 					<td>{schoolQualifications.description}</td>
