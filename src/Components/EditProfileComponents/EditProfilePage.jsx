@@ -34,7 +34,9 @@ const EditProfilePage = props => {
 		const getData = async () => {
 			const gradUserData = await getGraduateUserDataById()
 			setGraduateUserData(gradUserData);
-			setProgressBarValue(calculateProgressCompletion(gradUserData));
+			if (objectIsEmpty(gradUserData)) {
+				setProgressBarValue(calculateProgressCompletion(gradUserData));
+			}
 		}
 		//setTimeout(() => getData(), 3000);
 		getData();
