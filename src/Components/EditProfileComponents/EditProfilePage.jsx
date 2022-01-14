@@ -11,6 +11,7 @@ const EditProfilePage = props => {
 	let navigate = useNavigate()
 	const [graduateUserData, setGraduateUserData] = useState('');
 	const [getError, setGetError] = useState({ message: ``, count: 0 });
+	const [progressBarValue, setProgressBarValue] = useState(0);
 
 	const getGraduateUserDataById = async () => {
 		try {
@@ -31,11 +32,23 @@ const EditProfilePage = props => {
 
 	useEffect(() => {
 		const getData = async () => {
-			setGraduateUserData(await getGraduateUserDataById());
+			const gradUserData = await getGraduateUserDataById()
+			setGraduateUserData(gradUserData);
+			setProgressBarValue(calculateProgressCompletion(gradUserData));
 		}
 		//setTimeout(() => getData(), 3000);
 		getData();
 	}, []);
+
+	const calculateProgressCompletion = (graduateUser) => {
+		if (graduateUser) {
+			const pStory = graduateUser.personalStory;
+			const pInfo = graduateUser.graduateProfile;
+			const length = ((pInfo.firstName ? 1 : 0) + (pInfo.lastName ? 1 : 0) + (pInfo.personalEmail ? 1 : 0) + (pInfo.DFEmail ? 1 : 0) + (pInfo.profilePicture ? 1 : 0) + (pInfo.phoneNumber ? 1 : 0) + (pInfo.gender === "defaultGender" ? 0 : 1) + (pInfo.nationality === "defaultNationality" ? 0 : 1) + (pInfo.personality === "defaultPersonality" ? 0 : 1) + pStory.degree.length + pStory.schoolQualifications.length + pStory.workExperience.length + pStory.certificatesAndAwards.length + pStory.portfolio.length) / 19 * 100;
+			return length;
+		}
+		return 0;
+	}
 
 	const submitData = async () => {
 		const currentGraduateUserDataId = JSON.parse(localStorage.getItem('user')).graduateUserData;
@@ -68,7 +81,8 @@ const EditProfilePage = props => {
 							<br />
 							<div className="col-3">
 								<p className="progressbar">Profile completion: </p>
-								<ProgressBar now={50} />
+								{/* <ProgressBar now={50} /> */}
+								<ProgressBar now={progressBarValue} />
 								<br />
 							</div>
 							<p className="col-3"></p>
