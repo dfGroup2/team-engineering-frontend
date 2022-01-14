@@ -80,16 +80,20 @@ const EditPersonalStory = ({ graduateUserPersonalStory }) => {
 				tempData.degree.splice(indexOfRow, 1);
 				break;
 			case "editSchoolQuals":
-				tempData.schoolQualifications.splice(rowKey, 1);
+				const indexOfRow2 = tempData.schoolQualifications.findIndex(o => o._id === rowKey);
+				tempData.schoolQualifications.splice(indexOfRow2, 1);
 				break;
 			case "editCertificates":
-				tempData.certificatesAndAwards.splice(rowKey, 1);
+				const indexOfRow3 = tempData.certificatesAndAwards.findIndex(o => o._id === rowKey);
+				tempData.certificatesAndAwards.splice(indexOfRow3, 1);
 				break;
 			case "editWorkExperience":
-				tempData.workExperience.splice(rowKey, 1);
+				const indexOfRow4 = tempData.workExperience.findIndex(o => o._id === rowKey);
+				tempData.workExperience.splice(indexOfRow4, 1);
 				break;
 			case "editPortfolio":
-				tempData.portfolio.splice(rowKey, 1);
+				const indexOfRow5 = tempData.portfolio.findIndex(o => o._id === rowKey);
+				tempData.portfolio.splice(indexOfRow5, 1);
 				break;
 			default:
 				console.log(`No data to delete `);
